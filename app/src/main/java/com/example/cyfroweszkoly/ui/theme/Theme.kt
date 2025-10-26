@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.ui.home.theme
+package com.example.cyfroweszkoly.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
