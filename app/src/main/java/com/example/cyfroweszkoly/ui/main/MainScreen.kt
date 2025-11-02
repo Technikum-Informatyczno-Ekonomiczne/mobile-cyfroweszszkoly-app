@@ -1,8 +1,10 @@
 package com.example.cyfroweszkoly.ui.main
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -14,9 +16,16 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.navigation.AppNavHost
+import com.example.cyfroweszkoly.navigation.Screen
 import kotlinx.coroutines.launch
+
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.filled.EmojiEvents
+import androidx.compose.material.icons.filled.Home
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -67,13 +76,51 @@ fun MainScreen(){
             topBar = {
                 TopAppBar(
                     title = { Text("Cyfrowe Szkoły")},
+
+
+                    // to jest ikona nawigacji (trzy poziome kreski)
+                    // po kliknięciu otwiera się boczne menu
                     navigationIcon = {
                         IconButton(onClick = {
                             scope.launch { drawerState.open() }
                         }) {
                             Icon(Icons.Default.Menu, contentDescription = "Menu")
                         }
+                    },
+
+                    // tu są zdefiniowane ikonki wyświetlane po prawej stronie
+
+                    actions = {
+
+                        IconButton(onClick={
+                            navController.navigate(Screen.Home.route)
+                        }) {
+                            Icon(
+                                imageVector = Icons.Default.Home,
+                                contentDescription = "Strona główna"
+                            )
+                        }
+
+                        IconButton(onClick = {
+                            navController.navigate(Screen.History.route)
+                        }) {
+                            Icon(
+                                imageVector = Icons.Filled.History,
+                                contentDescription = "Historia szkoły"
+                            )
+                        }
+
+                        IconButton(onClick = {
+                            navController.navigate(Screen.Achievements.route)
+                        }) {
+                            Icon(
+                                imageVector = Icons.Filled.EmojiEvents,
+                                contentDescription = "Osiągnięcia"
+                            )
+                        }
+
                     }
+
                 )
             }
         ) { innerPadding ->
@@ -83,4 +130,10 @@ fun MainScreen(){
             )
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MainScreenPreview(){
+    MainScreen()
 }
