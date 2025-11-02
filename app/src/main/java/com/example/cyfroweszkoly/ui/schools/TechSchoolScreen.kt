@@ -4,8 +4,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 
-
 @Composable
-fun HighSchoolScreen(navController: NavController){
-    Text("Informacje o LICEUM")
+fun TechSchoolScreen(navController: NavController){
+    Text("Informacje o TECHNIKUM")
 }

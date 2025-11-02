@@ -6,6 +6,6 @@ import androidx.navigation.NavController
 
 
 @Composable
-fun HighSchoolScreen(navController: NavController){
-    Text("Informacje o LICEUM")
+fun PrimarySchoolScreen(navController: NavController){
+    Text("Informacje o szkole podstawowej")
 }
