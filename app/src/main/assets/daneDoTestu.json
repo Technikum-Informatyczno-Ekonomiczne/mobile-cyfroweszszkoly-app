@@ -1,0 +1,14 @@
+[
+  {
+    "date": "1998",
+    "title": "Założenie szkoły",
+    "image": "zdjTestHistoria.png",
+    "description": "Szkoła została założona w 1998 roku jako..."
+  },
+  {
+    "date": "2005",
+    "title": "Nowy budynek",
+    "image": null,
+    "description": "Oddano do użytku nowy budynek szkoły."
+  }
+]
