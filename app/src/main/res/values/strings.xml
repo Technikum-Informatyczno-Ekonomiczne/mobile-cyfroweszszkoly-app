@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CyfroweSzkoly</string>
+    <string name="title_activity_history_item_view">HistoryItemView</string>
 </resources>

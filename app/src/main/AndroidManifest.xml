@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CyfroweSzkoly">
         <activity
+            android:name=".ui.history.HistoryItemView"
+            android:exported="false"
+            android:label="@string/title_activity_history_item_view"
+            android:theme="@style/Theme.CyfroweSzkoly" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
