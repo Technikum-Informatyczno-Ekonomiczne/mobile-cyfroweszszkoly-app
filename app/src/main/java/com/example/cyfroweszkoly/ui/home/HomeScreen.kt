@@ -1,6 +1,5 @@
 package com.example.cyfroweszkoly.ui.history
 
-import android.media.Image
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -8,11 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,22 +31,37 @@ fun HomeScreen(navController: NavController){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(onClick = { navController.navigate(route = Screen.Primary.route)}) {
-            Text(text = "Szkoła podstawowa")
-        }
         Image(
-            painter = painterResource(R.drawable.liceum_button),
-            contentDescription = "Liceum IX",
+            painter = painterResource(R.drawable.sp_button),
+            contentDescription = "Szkoła podstawowa 311",
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .fillMaxWidth(0.7f)
                 .aspectRatio(1.8f)   // dopasuj do proporcji zdjęcia
                 .clip(RoundedCornerShape(40.dp))
+                .clickable { navController.navigate(Screen.Primary.route) }
+        )
+        Image(
+            painter = painterResource(R.drawable.liceum_button),
+            contentDescription = "Liceum XI",
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .padding(0.dp ,20.dp ,0.dp ,20.dp)
+                .fillMaxWidth(0.7f)
+                .aspectRatio(1.8f)   // dopasuj do proporcji zdjęcia
+                .clip(RoundedCornerShape(40.dp))
                 .clickable { navController.navigate(Screen.High.route) }
         )
-        Button(onClick = { navController.navigate(route = Screen.Tech.route )}) {
-            Text(text = "Technikum XI")
-        }
+        Image(
+            painter = painterResource(R.drawable.technikum_button),
+            contentDescription = "Technikum IX",
+            contentScale = ContentScale.Fit,
+            modifier = Modifier
+                .fillMaxWidth(0.7f)
+                .aspectRatio(1.8f)   // dopasuj do proporcji zdjęcia
+                .clip(RoundedCornerShape(40.dp))
+                .clickable { navController.navigate(Screen.Tech.route) }
+        )
 
 
     }
