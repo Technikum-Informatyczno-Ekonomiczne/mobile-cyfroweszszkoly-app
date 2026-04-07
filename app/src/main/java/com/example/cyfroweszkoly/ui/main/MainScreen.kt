@@ -1,5 +1,12 @@
 package com.example.cyfroweszkoly.ui.main
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MailOutline
@@ -29,11 +36,16 @@ import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.PersonSearch
+import androidx.compose.material.icons.outlined.School
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
@@ -93,13 +105,40 @@ fun MainScreen(){
 
                     ),
                     title = {
-                        Text(
-                            text = "Cyfrowe Szkoły",
-                            style = MaterialTheme.typography.titleLarge.copy(
-                                fontWeight = FontWeight.ExtraBold,
-                                letterSpacing = 1.sp
+                        // Pakujemy ikonę i tekst w Row, który jest klikalny
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(50))
+                                .clickable {
+                                    navController.navigate(Screen.Home.route) {
+                                        popUpTo(Screen.Home.route) { inclusive = true }
+                                        launchSingleTop = true
+                                    }
+                                }
+                                .background(Color.LightGray.copy(alpha = 0.3f))
+                                .padding(vertical = 3.dp, horizontal = 4.dp)
+                        ) {
+                            // Mała, czarna ikonka reprezentująca szkołę
+                            Icon(
+                                imageVector = Icons.Outlined.School,
+                                contentDescription = null, // decorative
+                                tint = Color.Black // Używamy koloru zgodnego z Twoim stylem
                             )
-                        )
+
+                            // Odstęp między ikonką a tekstem
+                            Spacer(modifier = Modifier.width(6.dp))
+
+                            // Twój wystylizowany tekst
+                            Text(
+                                text = "Cyfrowe Szkoły",
+                                style = MaterialTheme.typography.titleLarge.copy(
+                                    fontWeight = FontWeight.ExtraBold,
+                                    letterSpacing = 1.sp
+                                ),
+                                color = Color.Black // Upewnij się, że kolor jest czarny
+                            )
+                        }
                     },
 
 
