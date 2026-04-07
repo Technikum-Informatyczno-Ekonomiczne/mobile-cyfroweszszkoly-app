@@ -128,14 +128,14 @@ fun MainScreen(){
                             )
                         }
 
-                        IconButton(onClick={
-                            navController.navigate(Screen.Home.route)
-                        }) {
-                            Icon(
-                                imageVector = Icons.Outlined.Home,
-                                contentDescription = "Strona główna"
-                            )
-                        }
+//                        IconButton(onClick={
+//                            navController.navigate(Screen.Home.route)
+//                        }) {
+//                            Icon(
+//                                imageVector = Icons.Outlined.Home,
+//                                contentDescription = "Strona główna"
+//                            )
+//                        }
 
                         IconButton(onClick = {
                             navController.navigate(Screen.History.route)
