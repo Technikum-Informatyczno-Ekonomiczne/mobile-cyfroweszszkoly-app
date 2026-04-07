@@ -31,7 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.cyfroweszkoly.models.ScheduleEntry
+import com.example.cyfroweszkoly.model.ScheduleEntry
 
 fun getTeacherSchedule(teacherId: Int): List<ScheduleEntry> {
     return listOf(

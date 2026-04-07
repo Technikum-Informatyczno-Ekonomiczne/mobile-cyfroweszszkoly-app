@@ -1,7 +1,7 @@
 package com.example.cyfroweszkoly.data.repository
 
 import android.content.Context
-import com.example.cyfroweszkoly.models.HistoryItem
+import com.example.cyfroweszkoly.model.HistoryItem
 import org.json.JSONArray
 import org.json.JSONObject
 

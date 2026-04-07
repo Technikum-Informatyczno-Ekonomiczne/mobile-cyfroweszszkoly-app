@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.navigation.AppNavHost
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
-import com.example.cyfroweszkoly.viewmodels.HistoryViewModel
+import com.example.cyfroweszkoly.viewmodel.HistoryViewModel
 
 
 @Composable

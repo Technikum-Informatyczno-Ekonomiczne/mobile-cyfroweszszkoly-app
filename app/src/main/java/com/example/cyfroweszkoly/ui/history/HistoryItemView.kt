@@ -4,8 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
-import com.example.cyfroweszkoly.models.HistoryItem
+import com.example.cyfroweszkoly.model.HistoryItem
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
 
 

@@ -28,33 +28,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-import com.example.cyfroweszkoly.models.Teacher
+import com.example.cyfroweszkoly.model.Teacher
+import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 
-val dummyTeachers = listOf(
-    Teacher(1, "Jan Kowalski", "Matematyka"),
-    Teacher(2, "Anna Nowak", "Język Polski"),
-    Teacher(3, "Marek Ząb", "Fizyka"),
-    Teacher(4, "Katarzyna Wójcik", "Matematyka"),
-    Teacher(5, "Piotr Wiśniewski", "Informatyka")
-)
 
 @Composable
 fun FindTeacherScreen(
+    viewModel: TeacherViewModel,
     onTeacherClick: (Teacher) -> Unit,
     onBackClick: () -> Unit
 ) {
-    // zmienna do przechowywani informacji o tym
-    // co użytkownik wpisał
-    var searchQuery by remember { mutableStateOf("") }
-
-
-    // dynamiczne filtrowanie listy
-    val filteredTeachers = dummyTeachers.filter {
-        it.name.contains(searchQuery, ignoreCase = true) ||
-                it.subject.contains(searchQuery, ignoreCase = true)
-    }
-
-
 
     Column(
         modifier = Modifier
@@ -69,8 +52,8 @@ fun FindTeacherScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
-            value = searchQuery,
-            onValueChange = { searchQuery = it },
+            value = viewModel.searchQuery,
+            onValueChange = { viewModel.updateSearchQuery(it) },
             modifier = Modifier.fillMaxWidth(),
             placeholder = { Text("Wpisz nazwisko lub przedmiot...") },
             leadingIcon = {
@@ -88,7 +71,7 @@ fun FindTeacherScreen(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(filteredTeachers) { teacher ->
+            items(viewModel.filteredTeachers) { teacher ->
                 // Wygląd pojedynczego wiersza z nauczycielem
                 Card(
                     modifier = Modifier
@@ -113,6 +96,7 @@ fun FindTeacherScreen(
 fun FindTeacherScreenPreview(){
     MaterialTheme {
         FindTeacherScreen(
+            viewModel = TeacherViewModel(),
             onTeacherClick = {},
             onBackClick = {}
         )

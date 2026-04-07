@@ -1,7 +1,7 @@
 package com.example.cyfroweszkoly.navigation
 
 
-import android.R.attr.type
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.layout.PaddingValues
 
 import androidx.compose.foundation.layout.padding
@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+
 
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -27,6 +28,7 @@ import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
 import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
+import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 
 
 @Composable
@@ -67,8 +69,12 @@ fun AppNavHost(
             AboutUsScreen(navController)
         }
 
+
+
         composable ( route = Screen.FindTeacher.route ){
+            val teacherViewModel: TeacherViewModel = viewModel()
             FindTeacherScreen(
+                viewModel = teacherViewModel,
                 onTeacherClick = { teacher ->
 
                     navController.navigate(Screen.TeacherDetails.createRoute(teacher.id))

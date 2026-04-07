@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.models
+package com.example.cyfroweszkoly.model
 
 data class HistoryItem(
     val date: String,
