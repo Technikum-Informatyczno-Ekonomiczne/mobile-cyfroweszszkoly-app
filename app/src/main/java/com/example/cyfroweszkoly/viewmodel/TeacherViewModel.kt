@@ -6,36 +6,16 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.cyfroweszkoly.model.ScheduleEntry
 import com.example.cyfroweszkoly.model.Teacher
+import com.example.cyfroweszkoly.repository.TeacherRepository
 
 class TeacherViewModel : ViewModel(){
 
-    //lokalna, ukryta baza danych
-    val  allTeachers = listOf(
-        Teacher(1, "Jan Kowalski", "Matematyka"),
-        Teacher(2, "Anna Nowak", "Język Polski"),
-        Teacher(3, "Marek Ząb", "Fizyka"),
-        Teacher(4, "Katarzyna Wójcik", "Matematyka"),
-        Teacher(5, "Piotr Wiśniewski", "Informatyka")
-    )
+    // tworzymy połączenie z magazynem (repository)
+    private val repository = TeacherRepository()
 
-    // baza planów lekcji powiązana z ID nauczyciela
-    private val schedules = mapOf(
-        1 to listOf(
-            ScheduleEntry(
-                time = "08:00 - 08:45",
-                location = "Sala 102 (Liceum)",
-                className = "Klasa 1A"),
-            ScheduleEntry("08:55 - 09:40",
-                "Sala 12 (Podstawówka)", "Klasa 4C")
-        ),
-        2 to listOf(
-            ScheduleEntry("09:50 - 10:35",
-                "Sala 204 (Technikum)", "Klasa 3T"),
-            ScheduleEntry("10:45 - 11:30",
-                "Korytarz (Dyżur)", "DYŻUR")
-        )
-        // Pozostali na razie nie mają planu
-    )
+    // pobieramy dane do pamięci Viewmodelu
+    val allTeachers: List<Teacher> = repository.getAllTeachers()
+
 
     // Używamy private set, żeby tylko ViewModel mógł zmieniać ten tekst
     var searchQuery by mutableStateOf("")
@@ -59,7 +39,8 @@ class TeacherViewModel : ViewModel(){
         }
 
     fun getScheduleForTeacher(teacherId: Int): List<ScheduleEntry>{
-        return schedules[teacherId] ?: emptyList()
+        return repository.getScheduleForTeacher(teacherId)
+
 
     }
 
