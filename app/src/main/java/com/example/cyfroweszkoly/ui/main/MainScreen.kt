@@ -120,7 +120,7 @@ fun MainScreen(){
                     actions = {
 
                         IconButton(onClick = {
-                            //navController.navigate(Screen.FindTeacher.route)
+                            navController.navigate(Screen.FindTeacher.route)
                         }){
                             Icon(
                                 imageVector = Icons.Outlined.PersonSearch,

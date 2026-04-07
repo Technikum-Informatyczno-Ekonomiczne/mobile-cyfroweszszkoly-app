@@ -5,6 +5,8 @@ sealed class Screen(val route: String) {
     object Primary : Screen("primary")
     object High : Screen("high")
     object Tech : Screen("tech")
+
+    object FindTeacher : Screen("find_teacher")
     object History : Screen("history")
     object Achievements : Screen("achievements")
     object AboutUs : Screen("about_us")

@@ -16,6 +16,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.ui.about.application.AboutApplicationScreen
 import com.example.cyfroweszkoly.ui.about.us.AboutUsScreen
 import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
+import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
 import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
@@ -60,6 +61,10 @@ fun AppNavHost(
 
         composable(route= Screen.AboutUs.route) {
             AboutUsScreen(navController)
+        }
+
+        composable ( route = Screen.FindTeacher.route ){
+            FindTeacherScreen(navController)
         }
 
         composable(route = Screen.Achievements.route) {
