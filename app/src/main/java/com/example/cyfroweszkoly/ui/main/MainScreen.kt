@@ -100,7 +100,7 @@ fun MainScreen(){
                                 letterSpacing = 1.sp
                             )
                         )
-                            },
+                    },
 
 
                     // to jest ikona nawigacji (trzy poziome kreski)

@@ -1,6 +1,7 @@
 package com.example.cyfroweszkoly.navigation
 
 
+import android.R.attr.type
 import androidx.compose.foundation.layout.PaddingValues
 
 import androidx.compose.foundation.layout.padding
@@ -10,9 +11,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.cyfroweszkoly.ui.about.application.AboutApplicationScreen
 import com.example.cyfroweszkoly.ui.about.us.AboutUsScreen
 import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
@@ -22,6 +25,7 @@ import com.example.cyfroweszkoly.ui.history.HomeScreen
 import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
+import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
 
 
@@ -64,7 +68,30 @@ fun AppNavHost(
         }
 
         composable ( route = Screen.FindTeacher.route ){
-            FindTeacherScreen(navController)
+            FindTeacherScreen(
+                onTeacherClick = { teacher ->
+
+                    navController.navigate(Screen.TeacherDetails.createRoute(teacher.id))
+
+                    println("kliknięto: ${teacher.name}")
+                },
+                onBackClick = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        composable(
+            route = Screen.TeacherDetails.route,
+            arguments = listOf(navArgument("teacherId") { type = NavType.IntType }) // Mówimy, że spodziewamy się liczby całkowitej (Int)
+        ) { backStackEntry ->
+            // Wyciągamy ID z linku (jeśli z jakiegoś powodu go nie ma, używamy 0)
+            val teacherId = backStackEntry.arguments?.getInt("teacherId") ?: 0
+
+            TeacherDetailsScreen(
+                teacherId = teacherId,
+                onBackClick = { navController.popBackStack() }
+            )
         }
 
         composable(route = Screen.Achievements.route) {
