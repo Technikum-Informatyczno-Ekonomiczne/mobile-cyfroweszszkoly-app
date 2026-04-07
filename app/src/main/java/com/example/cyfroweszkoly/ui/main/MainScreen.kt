@@ -25,6 +25,16 @@ import kotlinx.coroutines.launch
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.outlined.EmojiEvents
+import androidx.compose.material.icons.outlined.History
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.PersonSearch
+import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -75,7 +85,22 @@ fun MainScreen(){
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text("Cyfrowe Szkoły")},
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = Color.White,
+                        titleContentColor = Color.Black,
+                        actionIconContentColor = Color.Black,
+                        navigationIconContentColor = Color.Black
+
+                    ),
+                    title = {
+                        Text(
+                            text = "Cyfrowe Szkoły",
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                fontWeight = FontWeight.ExtraBold,
+                                letterSpacing = 1.sp
+                            )
+                        )
+                            },
 
 
                     // to jest ikona nawigacji (trzy poziome kreski)
@@ -84,7 +109,9 @@ fun MainScreen(){
                         IconButton(onClick = {
                             scope.launch { drawerState.open() }
                         }) {
-                            Icon(Icons.Default.Menu, contentDescription = "Menu")
+                            Icon(
+                                imageVector = Icons.Rounded.Menu,
+                                contentDescription = "Menu")
                         }
                     },
 
@@ -92,11 +119,20 @@ fun MainScreen(){
 
                     actions = {
 
+                        IconButton(onClick = {
+                            //navController.navigate(Screen.FindTeacher.route)
+                        }){
+                            Icon(
+                                imageVector = Icons.Outlined.PersonSearch,
+                                contentDescription = "Znajdź nauczyciela"
+                            )
+                        }
+
                         IconButton(onClick={
                             navController.navigate(Screen.Home.route)
                         }) {
                             Icon(
-                                imageVector = Icons.Default.Home,
+                                imageVector = Icons.Outlined.Home,
                                 contentDescription = "Strona główna"
                             )
                         }
@@ -105,7 +141,7 @@ fun MainScreen(){
                             navController.navigate(Screen.History.route)
                         }) {
                             Icon(
-                                imageVector = Icons.Filled.History,
+                                imageVector = Icons.Outlined.History,
                                 contentDescription = "Historia szkoły"
                             )
                         }
@@ -114,7 +150,7 @@ fun MainScreen(){
                             navController.navigate(Screen.Achievements.route)
                         }) {
                             Icon(
-                                imageVector = Icons.Filled.EmojiEvents,
+                                imageVector = Icons.Outlined.EmojiEvents,
                                 contentDescription = "Osiągnięcia"
                             )
                         }
