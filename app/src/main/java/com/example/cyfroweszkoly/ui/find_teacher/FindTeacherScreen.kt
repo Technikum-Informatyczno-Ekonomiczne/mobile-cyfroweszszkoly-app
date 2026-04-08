@@ -91,14 +91,14 @@ fun FindTeacherScreen(
 
 }
 
-@Preview(showBackground = true)
-@Composable
-fun FindTeacherScreenPreview(){
-    MaterialTheme {
-        FindTeacherScreen(
-            viewModel = TeacherViewModel(),
-            onTeacherClick = {},
-            onBackClick = {}
-        )
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun FindTeacherScreenPreview(){
+//    MaterialTheme {
+//        FindTeacherScreen(
+//            viewModel = TeacherViewModel(),
+//            onTeacherClick = {},
+//            onBackClick = {}
+//        )
+//    }
+//}

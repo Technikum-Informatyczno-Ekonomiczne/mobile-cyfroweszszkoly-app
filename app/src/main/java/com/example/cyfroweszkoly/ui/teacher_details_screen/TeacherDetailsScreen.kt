@@ -203,12 +203,12 @@ fun TeacherDetailsScreen(
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun TeacherDetailsScreenPreview(){
-    TeacherDetailsScreen(
-        viewModel = TeacherViewModel(),
-        teacherId = 1,
-        onBackClick = {})
-
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun TeacherDetailsScreenPreview(){
+//    TeacherDetailsScreen(
+//        viewModel = TeacherViewModel(),
+//        teacherId = 1,
+//        onBackClick = {})
+//
+//}

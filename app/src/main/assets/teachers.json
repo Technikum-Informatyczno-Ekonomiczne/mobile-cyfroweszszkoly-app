@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "name": "Jan Kowalski",
+    "subject": "Matematyka",
+    "schedule": [
+      { "lessonNumber": 1, "dayOfWeek": "Poniedziałek", "time": "08:00 - 08:45", "location": "Sala 102", "className": "Klasa 1A" },
+      { "lessonNumber": 2, "dayOfWeek": "Poniedziałek", "time": "08:55 - 09:40", "location": "Sala 12", "className": "Klasa 4C" },
+      { "lessonNumber": 3, "dayOfWeek": "Środa", "time": "09:50 - 10:35", "location": "Sala 102", "className": "Klasa 1A" },
+      { "lessonNumber": 4, "dayOfWeek": "Środa", "time": "10:45 - 11:30", "location": "Sala 102", "className": "Klasa 2B" },
+      { "lessonNumber": 1, "dayOfWeek": "Piątek", "time": "08:00 - 08:45", "location": "Sala 12", "className": "Klasa 4C" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Anna Nowak",
+    "subject": "Język Polski",
+    "schedule": [
+      { "lessonNumber": 4, "dayOfWeek": "Wtorek", "time": "10:45 - 11:30", "location": "Sala 204", "className": "Klasa 3T" },
+      { "lessonNumber": 5, "dayOfWeek": "Wtorek", "time": "11:45 - 12:30", "location": "Sala 204", "className": "Klasa 3T" },
+      { "lessonNumber": 6, "dayOfWeek": "Wtorek", "time": "12:45 - 13:30", "location": "Sala 15", "className": "Klasa 2B" },
+      { "lessonNumber": 1, "dayOfWeek": "Czwartek", "time": "08:00 - 08:45", "location": "Korytarz", "className": "DYŻUR" },
+      { "lessonNumber": 2, "dayOfWeek": "Czwartek", "time": "08:55 - 09:40", "location": "Sala 15", "className": "Klasa 2B" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Piotr Wiśniewski",
+    "subject": "Fizyka",
+    "schedule": [
+      { "lessonNumber": 3, "dayOfWeek": "Poniedziałek", "time": "09:50 - 10:35", "location": "Laboratorium 1", "className": "Klasa 3A" },
+      { "lessonNumber": 4, "dayOfWeek": "Poniedziałek", "time": "10:45 - 11:30", "location": "Laboratorium 1", "className": "Klasa 4A" },
+      { "lessonNumber": 1, "dayOfWeek": "Środa", "time": "08:00 - 08:45", "location": "Laboratorium 2", "className": "Klasa 2C" },
+      { "lessonNumber": 2, "dayOfWeek": "Środa", "time": "08:55 - 09:40", "location": "Laboratorium 2", "className": "Klasa 2C" },
+      { "lessonNumber": 5, "dayOfWeek": "Piątek", "time": "11:45 - 12:30", "location": "Sala 110", "className": "Klasa 1B" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Maria Wójcik",
+    "subject": "Język Angielski",
+    "schedule": [
+      { "lessonNumber": 1, "dayOfWeek": "Wtorek", "time": "08:00 - 08:45", "location": "Sala 55", "className": "Grupa A1" },
+      { "lessonNumber": 2, "dayOfWeek": "Wtorek", "time": "08:55 - 09:40", "location": "Sala 55", "className": "Grupa B2" },
+      { "lessonNumber": 3, "dayOfWeek": "Wtorek", "time": "09:50 - 10:35", "location": "Sala 56", "className": "Grupa C1" },
+      { "lessonNumber": 5, "dayOfWeek": "Czwartek", "time": "11:45 - 12:30", "location": "Sala 55", "className": "Grupa A1" },
+      { "lessonNumber": 6, "dayOfWeek": "Czwartek", "time": "12:45 - 13:30", "location": "Sala 55", "className": "Grupa A2" },
+      { "lessonNumber": 7, "dayOfWeek": "Czwartek", "time": "13:45 - 14:30", "location": "Sala 56", "className": "Grupa B1" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Tomasz Kamiński",
+    "subject": "Wychowanie Fizyczne",
+    "schedule": [
+      { "lessonNumber": 5, "dayOfWeek": "Poniedziałek", "time": "11:45 - 12:30", "location": "Hala Sportowa", "className": "Klasa 1A + 1B" },
+      { "lessonNumber": 6, "dayOfWeek": "Poniedziałek", "time": "12:45 - 13:30", "location": "Hala Sportowa", "className": "Klasa 2A + 2C" },
+      { "lessonNumber": 7, "dayOfWeek": "Poniedziałek", "time": "13:45 - 14:30", "location": "Boisko", "className": "Klasa 3B" },
+      { "lessonNumber": 5, "dayOfWeek": "Środa", "time": "11:45 - 12:30", "location": "Hala Sportowa", "className": "Klasa 1A + 1B" },
+      { "lessonNumber": 3, "dayOfWeek": "Piątek", "time": "09:50 - 10:35", "location": "Basen", "className": "Klasa 4C" },
+      { "lessonNumber": 4, "dayOfWeek": "Piątek", "time": "10:45 - 11:30", "location": "Basen", "className": "Klasa 2B" }
+    ]
+  }
+]

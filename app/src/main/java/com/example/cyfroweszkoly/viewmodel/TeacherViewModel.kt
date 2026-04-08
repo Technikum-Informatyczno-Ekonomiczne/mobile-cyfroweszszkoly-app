@@ -1,21 +1,19 @@
 package com.example.cyfroweszkoly.viewmodel
 
+import android.app.Application
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.example.cyfroweszkoly.model.ScheduleEntry
 import com.example.cyfroweszkoly.model.Teacher
 import com.example.cyfroweszkoly.repository.TeacherRepository
 
-class TeacherViewModel : ViewModel(){
+class TeacherViewModel(application: Application) : AndroidViewModel(application){
 
-    // tworzymy połączenie z magazynem (repository)
-    private val repository = TeacherRepository()
-
-    // pobieramy dane do pamięci Viewmodelu
-    val allTeachers: List<Teacher> = repository.getAllTeachers()
-
+    private val repository = TeacherRepository(application)
+    private val allTeachers = repository.getAllTeachers()
 
     // Używamy private set, żeby tylko ViewModel mógł zmieniać ten tekst
     var searchQuery by mutableStateOf("")
