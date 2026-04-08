@@ -15,10 +15,17 @@ class TeacherViewModel(application: Application) : AndroidViewModel(application)
     private val repository = TeacherRepository(application)
     private val allTeachers = repository.getAllTeachers()
 
+
+
     // Używamy private set, żeby tylko ViewModel mógł zmieniać ten tekst
     var searchQuery by mutableStateOf("")
         private set
 
+    //init {
+        // WYWOŁUJEMY MIGRACJĘ
+        // (Po udanym wysłaniu usuniemy tę linijkę)
+        // repository.uploadDataToCloud()
+    //}
 
     fun updateSearchQuery(query: String){
         searchQuery = query
