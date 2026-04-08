@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -66,23 +67,32 @@ fun FindTeacherScreen(
         )
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Wydajna lista wyników (odpowiednik dawnego RecyclerView)
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(viewModel.filteredTeachers) { teacher ->
-                // Wygląd pojedynczego wiersza z nauczycielem
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { onTeacherClick(teacher) },
-                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-                ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Text(text = teacher.name, style = MaterialTheme.typography.titleMedium)
-                        Text(text = teacher.subject, style = MaterialTheme.typography.bodyMedium)
+        if(viewModel.isLoading){
+            CircularProgressIndicator()
+        }else {
+
+
+            // Wydajna lista wyników (odpowiednik dawnego RecyclerView)
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                items(viewModel.filteredTeachers) { teacher ->
+                    // Wygląd pojedynczego wiersza z nauczycielem
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onTeacherClick(teacher) },
+                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                    ) {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            Text(text = teacher.name, style = MaterialTheme.typography.titleMedium)
+                            Text(
+                                text = teacher.subject,
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        }
                     }
                 }
             }
