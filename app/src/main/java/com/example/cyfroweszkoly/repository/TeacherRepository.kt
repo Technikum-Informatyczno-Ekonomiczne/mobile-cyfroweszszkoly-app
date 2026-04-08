@@ -2,43 +2,43 @@ package com.example.cyfroweszkoly.repository
 
 import com.example.cyfroweszkoly.model.ScheduleEntry
 import com.example.cyfroweszkoly.model.Teacher
+import kotlinx.serialization.json.Json
 
 class TeacherRepository {
 
+    // Symulujemy odpowiedź z serwera lub pliku w formacie JSON
+    private val jsonResponse = """
+        [
+          {
+            "id": 1,
+            "name": "Jan Kowalski",
+            "subject": "Matematyka",
+            "schedule": [
+              { "dayOfWeek": "Poniedziałek", "time": "08:00 - 08:45", "location": "Sala 102", "className": "Klasa 1A" },
+              { "dayOfWeek": "Poniedziałek", "time": "08:55 - 09:40", "location": "Sala 12", "className": "Klasa 4C" },
+              { "dayOfWeek": "Wtorek", "time": "09:50 - 10:35", "location": "Sala 204", "className": "Klasa 3T" }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Anna Nowak",
+            "subject": "Język Polski",
+            "schedule": [
+              { "dayOfWeek": "Środa", "time": "10:45 - 11:30", "location": "Korytarz", "className": "DYŻUR" },
+              { "dayOfWeek": "Piątek", "time": "08:00 - 08:45", "location": "Sala 15", "className": "Klasa 2B" }
+            ]
+          }
+        ]
+    """.trimIndent()
 
-    fun getAllTeachers(): List<Teacher>{
-        return listOf(
-            Teacher(1, "Jan Kowalski", "Matematyka"),
-            Teacher(2, "Anna Nowak", "Język Polski"),
-            Teacher(3, "Marek Ząb", "Fizyka"),
-            Teacher(4, "Katarzyna Wójcik", "Matematyka"),
-            Teacher(5, "Piotr Wiśniewski", "Informatyka")
-        )
+
+    private val allTeachers: List<Teacher> = Json.decodeFromString<List<Teacher>>(jsonResponse)
+
+    fun getAllTeachers(): List<Teacher> = allTeachers
+
+    fun getTeacherById(id: Int): Teacher? {
+        return allTeachers.find { it.id == id }
     }
 
-
-
-    fun getScheduleForTeacher(teacherId: Int):List<ScheduleEntry>{
-        val schedules = mapOf(
-            1 to listOf(
-                ScheduleEntry(
-                    time = "08:00 - 08:45",
-                    location = "Sala 102 (Liceum)",
-                    className = "Klasa 1A"),
-                ScheduleEntry("08:55 - 09:40",
-                    "Sala 12 (Podstawówka)", "Klasa 4C")
-            ),
-            2 to listOf(
-                ScheduleEntry("09:50 - 10:35",
-                    "Sala 204 (Technikum)", "Klasa 3T"),
-                ScheduleEntry("10:45 - 11:30",
-                    "Korytarz (Dyżur)", "DYŻUR")
-            )
-            // Pozostali na razie nie mają planu
-        )
-
-        return schedules[teacherId] ?: emptyList()
-
-    }
 
 }

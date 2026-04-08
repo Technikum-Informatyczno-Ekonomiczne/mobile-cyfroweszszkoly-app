@@ -1,7 +1,9 @@
 package com.example.cyfroweszkoly.ui.teacher_details_screen
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,37 +24,41 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.ScrollableTabRow
+import androidx.compose.material3.SecondaryScrollableTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cyfroweszkoly.model.ScheduleEntry
+import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 
-fun getTeacherSchedule(teacherId: Int): List<ScheduleEntry> {
-    return listOf(
-        ScheduleEntry("08:00 - 08:45", "Sala 102 (Liceum)", "Klasa 1A"),
-        ScheduleEntry("08:55 - 09:40", "Sala 12 (Podstawówka)", "Klasa 4C"),
-        ScheduleEntry("09:40 - 09:50", "Korytarz Parter (Podstawówka)", "DYŻUR"),
-        ScheduleEntry("09:50 - 10:35", "Sala 204 (Technikum)", "Klasa 3T"),
-        ScheduleEntry("10:45 - 11:30", "Pokój Nauczycielski", "Okienko")
-    )
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TeacherDetailsScreen(
     teacherId: Int,
+    viewModel: TeacherViewModel,
     onBackClick: ()->Unit
 ){
-    val teacherName = if (teacherId == 1) "Jan Kowalski" else "Nauczyciel #$teacherId"
 
-    // Pobieramy plan zajęć dla tego nauczyciela
-    val schedule = getTeacherSchedule(teacherId)
+    val teacherName = viewModel.getTeacherName(teacherId)
+    val daysOfWeek = listOf("Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek")
+
+    // Zmienna pamiętająca, który dzień jest aktualnie kliknięty (domyślnie Poniedziałek)
+    var selectedDayIndex by remember { mutableStateOf(0) }
+    // Pobieramy plan lekcji dla tego nauczyciela na konkretny wybrany dzień
+    val dailySchedule = viewModel.getScheduleForTeacherAndDay(teacherId, daysOfWeek[selectedDayIndex])
 
     Scaffold(
         topBar = {
@@ -79,7 +85,8 @@ fun TeacherDetailsScreen(
             Text(
                 text = teacherName,
                 style = MaterialTheme.typography.headlineMedium.copy(
-                    fontWeight = FontWeight.Bold)
+                    fontWeight = FontWeight.Bold
+                )
             )
             Text(
                 text = "Gdzie go teraz znajdziesz?",
@@ -87,36 +94,66 @@ fun TeacherDetailsScreen(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
+            SecondaryScrollableTabRow(
+                selectedTabIndex =selectedDayIndex,
+                edgePadding = 16.dp,
+                containerColor = MaterialTheme.colorScheme.surface
+            ) {
+                daysOfWeek.forEachIndexed { index, day ->
+                    Tab(
+                        selected = selectedDayIndex == index,
+                        onClick = { selectedDayIndex = index },
+                        text = { Text(day) })
+
+                }
+            }
+
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Lista z planem zajęć
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                items(schedule) { entry ->
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.cardColors(
-                            containerColor = MaterialTheme.colorScheme.surface)
-                    ) {
-                        Row(
-                            modifier = Modifier.padding(16.dp),
-                            verticalAlignment = Alignment.CenterVertically
+
+            // LISTA PLANU LEKCJI LUB INFORMACJA O BRAKU ZAJĘĆ
+            if (dailySchedule.isEmpty()) {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Brak zajęć w tym dniu 🎉",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            } else {
+                LazyColumn(
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    items(dailySchedule) { entry ->
+                        Card(
+                            modifier = Modifier.fillMaxWidth(),
+                            colors = CardDefaults.cardColors(
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
                         ) {
-                            Icon(
-                                imageVector = Icons.Outlined.LocationOn,
-                                contentDescription = "Lokalizacja",
-                                tint = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.size(32.dp)
-                            )
-                            Spacer(modifier = Modifier.width(16.dp))
-                            Column {
-                                Text(text = entry.time,
-                                    style = MaterialTheme.typography.labelMedium)
-                                Text(text = entry.location,
-                                    style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold)
-                                Text(text = entry.className,
-                                    style = MaterialTheme.typography.bodyMedium)
+                            Row(
+                                modifier = Modifier.padding(16.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Outlined.LocationOn,
+                                    contentDescription = "Lokalizacja",
+                                    tint = MaterialTheme.colorScheme.primary,
+                                    modifier = Modifier.size(32.dp)
+                                )
+                                Spacer(modifier = Modifier.width(16.dp))
+                                Column {
+                                    Text(text = entry.time,
+                                        style = MaterialTheme.typography.labelMedium)
+                                    Text(text = entry.location,
+                                        style = MaterialTheme.typography.titleMedium,
+                                        fontWeight = FontWeight.SemiBold)
+                                    Text(text = entry.className,
+                                        style = MaterialTheme.typography.bodyMedium)
+                                }
                             }
                         }
                     }
@@ -130,6 +167,9 @@ fun TeacherDetailsScreen(
 @Preview(showBackground = true)
 @Composable
 fun TeacherDetailsScreenPreview(){
-    TeacherDetailsScreen(teacherId = 1, onBackClick = {})
+    TeacherDetailsScreen(
+        viewModel = TeacherViewModel(),
+        teacherId = 1,
+        onBackClick = {})
 
 }

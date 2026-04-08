@@ -38,18 +38,18 @@ class TeacherViewModel : ViewModel(){
             }
         }
 
-    fun getScheduleForTeacher(teacherId: Int): List<ScheduleEntry>{
-        return repository.getScheduleForTeacher(teacherId)
 
-
-    }
 
     fun getTeacherName(teacherId: Int): String{
-        return allTeachers.find { it.id == teacherId }?.name ?: "Nieznany nauczyciel"
+        return repository.getTeacherById(teacherId)?.name ?: "Nieznany nauczyciel"
 
     }
 
-
+    // Zwraca plan lekcji dla danego nauczyciela TYLKO w wybranym dniu
+    fun getScheduleForTeacherAndDay(teacherId: Int, dayOfWeek: String): List<ScheduleEntry> {
+        val teacher = repository.getTeacherById(teacherId)
+        return teacher?.schedule?.filter { it.dayOfWeek == dayOfWeek } ?: emptyList()
+    }
 
 
 }

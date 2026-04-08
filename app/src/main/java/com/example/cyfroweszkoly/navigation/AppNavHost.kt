@@ -35,7 +35,7 @@ import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 fun AppNavHost(
     navController: NavHostController,
     innerPadding: PaddingValues = PaddingValues()){
-
+    val teacherViewModel: TeacherViewModel = viewModel()
     // NavHost to centrum zarządzania wszystkimi ekranami
     NavHost(
         navController = navController,
@@ -72,7 +72,7 @@ fun AppNavHost(
 
 
         composable ( route = Screen.FindTeacher.route ){
-            val teacherViewModel: TeacherViewModel = viewModel()
+
             FindTeacherScreen(
                 viewModel = teacherViewModel,
                 onTeacherClick = { teacher ->
@@ -95,6 +95,7 @@ fun AppNavHost(
             val teacherId = backStackEntry.arguments?.getInt("teacherId") ?: 0
 
             TeacherDetailsScreen(
+                viewModel = teacherViewModel,
                 teacherId = teacherId,
                 onBackClick = { navController.popBackStack() }
             )

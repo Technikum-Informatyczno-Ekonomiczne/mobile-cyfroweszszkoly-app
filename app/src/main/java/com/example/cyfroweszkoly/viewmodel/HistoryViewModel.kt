@@ -11,7 +11,6 @@ class HistoryViewModel(application: Application): AndroidViewModel(application) 
 
     private val repository = HistoryRepository(application)
 
-
     private val _history = mutableStateOf<List<HistoryItem>>(emptyList())
 
     val history: State<List<HistoryItem>> = _history
