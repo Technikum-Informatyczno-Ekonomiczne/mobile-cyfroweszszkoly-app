@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.LocationOn
@@ -26,6 +27,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.SecondaryScrollableTabRow
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -55,8 +57,15 @@ fun TeacherDetailsScreen(
     val teacherName = viewModel.getTeacherName(teacherId)
     val daysOfWeek = listOf("Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek")
 
-    // Zmienna pamiętająca, który dzień jest aktualnie kliknięty (domyślnie Poniedziałek)
-    var selectedDayIndex by remember { mutableStateOf(0) }
+
+    // 1. Pobieramy aktualny dzień tygodnia (1 = Poniedziałek, 7 = Niedziela)
+    val currentDay = java.time.LocalDate.now().dayOfWeek.value
+    // 2. Mapujemy na indeks Twojej listy (Pon-Pt to 0-4)
+    // Jeśli jest sobota (6) lub niedziela (7), ustawiamy domyślnie Poniedziałek (0)
+    val initialIndex = if (currentDay <= 5) currentDay - 1 else 0
+    // 3. Inicjalizujemy stan tym obliczonym indeksem
+    var selectedDayIndex by remember { mutableStateOf(initialIndex) }
+
     // Pobieramy plan lekcji dla tego nauczyciela na konkretny wybrany dzień
     val dailySchedule = viewModel.getScheduleForTeacherAndDay(teacherId, daysOfWeek[selectedDayIndex])
 
@@ -95,7 +104,7 @@ fun TeacherDetailsScreen(
             )
 
             SecondaryScrollableTabRow(
-                selectedTabIndex =selectedDayIndex,
+                selectedTabIndex = selectedDayIndex,
                 edgePadding = 16.dp,
                 containerColor = MaterialTheme.colorScheme.surface
             ) {
@@ -132,28 +141,58 @@ fun TeacherDetailsScreen(
                         Card(
                             modifier = Modifier.fillMaxWidth(),
                             colors = CardDefaults.cardColors(
-                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f))
+                                containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(
+                                    alpha = 0.5f
+                                )
+                            )
                         ) {
                             Row(
                                 modifier = Modifier.padding(16.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
+                                // KOLUMNA 1: Numer lekcji w stylowym kółku
+                                Surface(
+                                    modifier = Modifier.size(40.dp),
+                                    shape = CircleShape,
+                                    color = MaterialTheme.colorScheme.primaryContainer
+                                ) {
+                                    Box(contentAlignment = Alignment.Center) {
+                                        Text(
+                                            text = entry.lessonNumber.toString(),
+                                            style = MaterialTheme.typography.titleMedium.copy(
+                                                fontWeight = FontWeight.Bold
+                                            ),
+                                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                                        )
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.width(16.dp))
+
+                                // KOLUMNA 2: Dane o lekcji
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(
+                                        text = entry.time,
+                                        style = MaterialTheme.typography.labelMedium,
+                                        color = MaterialTheme.colorScheme.primary
+                                    )
+                                    Text(
+                                        text = entry.location,
+                                        style = MaterialTheme.typography.titleMedium,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                    Text(
+                                        text = entry.className,
+                                        style = MaterialTheme.typography.bodyMedium
+                                    )
+                                }
+
+                                // KOLUMNA 3: Ikona (opcjonalnie)
                                 Icon(
                                     imageVector = Icons.Outlined.LocationOn,
-                                    contentDescription = "Lokalizacja",
-                                    tint = MaterialTheme.colorScheme.primary,
-                                    modifier = Modifier.size(32.dp)
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
                                 )
-                                Spacer(modifier = Modifier.width(16.dp))
-                                Column {
-                                    Text(text = entry.time,
-                                        style = MaterialTheme.typography.labelMedium)
-                                    Text(text = entry.location,
-                                        style = MaterialTheme.typography.titleMedium,
-                                        fontWeight = FontWeight.SemiBold)
-                                    Text(text = entry.className,
-                                        style = MaterialTheme.typography.bodyMedium)
-                                }
                             }
                         }
                     }
