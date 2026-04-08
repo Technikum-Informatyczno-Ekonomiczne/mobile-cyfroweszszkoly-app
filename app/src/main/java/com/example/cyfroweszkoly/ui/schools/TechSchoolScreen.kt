@@ -44,7 +44,8 @@ fun TechSchoolScreen(navController: NavController?){
             // --- 1. FIOLETOWY BANER (NAGŁÓWEK) ---
            SchoolBanner(
                title = "TIE 9",
-               iconResId = R.drawable.ic_technikum,
+               iconResId = R.drawable.ic_tech,
+               backgroundColor = Color(0xFF7A70A5)
            )
 
             // --- 2. BIAŁA STREFA NA INFORMACJE ---

@@ -36,7 +36,7 @@ fun SchoolBanner(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 20.dp, vertical = 20.dp),
+                .padding(horizontal = 10.dp, vertical = 10.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -54,7 +54,7 @@ fun SchoolBanner(
                 painter = painterResource(id = iconResId),
                 contentDescription = "Ikona szkoły $title",
                 tint = Color.Unspecified,
-                modifier = Modifier.size(56.dp)
+                modifier = Modifier.size(90.dp)
             )
         }
     }
