@@ -9,8 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.cyfroweszkoly.model.Achievement
-import com.example.cyfroweszkoly.model.AchievementDetail
+import com.example.cyfroweszkoly.data.model.Achievement
+import com.example.cyfroweszkoly.data.model.AchievementDetail
 import com.google.firebase.Timestamp
 
 @Composable

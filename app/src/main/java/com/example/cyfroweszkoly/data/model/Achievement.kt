@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.model
+package com.example.cyfroweszkoly.data.model
 
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentId

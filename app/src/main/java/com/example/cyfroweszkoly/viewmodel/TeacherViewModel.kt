@@ -5,8 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.example.cyfroweszkoly.model.ScheduleEntry
-import com.example.cyfroweszkoly.model.Teacher
+import com.example.cyfroweszkoly.data.model.ScheduleEntry
+import com.example.cyfroweszkoly.data.model.Teacher
 import com.example.cyfroweszkoly.repository.TeacherRepository
 
 class TeacherViewModel : ViewModel(){

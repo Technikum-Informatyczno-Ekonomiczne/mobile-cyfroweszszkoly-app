@@ -5,7 +5,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import com.example.cyfroweszkoly.data.repository.HistoryRepository
-import com.example.cyfroweszkoly.model.HistoryItem
+import com.example.cyfroweszkoly.data.model.HistoryItem
 
 class HistoryViewModel(application: Application): AndroidViewModel(application) {
 

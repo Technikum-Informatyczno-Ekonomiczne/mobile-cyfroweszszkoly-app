@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.model
+package com.example.cyfroweszkoly.data.model
 
 
 import kotlinx.serialization.Serializable

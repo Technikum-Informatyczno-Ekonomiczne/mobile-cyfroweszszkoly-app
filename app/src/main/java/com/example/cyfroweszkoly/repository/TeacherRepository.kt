@@ -1,9 +1,7 @@
 package com.example.cyfroweszkoly.repository
 
-import android.content.Context
 import android.util.Log
-import com.example.cyfroweszkoly.model.ScheduleEntry
-import com.example.cyfroweszkoly.model.Teacher
+import com.example.cyfroweszkoly.data.model.Teacher
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
