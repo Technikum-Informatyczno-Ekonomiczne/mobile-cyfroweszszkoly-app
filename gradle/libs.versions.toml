@@ -15,6 +15,7 @@ googleServices = "4.4.4"
 firebaseBom = "34.11.0"
 firebaseCommonKtx = "22.0.1"
 
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }

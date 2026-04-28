@@ -23,6 +23,7 @@ import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
 import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
+import com.example.cyfroweszkoly.ui.news.NewsScreen
 import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
@@ -107,6 +108,10 @@ fun AppNavHost(
 
         composable(route = Screen.History.route) {
             HistoryScreen(navController)
+        }
+
+        composable(route = Screen.News.route,){
+            NewsScreen(navController)
         }
     }
 

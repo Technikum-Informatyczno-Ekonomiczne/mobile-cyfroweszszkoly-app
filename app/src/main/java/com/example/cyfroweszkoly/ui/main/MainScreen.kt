@@ -1,5 +1,6 @@
 package com.example.cyfroweszkoly.ui.main
 
+import android.net.http.SslCertificate.saveState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material.icons.filled.Menu
@@ -32,6 +34,7 @@ import kotlinx.coroutines.launch
 import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Home
@@ -39,7 +42,10 @@ import androidx.compose.material.icons.outlined.PersonSearch
 import androidx.compose.material.icons.outlined.School
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -47,6 +53,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.compose.currentBackStackEntryAsState
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -123,7 +131,7 @@ fun MainScreen(){
                             Icon(
                                 imageVector = Icons.Outlined.School,
                                 contentDescription = null, // decorative
-                                tint = Color.Black // Używamy koloru zgodnego z Twoim stylem
+                                tint = Color.Black
                             )
 
                             // Odstęp między ikonką a tekstem
@@ -167,15 +175,6 @@ fun MainScreen(){
                             )
                         }
 
-//                        IconButton(onClick={
-//                            navController.navigate(Screen.Home.route)
-//                        }) {
-//                            Icon(
-//                                imageVector = Icons.Outlined.Home,
-//                                contentDescription = "Strona główna"
-//                            )
-//                        }
-
                         IconButton(onClick = {
                             navController.navigate(Screen.History.route)
                         }) {
@@ -197,6 +196,45 @@ fun MainScreen(){
                     }
 
                 )
+            },
+            bottomBar = {
+                NavigationBar {
+                    val navBackStackEntry by navController.currentBackStackEntryAsState()
+                    val currentRoute = navBackStackEntry?.destination?.route
+
+                    // 1. Przycisk START (Powiązany ze Screen.Home)
+                    NavigationBarItem(
+                        icon = { Icon(Icons.Default.Home, contentDescription = "Start") },
+                        label = { Text("Start") },
+                        selected = currentRoute == Screen.Home.route, // Tu sprawdzamy czy trasa to "home"
+                        onClick = {
+                            navController.navigate(Screen.Home.route) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
+                    )
+
+                    // 2. Przycisk AKTUALNOŚCI (Powiązany ze Screen.News)
+                    NavigationBarItem(
+                        icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = "Aktualności") },
+                        label = { Text("Aktualności") },
+                        selected = currentRoute == Screen.News.route, // Tu sprawdzamy czy trasa to "news"
+                        onClick = {
+                            navController.navigate(Screen.News.route) {
+                                popUpTo(navController.graph.findStartDestination().id) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
+                            }
+                        }
+                    )
+
+                }
             }
         ) { innerPadding ->
             AppNavHost(

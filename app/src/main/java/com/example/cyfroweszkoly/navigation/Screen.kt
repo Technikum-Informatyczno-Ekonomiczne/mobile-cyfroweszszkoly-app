@@ -15,6 +15,8 @@ sealed class Screen(val route: String) {
     object AboutUs : Screen("about_us")
     object AboutApplication: Screen("about_application")
 
+    object News: Screen("news")
+
     data class Category(val type: String) : Screen("category/$type") {
         companion object {
             const val routeWithArg = "category/{type}"
