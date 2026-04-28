@@ -16,6 +16,7 @@ firebaseBom = "34.12.0"
 firebaseCommonKtx = "22.0.1"
 retrofit = "3.0.0"
 lifecycleViewmodelKtx = "2.10.0"
+foundationLayout = "1.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,6 +47,7 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-xml = { group = "com.squareup.retrofit2", name = "converter-simplexml", version.ref = "retrofit" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
 
 
 [plugins]
