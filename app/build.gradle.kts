@@ -48,6 +48,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.browser)
     implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.espresso.core)
@@ -77,6 +78,13 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
+
+    implementation(libs.retrofit.core)
+    // Zauważ, że każdy myślnik zamienił się w kropkę:
+    implementation(libs.retrofit.kotlinx.serialization)
+    implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.coil.compose)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

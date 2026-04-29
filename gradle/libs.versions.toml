@@ -10,13 +10,17 @@ activityCompose = "1.11.0"
 composeBom = "2025.10.01"
 navigationCompose = "2.9.5"
 foundation = "1.10.1"
-kotlinxSerialization = "1.10.0"
+kotlinxSerialization = "1.11.0"
 googleServices = "4.4.4"
 firebaseBom = "34.12.0"
 firebaseCommonKtx = "22.0.1"
 retrofit = "3.0.0"
 lifecycleViewmodelKtx = "2.10.0"
 foundationLayout = "1.11.0"
+coil = "2.7.0"
+okhttp = "4.12.0"
+browser = "1.10.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,14 +44,21 @@ androidx-compose-foundation = { group = "androidx.compose.foundation", name = "f
 
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }
 
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 retrofit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-xml = { group = "com.squareup.retrofit2", name = "converter-simplexml", version.ref = "retrofit" }
+retrofit-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
+
+
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
 
 
 [plugins]
