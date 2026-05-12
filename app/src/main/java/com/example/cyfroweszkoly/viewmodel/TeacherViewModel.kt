@@ -30,8 +30,10 @@ class TeacherViewModel : ViewModel(){
     }
 
     private fun fetchTeachers() {
+        println("🔍 VIEWMODEL: Rozpoczynam pobieranie nauczycieli...")
         isLoading = true
         repository.getAllTeachersFromCloud { teachersFromDb ->
+            println("✅ VIEWMODEL: Firebase zwrócił ${teachersFromDb.size} nauczycieli!")
             // Ten kod wykona się, gdy dane w końcu przylecą z serwera
             allTeachers = teachersFromDb
             isLoading = false

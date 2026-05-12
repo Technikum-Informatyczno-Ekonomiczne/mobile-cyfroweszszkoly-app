@@ -21,6 +21,7 @@ import androidx.compose.material3.OutlinedTextField
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
@@ -35,6 +36,7 @@ fun FindTeacherScreen(
     onBackClick: () -> Unit
 ) {
 
+    println("🎨 UI: Rysuję ekran wyszukiwarki. Na liście mam ${viewModel.filteredTeachers.size} pozycji.")
     Column(
         modifier = Modifier
             .fillMaxSize()
