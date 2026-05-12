@@ -2,7 +2,6 @@ package com.example.cyfroweszkoly.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-// Zwróć uwagę na te importy - muszą wskazywać na Twoje pliki z danymi!
 import com.example.cyfroweszkoly.data.model.WpPost
 import com.example.cyfroweszkoly.data.api.NetworkModule
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-// 1. ZMIANA TUTAJ: Sukces zwraca teraz List<WpPost> zamiast List<RssItem>
+// ZMIANA TUTAJ: Sukces zwraca teraz List<WpPost> zamiast List<RssItem>
 sealed class NewsUiState {
     object Loading : NewsUiState()
     data class Success(val news: List<WpPost>) : NewsUiState()
@@ -19,7 +18,7 @@ sealed class NewsUiState {
 
 class NewsViewModel : ViewModel() {
 
-    private val _uiState = MutableStateFlow<NewsUiState>(NewsUiState.Loading)
+    private val _uiState = MutableStateFlow<NewsUiState>(value=NewsUiState.Loading)
     val uiState: StateFlow<NewsUiState> = _uiState.asStateFlow()
 
     init {

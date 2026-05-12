@@ -35,7 +35,8 @@ import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 @Composable
 fun AppNavHost(
     navController: NavHostController,
-    innerPadding: PaddingValues = PaddingValues()){
+    innerPadding: PaddingValues = PaddingValues()
+){
     val teacherViewModel: TeacherViewModel = viewModel()
     // NavHost to centrum zarządzania wszystkimi ekranami
     NavHost(
@@ -119,15 +120,7 @@ fun AppNavHost(
 }
 
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun AppNavHostPreview(){
-    val navController = rememberNavController()
 
-    CyfroweSzkolyTheme {
-        AppNavHost(navController)
-    }
-}
 
 
 

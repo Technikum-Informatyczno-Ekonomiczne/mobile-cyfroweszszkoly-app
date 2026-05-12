@@ -38,6 +38,7 @@ import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material.icons.outlined.PersonSearch
 import androidx.compose.material.icons.outlined.School
 import androidx.compose.material.icons.rounded.Menu
@@ -176,65 +177,16 @@ fun MainScreen(){
                         }
 
                         IconButton(onClick = {
-                            navController.navigate(Screen.History.route)
+                            navController.navigate(Screen.News.route)
                         }) {
                             Icon(
-                                imageVector = Icons.Outlined.History,
-                                contentDescription = "Historia szkoły"
+                                imageVector = Icons.Outlined.Newspaper,
+                                contentDescription = "Aktualności"
                             )
                         }
-
-                        IconButton(onClick = {
-                            navController.navigate(Screen.Achievements.route)
-                        }) {
-                            Icon(
-                                imageVector = Icons.Outlined.EmojiEvents,
-                                contentDescription = "Osiągnięcia"
-                            )
-                        }
-
                     }
 
                 )
-            },
-            bottomBar = {
-                NavigationBar {
-                    val navBackStackEntry by navController.currentBackStackEntryAsState()
-                    val currentRoute = navBackStackEntry?.destination?.route
-
-                    // 1. Przycisk START (Powiązany ze Screen.Home)
-                    NavigationBarItem(
-                        icon = { Icon(Icons.Default.Home, contentDescription = "Start") },
-                        label = { Text("Start") },
-                        selected = currentRoute == Screen.Home.route, // Tu sprawdzamy czy trasa to "home"
-                        onClick = {
-                            navController.navigate(Screen.Home.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        }
-                    )
-
-                    // 2. Przycisk AKTUALNOŚCI (Powiązany ze Screen.News)
-                    NavigationBarItem(
-                        icon = { Icon(Icons.AutoMirrored.Filled.List, contentDescription = "Aktualności") },
-                        label = { Text("Aktualności") },
-                        selected = currentRoute == Screen.News.route, // Tu sprawdzamy czy trasa to "news"
-                        onClick = {
-                            navController.navigate(Screen.News.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        }
-                    )
-
-                }
             }
         ) { innerPadding ->
             AppNavHost(

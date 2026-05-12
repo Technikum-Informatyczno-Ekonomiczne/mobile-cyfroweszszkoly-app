@@ -16,10 +16,14 @@ data class WpPost(
     @SerialName("_embedded") val embedded: WpEmbedded? = null
 ) {
     val cleanTitle: String
-        get() = HtmlCompat.fromHtml(title.rendered, HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
+        get() = HtmlCompat.fromHtml(
+            title.rendered,
+            HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
 
     val cleanExcerpt: String
-        get() = HtmlCompat.fromHtml(excerpt.rendered, HtmlCompat.FROM_HTML_MODE_LEGACY).toString().trim()
+        get() = HtmlCompat.fromHtml(
+            excerpt.rendered,
+            HtmlCompat.FROM_HTML_MODE_LEGACY).toString().trim()
 
     val imageUrl: String?
         get() = embedded?.wpFeaturedMedia?.firstOrNull()?.sourceUrl

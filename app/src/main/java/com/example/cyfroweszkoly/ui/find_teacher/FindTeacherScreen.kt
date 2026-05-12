@@ -67,7 +67,6 @@ fun FindTeacherScreen(
         }else {
 
 
-            // Wydajna lista wyników (odpowiednik dawnego RecyclerView)
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)

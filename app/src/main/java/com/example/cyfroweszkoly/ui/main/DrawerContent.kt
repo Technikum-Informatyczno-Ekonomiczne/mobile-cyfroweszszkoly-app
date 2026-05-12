@@ -41,6 +41,18 @@ fun DrawerContent(onNavigate: (String)->Unit){
             selected = false,
             onClick = { onNavigate(Screen.AboutUs.route)}
         )
+
+        NavigationDrawerItem(
+            label={Text("Osiągnięcia szkoły")},
+            selected = false,
+            onClick = {onNavigate(Screen.Achievements.route)}
+        )
+
+        NavigationDrawerItem(
+            label={Text("Historia szkoły")},
+            selected=false,
+            onClick = {onNavigate(Screen.History.route)}
+        )
     }
 
 }
