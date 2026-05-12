@@ -13,12 +13,10 @@ foundation = "1.10.1"
 kotlinxSerialization = "1.11.0"
 googleServices = "4.4.4"
 firebaseBom = "34.12.0"
-firebaseCommonKtx = "22.0.1"
 retrofit = "3.0.0"
 lifecycleViewmodelKtx = "2.10.0"
 foundationLayout = "1.11.0"
 coil = "2.7.0"
-okhttp = "4.12.0"
 browser = "1.10.0"
 
 
@@ -43,8 +41,6 @@ androidx-compose-material-icons-extended = { group = "androidx.compose.material"
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
-
-okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore" }

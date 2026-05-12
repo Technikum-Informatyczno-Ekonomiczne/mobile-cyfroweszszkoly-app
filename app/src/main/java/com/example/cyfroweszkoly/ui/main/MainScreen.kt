@@ -62,7 +62,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 @Composable
 fun MainScreen(){
 
-
     //- navController = plan domu (wiadomo, do którego pokoju idziemy)
     // to obiekt do zarządzania przechodzeniem między ekranami
     /*
@@ -71,7 +70,6 @@ fun MainScreen(){
         żeby nie tworzył się ponownie przy każdym odświeżeniu UI (recomposition).
      */
     val navController = rememberNavController()
-
 
     // drawerState = drzwi, które można otworzyć/zamknąć
     /*  To stan bocznego menu (`Drawer`) — mówi Compose, czy menu jest otwarte, czy zamknięte.
@@ -87,8 +85,6 @@ fun MainScreen(){
       w którym możesz uruchamiać akcje asynchroniczne, np. otwieranie/zamykanie Drawer’a
     */
     val scope = rememberCoroutineScope()
-
-
 
     ModalNavigationDrawer(
         drawerState = drawerState,

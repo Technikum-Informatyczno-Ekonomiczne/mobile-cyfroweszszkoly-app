@@ -41,7 +41,8 @@ val authors = listOf(
                 "Strażnik Tajemnego Kodu. " +
                 "To on doznał proroczej wizji stworzenia tego cyfrowego " +
                 "królestwa. Jako Inżynier Oprogramowania po nocach wykuwa " +
-                "najtwardsze runy (koder) i koordynuje całą kampanię."
+                "najtwardsze runy (koder) i koordynuje całą kampanię." +
+                " Zamieszkuje w: jstrzelecki@cyfroweszkoly.pl"
     ),
     Author(
         name = "Szymon Haponik (Zakon IVB TIE)",
