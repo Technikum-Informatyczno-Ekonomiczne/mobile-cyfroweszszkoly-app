@@ -15,6 +15,9 @@ sealed class Screen(val route: String) {
     object AboutUs : Screen("about_us")
     object AboutApplication: Screen("about_application")
 
+    object CreateAlertScreen: Screen("admin_create")
+    object AdminAlertListScreen: Screen("admin_management")
+
     object News: Screen("news")
 
     data class Category(val type: String) : Screen("category/$type") {

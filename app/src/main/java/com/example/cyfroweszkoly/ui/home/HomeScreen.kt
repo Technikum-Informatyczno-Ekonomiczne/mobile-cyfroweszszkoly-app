@@ -76,6 +76,9 @@ fun HomeScreen(navController: NavController){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+       Button(onClick = {navController.navigate(Screen.AdminAlertListScreen.route)}) {
+           Text("Panel administratora")
+       }
 
         schools.forEachIndexed { index, school ->
             val isExpanded = expandedIndex == index

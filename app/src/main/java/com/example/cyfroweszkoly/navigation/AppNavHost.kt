@@ -23,6 +23,8 @@ import androidx.navigation.navArgument
 import com.example.cyfroweszkoly.ui.about.application.AboutApplicationScreen
 import com.example.cyfroweszkoly.ui.about.us.AboutUsScreen
 import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
+import com.example.cyfroweszkoly.ui.alert_banner.AdminAlertListScreen
+import com.example.cyfroweszkoly.ui.alert_banner.CreateAlertScreen
 import com.example.cyfroweszkoly.ui.alert_banner.GlobalAlertBanner
 import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
@@ -33,6 +35,8 @@ import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
 import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
+import com.example.cyfroweszkoly.viewmodel.AdminAlertViewModel
+import com.example.cyfroweszkoly.viewmodel.AdminManagementViewModel
 import com.example.cyfroweszkoly.viewmodel.AlertViewModel
 import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 
@@ -44,6 +48,8 @@ fun AppNavHost(
 ){
     val teacherViewModel: TeacherViewModel = viewModel()
     val alertViewModel: AlertViewModel = viewModel()
+    val adminAlertViewModel: AdminAlertViewModel = viewModel()
+    val adminMgmtViewModel: AdminManagementViewModel = viewModel()
 
     Column(modifier = Modifier
         .padding(innerPadding)
@@ -130,6 +136,22 @@ fun AppNavHost(
 
             composable(route = Screen.News.route,) {
                 NewsScreen(navController)
+            }
+
+            composable(route = Screen.AdminAlertListScreen.route){
+                AdminAlertListScreen(
+                    viewModel = adminMgmtViewModel,
+                    onAddNewClick = {
+                        // Z listy przechodzimy do formularza tworzenia
+                        navController.navigate("admin_create")
+                    }
+                )
+            }
+            composable(route = Screen.CreateAlertScreen.route){
+                CreateAlertScreen(
+                    viewModel = adminAlertViewModel,
+                    onBackClick = { navController.popBackStack() }
+                )
             }
         }
 
