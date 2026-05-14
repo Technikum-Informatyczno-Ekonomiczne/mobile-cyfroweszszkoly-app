@@ -80,8 +80,10 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.firestore)
 
+    implementation(libs.firebase.messaging)
+
+
     implementation(libs.retrofit.core)
-    // Zauważ, że każdy myślnik zamienił się w kropkę:
     implementation(libs.retrofit.kotlinx.serialization)
     implementation(libs.kotlinx.serialization.json)
 

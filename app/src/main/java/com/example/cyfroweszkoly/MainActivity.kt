@@ -1,6 +1,7 @@
 package com.example.cyfroweszkoly
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -35,6 +36,7 @@ import com.example.cyfroweszkoly.navigation.AppNavHost
 import com.example.cyfroweszkoly.navigation.Screen
 import com.example.cyfroweszkoly.ui.main.MainScreen
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
@@ -42,6 +44,21 @@ class MainActivity : ComponentActivity() {
 // test
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+    // wysyłamy powiadomieni na kanał "global_alerts",
+    // trafi ono natychmiast do wszystkich, którzy mają aplikację.
+    FirebaseMessaging.getInstance().subscribeToTopic("global_alerts")
+        .addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Log.d("FCM", "Pomyślnie zapisano do nasłuchu alertów!")
+            } else {
+                Log.e("FCM", "Błąd zapisu do alertów",
+                    task.exception)
+            }
+        }
+
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -55,6 +72,15 @@ class MainActivity : ComponentActivity() {
 
             }
         }
+
+//    FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+//        if (!task.isSuccessful) {
+//            Log.e("FCM", "Pobieranie tokenu nie powiodło się", task.exception)
+//            return@addOnCompleteListener
+//        }
+//        // Zdobyliśmy token! Wypisujemy go na czerwono w Logcacie, żeby łatwo go znaleźć
+//        Log.e("FCM_TOKEN", "TWÓJ TOKEN TO: ${task.result}")
+//    }
     }
 }
 
