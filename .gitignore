@@ -16,5 +16,7 @@ local.properties
 
 google-services.json
 
-
+# Local IDE and AI assistant files
+.agents/
+skills-lock.json
 
