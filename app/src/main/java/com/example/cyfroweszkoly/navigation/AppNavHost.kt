@@ -19,6 +19,7 @@ import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
 import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
+import com.example.cyfroweszkoly.ui.launch.LaunchScree
 import com.example.cyfroweszkoly.ui.news.NewsScreen
 import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
@@ -70,8 +71,6 @@ fun AppNavHost(
                 AboutUsScreen(navController)
             }
 
-
-
             composable(route = Screen.FindTeacher.route) {
 
                 FindTeacherScreen(
@@ -104,6 +103,14 @@ fun AppNavHost(
                 )
             }
 
+            composable ( route = Screen.Launch.route ){
+                LaunchScree(navController)
+            }
+            composable(route = Screen.News.route,) {
+                NewsScreen(navController)
+            }
+
+
             composable(route = Screen.Achievements.route) {
                 AchievementsScreen(navController)
             }
@@ -112,9 +119,7 @@ fun AppNavHost(
                 HistoryScreen(navController)
             }
 
-            composable(route = Screen.News.route,) {
-                NewsScreen(navController)
-            }
+
 
         }
 

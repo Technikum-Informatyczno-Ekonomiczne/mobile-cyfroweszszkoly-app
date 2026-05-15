@@ -43,7 +43,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onNewToken(token: String) {
         super.onNewToken(token)
         // Wypisujemy token w Logcacie.
-        // W przyszłości ten token zapiszemy w Firestore obok profilu użytkownika!
+        // W przyszłości ten token zapiszemy
+        // w Firestore obok profilu użytkownika!
         println("Nowy token FCM: $token")
     }
 }

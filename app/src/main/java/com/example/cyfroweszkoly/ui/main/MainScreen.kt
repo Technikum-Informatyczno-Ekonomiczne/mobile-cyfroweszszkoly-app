@@ -35,6 +35,7 @@ import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Home
@@ -162,6 +163,25 @@ fun MainScreen(){
                     // tu są zdefiniowane ikonki wyświetlane po prawej stronie
 
                     actions = {
+                        IconButton(onClick = {
+                            navController.navigate(Screen.News.route)
+                        }) {
+                            Icon(
+                                imageVector = Icons.Outlined.Newspaper,
+                                contentDescription = "Aktualności"
+                            )
+                        }
+
+                        IconButton(onClick = {
+                            navController.navigate(Screen.Launch.route)
+                            println("Otwieram jadłospis...")
+                        }) {
+                            Icon(
+                                imageVector = Icons.Default.Restaurant,
+                                contentDescription = "Menu obiadowe",
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                        }
 
                         IconButton(onClick = {
                             navController.navigate(Screen.FindTeacher.route)
@@ -172,14 +192,7 @@ fun MainScreen(){
                             )
                         }
 
-                        IconButton(onClick = {
-                            navController.navigate(Screen.News.route)
-                        }) {
-                            Icon(
-                                imageVector = Icons.Outlined.Newspaper,
-                                contentDescription = "Aktualności"
-                            )
-                        }
+
                     }
 
                 )

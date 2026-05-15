@@ -7,18 +7,19 @@ sealed class Screen(val route: String) {
     object Tech : Screen("tech")
 
     object FindTeacher : Screen("find_teacher")
+
     object TeacherDetails: Screen("teacher_details/{teacherId}") {
         fun createRoute(teacherId: Int) = "teacher_details/$teacherId"
     }
+    object Launch: Screen("launch")
+    object News : Screen("news")
+
     object History : Screen("history")
     object Achievements : Screen("achievements")
     object AboutUs : Screen("about_us")
     object AboutApplication: Screen("about_application")
 
-    object CreateAlertScreen: Screen("admin_create")
-    object AdminAlertListScreen: Screen("admin_management")
 
-    object News: Screen("news")
 
     data class Category(val type: String) : Screen("category/$type") {
         companion object {
