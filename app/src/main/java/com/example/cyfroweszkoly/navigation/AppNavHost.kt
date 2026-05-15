@@ -5,27 +5,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-
-
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.cyfroweszkoly.ui.about.application.AboutApplicationScreen
 import com.example.cyfroweszkoly.ui.about.us.AboutUsScreen
 import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
-import com.example.cyfroweszkoly.ui.alert_banner.AdminAlertListScreen
-import com.example.cyfroweszkoly.ui.alert_banner.CreateAlertScreen
-import com.example.cyfroweszkoly.ui.alert_banner.GlobalAlertBanner
 import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
@@ -34,10 +24,6 @@ import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
 import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
-import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
-import com.example.cyfroweszkoly.viewmodel.AdminAlertViewModel
-import com.example.cyfroweszkoly.viewmodel.AdminManagementViewModel
-import com.example.cyfroweszkoly.viewmodel.AlertViewModel
 import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 
 
@@ -47,19 +33,11 @@ fun AppNavHost(
     innerPadding: PaddingValues = PaddingValues()
 ){
     val teacherViewModel: TeacherViewModel = viewModel()
-    val alertViewModel: AlertViewModel = viewModel()
-    val adminAlertViewModel: AdminAlertViewModel = viewModel()
-    val adminMgmtViewModel: AdminManagementViewModel = viewModel()
 
     Column(modifier = Modifier
         .padding(innerPadding)
         .fillMaxSize()) {
 
-        // Rysujemy globalny baner (zawsze na samej górze pod TopBarem)
-        GlobalAlertBanner(alerts = alertViewModel.activeAlerts)
-
-        // Reszta Twojej nawigacji
-        // NavHost to centrum zarządzania wszystkimi ekranami
         NavHost(
             navController = navController,
             startDestination = Screen.Home.route,
@@ -138,21 +116,6 @@ fun AppNavHost(
                 NewsScreen(navController)
             }
 
-            composable(route = Screen.AdminAlertListScreen.route){
-                AdminAlertListScreen(
-                    viewModel = adminMgmtViewModel,
-                    onAddNewClick = {
-                        // Z listy przechodzimy do formularza tworzenia
-                        navController.navigate("admin_create")
-                    }
-                )
-            }
-            composable(route = Screen.CreateAlertScreen.route){
-                CreateAlertScreen(
-                    viewModel = adminAlertViewModel,
-                    onBackClick = { navController.popBackStack() }
-                )
-            }
         }
 
     }

@@ -16,7 +16,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -31,8 +33,11 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.R
+import com.example.cyfroweszkoly.data.model.AlertModel
 import com.example.cyfroweszkoly.navigation.Screen
+import com.example.cyfroweszkoly.ui.components.GlobalAlertBanner
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
+import com.google.firebase.firestore.FirebaseFirestore
 
 // Model pomocniczy do trzymania Twoich danych
 data class SchoolItem(
@@ -45,6 +50,27 @@ data class SchoolItem(
 
 @Composable
 fun HomeScreen(navController: NavController){
+    // 1. Stan dla alertów
+    val activeAlerts = remember { mutableStateListOf<AlertModel>() }
+    val db = FirebaseFirestore.getInstance()
+
+    // 2. Nasłuchiwanie zmian w czasie rzeczywistym
+    DisposableEffect(Unit) {
+        val listener = db.collection("global_alerts")
+            .whereEqualTo("active", true) // Szukamy tylko aktywnych
+            .addSnapshotListener { snapshot, error ->
+                if (error != null) return@addSnapshotListener
+
+                if (snapshot != null) {
+                    activeAlerts.clear()
+                    val items = snapshot.toObjects(AlertModel::class.java)
+                    activeAlerts.addAll(items)
+                }
+            }
+
+        // Ważne: usuwamy nasłuchiwanie, gdy wychodzimy z ekranu
+        onDispose { listener.remove() }
+    }
     // do śledzenia aktualnie klikniętego indeksu z listy szkół
     var expandedIndex by remember { mutableStateOf<Int?>(null) }
 
@@ -68,85 +94,86 @@ fun HomeScreen(navController: NavController){
             buttonColor = Color(0xFF7B6E96)
         )
     )
+    Column(modifier = Modifier.fillMaxSize()) {
 
-    Column(
+        // 3. Banner pojawia się na samej górze (tylko jeśli są alerty)
+        GlobalAlertBanner(alerts = activeAlerts)
+
+        Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-       Button(onClick = {navController.navigate(Screen.AdminAlertListScreen.route)}) {
-           Text("Panel administratora")
-       }
 
-        schools.forEachIndexed { index, school ->
-            val isExpanded = expandedIndex == index
+            schools.forEachIndexed { index, school ->
+                val isExpanded = expandedIndex == index
 
-            // Harmonijka: wybrany element dostaje wagi 2.5, reszta 1.0
-            val animatedWeight by animateFloatAsState(
-                targetValue = if (isExpanded) 2.5f else 1f,
-                animationSpec = tween(durationMillis = 400),
-                label = "weightAnimation"
-            )
-
-            // Szerokość: wybrany element rozszerza się z 70% do 90% szerokości ekranu
-            val animatedWidth by animateFloatAsState(
-                targetValue = if (isExpanded) 0.9f else 0.7f,
-                label = "widthAnimation"
-            )
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth(animatedWidth)
-                    .weight(animatedWeight)
-                    .padding(vertical = 8.dp)
-                    .clip(RoundedCornerShape(40.dp))
-                    .clickable {
-                        if (isExpanded) {
-                            // Jeśli uczeń kliknie w obrazek po raz drugi, po prostu wchodzimy!
-                            navController.navigate(school.route)
-                        } else {
-                            // Rozwiń wybraną szkołę
-                            expandedIndex = index
-                        }
-                    },
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                // Używamy Fit, aby zachować proporcje obrazka z R.drawable
-                Image(
-                    painter = painterResource(school.imageRes),
-                    contentDescription = school.description,
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(40.dp))
+                // Harmonijka: wybrany element dostaje wagi 2.5, reszta 1.0
+                val animatedWeight by animateFloatAsState(
+                    targetValue = if (isExpanded) 2.5f else 1f,
+                    animationSpec = tween(durationMillis = 400),
+                    label = "weightAnimation"
                 )
 
-                // Sekcja z akcjami - pojawia się TYLKO dla wybranej szkoły
-                AnimatedVisibility(visible = isExpanded) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.padding(top = 16.dp)
-                    ) {
-                        Button(
-                            onClick = { navController.navigate(school.route) },
-                            modifier = Modifier.fillMaxWidth(0.8f),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = school.buttonColor
-                            )
+                // Szerokość: wybrany element rozszerza się z 70% do 90% szerokości ekranu
+                val animatedWidth by animateFloatAsState(
+                    targetValue = if (isExpanded) 0.9f else 0.7f,
+                    label = "widthAnimation"
+                )
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth(animatedWidth)
+                        .weight(animatedWeight)
+                        .padding(vertical = 8.dp)
+                        .clip(RoundedCornerShape(40.dp))
+                        .clickable {
+                            if (isExpanded) {
+                                // Jeśli uczeń kliknie w obrazek po raz drugi, po prostu wchodzimy!
+                                navController.navigate(school.route)
+                            } else {
+                                // Rozwiń wybraną szkołę
+                                expandedIndex = index
+                            }
+                        },
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    // Używamy Fit, aby zachować proporcje obrazka z R.drawable
+                    Image(
+                        painter = painterResource(school.imageRes),
+                        contentDescription = school.description,
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(40.dp))
+                    )
+
+                    // Sekcja z akcjami - pojawia się TYLKO dla wybranej szkoły
+                    AnimatedVisibility(visible = isExpanded) {
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier.padding(top = 16.dp)
                         ) {
-                            Text("Wejdź do szkoły")
+                            Button(
+                                onClick = { navController.navigate(school.route) },
+                                modifier = Modifier.fillMaxWidth(0.8f),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = school.buttonColor
+                                )
+                            ) {
+                                Text("Wejdź do szkoły")
+                            }
+                            // W przyszłości możesz coś dorzucić
+                            // np.  drugi guzik np. TextButton("Szybki plan lekcji")
                         }
-                        // W przyszłości możesz coś dorzucić
-                        // np.  drugi guzik np. TextButton("Szybki plan lekcji")
                     }
                 }
             }
+
         }
-
-
     }
 
 }
