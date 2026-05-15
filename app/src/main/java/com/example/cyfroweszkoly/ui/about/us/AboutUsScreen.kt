@@ -36,6 +36,14 @@ import com.example.cyfroweszkoly.data.model.Author
 // Wewnątrz Twojego Composable:
 val authors = listOf(
     Author(
+        name = "Witold Kostuj",
+        classAndLore = "Wielki Inspirator i Pierwszy Wizjoner (Nauczyciel). " +
+                "To on jako pierwszy wypowiedział prorocze słowa, które " +
+                "stały się fundamentem tego świata. Choć osobiście nie " +
+                "wykuwa run w kodzie, to jego iskra rozpaliła płomień " +
+                "całej tej wyprawy."
+    ),
+    Author(
         name = "Arcymag Jarosław Strzelecki",
         classAndLore = "Główny Mistrz Gildii (Nauczyciel) i " +
                 "Strażnik Tajemnego Kodu. " +
