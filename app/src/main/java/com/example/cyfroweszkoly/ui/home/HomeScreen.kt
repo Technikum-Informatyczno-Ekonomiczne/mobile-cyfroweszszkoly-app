@@ -35,6 +35,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.R
 import com.example.cyfroweszkoly.data.model.AlertModel
 import com.example.cyfroweszkoly.navigation.Screen
+import com.example.cyfroweszkoly.ui.alert.NotificationPermissionBanner
 import com.example.cyfroweszkoly.ui.components.GlobalAlertBanner
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
 import com.google.firebase.firestore.FirebaseFirestore
@@ -96,7 +97,10 @@ fun HomeScreen(navController: NavController){
     )
     Column(modifier = Modifier.fillMaxSize()) {
 
-        // 3. Banner pojawia się na samej górze (tylko jeśli są alerty)
+        // Banner do włączenia powiadomień tylko wtedy, gdy powiadomienia
+        // są wyłączone
+        NotificationPermissionBanner()
+        // Banner pojawia się na samej górze (tylko jeśli są alerty)
         GlobalAlertBanner(alerts = activeAlerts)
 
         Column(

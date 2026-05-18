@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-// ZMIANA TUTAJ: Sukces zwraca teraz List<WpPost> zamiast List<RssItem>
+// Sukces zwraca teraz List<WpPost> zamiast List<RssItem>
 sealed class NewsUiState {
     object Loading : NewsUiState()
     data class Success(val news: List<WpPost>) : NewsUiState()
