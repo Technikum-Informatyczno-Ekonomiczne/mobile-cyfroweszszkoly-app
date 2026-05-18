@@ -19,12 +19,14 @@ import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
 import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
-import com.example.cyfroweszkoly.ui.launch.LaunchScree
+import com.example.cyfroweszkoly.ui.launch.LunchScreen
+import com.example.cyfroweszkoly.ui.launch.PaymentInfoScreen
 import com.example.cyfroweszkoly.ui.news.NewsScreen
 import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
 import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
+import com.example.cyfroweszkoly.viewmodel.LunchViewModel
 import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 
 
@@ -34,6 +36,7 @@ fun AppNavHost(
     innerPadding: PaddingValues = PaddingValues()
 ){
     val teacherViewModel: TeacherViewModel = viewModel()
+    val lunchViewModel: LunchViewModel = viewModel()
 
     Column(modifier = Modifier
         .padding(innerPadding)
@@ -104,8 +107,22 @@ fun AppNavHost(
             }
 
             composable ( route = Screen.Launch.route ){
-                LaunchScree(navController)
+                LunchScreen(
+                    viewModel =  lunchViewModel,
+                    onNavigateToPayments = {
+                        navController.navigate("lunch_payments")
+                    }
+                )
             }
+
+            composable(route = Screen.LaunchPayments.route) {
+                PaymentInfoScreen(
+                    onNavigateBack = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+
             composable(route = Screen.News.route,) {
                 NewsScreen(navController)
             }

@@ -1,0 +1,51 @@
+[
+  {
+    "day": "Poniedziałek",
+    "date": "11.05.2026",
+    "courses": [
+      { "category": "Zupa", "name": "Jarzynowa z ziemniakami", "portion": "300ml", "allergens": "7/9" },
+      { "category": "II danie", "name": "Spaghetti z sosem bolońskim, ser", "portion": "350g", "allergens": "1/3/7/9" },
+      { "category": "Przekąska", "name": "Jabłko", "portion": "150g", "allergens": "" },
+      { "category": "Napój", "name": "Kompot z porzeczki", "portion": "200ml", "allergens": "" }
+    ]
+  },
+  {
+    "day": "Wtorek",
+    "date": "12.05.2026",
+    "courses": [
+      { "category": "Zupa", "name": "Szpinakowa z jajkiem", "portion": "300ml", "allergens": "3/7/9" },
+      { "category": "II danie", "name": "Kotlet mielony, ziemniaki", "portion": "350g", "allergens": "1/3/9" },
+      { "category": "Surówka", "name": "Buraczki z cebulką", "portion": "100g", "allergens": "" },
+      { "category": "Napój", "name": "Kompot truskawkowy", "portion": "200ml", "allergens": "" }
+    ]
+  },
+  {
+    "day": "Środa",
+    "date": "13.05.2026",
+    "courses": [
+      { "category": "Zupa", "name": "Rosół drobiowy z makaronem", "portion": "300ml", "allergens": "1/3/9" },
+      { "category": "II danie", "name": "Udziec pieczony, ziemniaki", "portion": "350g", "allergens": "9" },
+      { "category": "Surówka", "name": "Mizeria ze śmietaną", "portion": "100g", "allergens": "7" },
+      { "category": "Napój", "name": "Kompot wieloowocowy", "portion": "200ml", "allergens": "" }
+    ]
+  },
+  {
+    "day": "Czwartek",
+    "date": "14.05.2026",
+    "courses": [
+      { "category": "Zupa", "name": "Z fasolki szparagowej z ziemniakami", "portion": "300ml", "allergens": "6/7/9" },
+      { "category": "II danie", "name": "Gulasz z szynki, kasza gryczana", "portion": "350g", "allergens": "1/9" },
+      { "category": "Surówka", "name": "Ogórek konserwowy", "portion": "100g", "allergens": "" },
+      { "category": "Napój", "name": "Kompot z wiśni", "portion": "200ml", "allergens": "" }
+    ]
+  },
+  {
+    "day": "Piątek",
+    "date": "15.05.2026",
+    "courses": [
+      { "category": "Zupa", "name": "Zupa krem z brokuła", "portion": "300ml", "allergens": "7/9" },
+      { "category": "II danie", "name": "Ryba w panierce, ryż z warzywami", "portion": "350g", "allergens": "1/4" },
+      { "category": "Deser", "name": "Kisiel cytrynowy", "portion": "200ml", "allergens": "" }
+    ]
+  }
+]
