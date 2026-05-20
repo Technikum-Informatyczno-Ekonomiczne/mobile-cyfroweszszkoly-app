@@ -10,28 +10,33 @@ import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.ClipEntry
 import androidx.compose.ui.platform.LocalClipboard
-import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.cyfroweszkoly.viewmodel.PaymentInfoState
+import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
 import kotlinx.coroutines.launch
 
-@Composable
-fun PaymentInfoCard() {
-    // Pobieramy narzędzia systemowe: schowek i kontekst (do wyświetlenia dymku Toast)
-    // Nowe API schowka
-    val clipboard = LocalClipboard.current
-    // Wymagane do uruchomienia asynchronicznej funkcji zapisu
-    val scope = rememberCoroutineScope()
 
+
+@Composable
+fun PaymentInfoCard(viewModel: PaymentViewModel) {
+    // Narzędzia systemowe
+    val clipboard = LocalClipboard.current
+    val scope = rememberCoroutineScope()
     val context = LocalContext.current
+
+    // Obserwowanie stanu z ViewModelu
+    val uiState by viewModel.uiState
+
+    // Numer konta zostawiamy statyczny ze względów bezpieczeństwa i wygody kopiowania
     val accountNumber = "37124055981111001075089305"
 
     Card(
@@ -46,7 +51,7 @@ fun PaymentInfoCard() {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Nagłówek sekcji
+            //  NAGŁÓWEK SEKCI
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.Info,
@@ -55,13 +60,13 @@ fun PaymentInfoCard() {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Opłaty za obiady (Czerwiec 2026)",
+                    text = "Opłaty za obiady",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
             }
 
-            // Sekcja z numerem konta i przyciskiem kopiowania
+            //  BLOK Z NUMEREM KONTA I KOPIOWANIEM
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -85,22 +90,12 @@ fun PaymentInfoCard() {
                     )
                 }
 
-                // Magiczny przycisk do kopiowania
                 IconButton(
                     onClick = {
-                        // Uruchamiamy operację asynchroniczną
                         scope.launch {
-                            //Tworzymy obiekt danych schowka Androida
                             val clipData = ClipData.newPlainText("Numer konta SP 311", accountNumber)
-
-                            // 2. Zapisujemy przy użyciu nowej metody setClipEntry
                             clipboard.setClipEntry(ClipEntry(clipData))
-
-                            // 3. Informacja dla użytkownika
-                            Toast.makeText(
-                                context,
-                                "Skopiowano numer konta",
-                                Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Skopiowano numer konta", Toast.LENGTH_SHORT).show()
                         }
                     }
                 ) {
@@ -112,19 +107,53 @@ fun PaymentInfoCard() {
                 }
             }
 
-            HorizontalDivider(color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.2f))
-
-            // Dodatkowe informacje
-            Text(
-                text = "Tytuł przelewu: \"OBIAD\", imię i nazwisko, klasa, miesiąc.",
-                style = MaterialTheme.typography.bodySmall,
-                fontWeight = FontWeight.Medium
+            HorizontalDivider(
+                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.2f),
+                modifier = Modifier.padding(vertical = 4.dp)
             )
 
-            Text(
-                text = "Termin płatności: do 28 maja 2026 r.\nCena (SP 311): 136 zł (I i II danie) / 102 zł (II danie)",
-                style = MaterialTheme.typography.bodySmall
-            )
+            // DYNAMICZNA TREŚĆ Z WORDPRESSA
+            when (val state = uiState) {
+                is PaymentInfoState.Loading -> {
+                    // Animacja ładowania
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        CircularProgressIndicator(
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                    }
+                }
+
+                is PaymentInfoState.Success -> {
+                    // Wyczyszczony tekst wprost z API
+                    Text(
+                        text = state.contentText,
+                        style = MaterialTheme.typography.bodyLarge,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+
+                is PaymentInfoState.Error -> {
+                    // Obsługa błędu sieciowego
+                    Text(
+                        text = state.message,
+                        color = MaterialTheme.colorScheme.error,
+                        style = MaterialTheme.typography.bodyMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
         }
     }
 }
+
+
+
+
+
+
+
+

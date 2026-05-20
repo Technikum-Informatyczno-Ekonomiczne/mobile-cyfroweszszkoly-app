@@ -7,10 +7,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.cyfroweszkoly.ui.launch.PaymentInfoCard
+import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PaymentInfoScreen(onNavigateBack: () -> Unit) {
+fun PaymentInfoScreen(
+    viewModel: PaymentViewModel,
+    onNavigateBack: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -32,7 +37,8 @@ fun PaymentInfoScreen(onNavigateBack: () -> Unit) {
                 .padding(paddingValues)
                 .padding(16.dp)
         ) {
-            PaymentInfoCard()
+            // Przekazujemy zainicjalizowany ViewModel do karty
+            PaymentInfoCard(viewModel = viewModel)
         }
     }
 }

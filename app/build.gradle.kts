@@ -82,8 +82,7 @@ dependencies {
 
     implementation(libs.firebase.messaging)
 
-
-    implementation(libs.retrofit.core)
+    implementation(libs.jsoup)
     implementation(libs.retrofit.kotlinx.serialization)
     implementation(libs.kotlinx.serialization.json)
 

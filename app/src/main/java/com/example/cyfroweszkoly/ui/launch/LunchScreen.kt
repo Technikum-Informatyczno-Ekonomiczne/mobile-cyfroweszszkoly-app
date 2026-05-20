@@ -61,10 +61,6 @@ fun LunchScreen(
             items(menu) { dailyMenu ->
                 DailyMenuCard(dailyMenu)
             }
-            item {
-                Spacer(modifier = Modifier.height(8.dp))
-                PaymentInfoCard()
-            }
         }
     }
 }

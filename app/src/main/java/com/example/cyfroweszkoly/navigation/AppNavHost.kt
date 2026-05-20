@@ -27,6 +27,7 @@ import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
 import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
 import com.example.cyfroweszkoly.viewmodel.LunchViewModel
+import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
 import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 
 
@@ -37,6 +38,7 @@ fun AppNavHost(
 ){
     val teacherViewModel: TeacherViewModel = viewModel()
     val lunchViewModel: LunchViewModel = viewModel()
+    val paymentViewModel: PaymentViewModel = viewModel()
 
     Column(modifier = Modifier
         .padding(innerPadding)
@@ -117,6 +119,7 @@ fun AppNavHost(
 
             composable(route = Screen.LaunchPayments.route) {
                 PaymentInfoScreen(
+                    viewModel = paymentViewModel,
                     onNavigateBack = {
                         navController.popBackStack()
                     }
