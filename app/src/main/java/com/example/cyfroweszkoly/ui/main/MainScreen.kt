@@ -110,6 +110,7 @@ fun MainScreen(){
                         navigationIconContentColor = Color.Black
 
                     ),
+
                     title = {
                         // Pakujemy ikonę i tekst w Row, który jest klikalny
                         Row(

@@ -9,7 +9,8 @@ import kotlinx.coroutines.launch
 
 sealed class PaymentInfoState {
     object Loading : PaymentInfoState()
-    data class Success(val contentText: String) : PaymentInfoState()
+    // Zmieniamy to:
+    data class Success(val contactInfo: String, val pricingInfo: String) : PaymentInfoState()
     data class Error(val message: String) : PaymentInfoState()
 }
 
@@ -33,8 +34,8 @@ class PaymentViewModel : ViewModel() {
             val result = repository.fetchCleanPaymentInfo()
 
             result.fold(
-                onSuccess = { cleanText ->
-                    _uiState.value = PaymentInfoState.Success(cleanText)
+                onSuccess = { data ->
+                    _uiState.value = PaymentInfoState.Success(data.first, data.second)
                 },
                 onFailure = { exception ->
                     _uiState.value = PaymentInfoState.Error(exception.message ?: "Nieznany błąd")

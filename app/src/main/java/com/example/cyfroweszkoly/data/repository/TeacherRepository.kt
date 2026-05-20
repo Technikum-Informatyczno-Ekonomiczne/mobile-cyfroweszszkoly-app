@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.repository
+package com.example.cyfroweszkoly.data.repository
 
 import android.util.Log
 import com.example.cyfroweszkoly.data.model.Teacher

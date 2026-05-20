@@ -7,17 +7,26 @@ import org.jsoup.Jsoup
 
 class PaymentRepository {
 
-    suspend fun fetchCleanPaymentInfo(): Result<String> {
+    suspend fun fetchCleanPaymentInfo(): Result<Pair<String, String>> {
         return withContext(Dispatchers.IO) {
             try {
-                // Używamy gotowego klienta API
                 val response = NetworkModule.api.getPageBySlug("obiady")
 
                 if (response.isNotEmpty()) {
                     val rawHtml = response.first().content.rendered
-                    val cleanText = parseHtmlToCleanText(rawHtml)
+                    val fullCleanText = parseHtmlToCleanText(rawHtml)
 
-                    Result.success(cleanText)
+                    // Odcinamy wszystko od słowa "UWAGA!" w dół
+                    val dynamicText = fullCleanText.substringBefore("UWAGA!").trim()
+
+                    // Wyciągamy linijkę z telefonem
+                    val lines = dynamicText.lines()
+                    val contactInfo = lines.firstOrNull { it.contains("Intendent", ignoreCase = true) } ?: ""
+
+                    //  Reszta to cenniki
+                    val pricingInfo = dynamicText.replace(contactInfo, "").trim()
+
+                    Result.success(Pair(contactInfo, pricingInfo))
                 } else {
                     Result.failure(Exception("Nie znaleziono strony z opłatami."))
                 }
@@ -28,13 +37,18 @@ class PaymentRepository {
     }
 
     private fun parseHtmlToCleanText(htmlContent: String): String {
-        val document = Jsoup.parse(htmlContent)
+        val document = org.jsoup.Jsoup.parse(htmlContent)
         document.select("br").append("\\n")
-        document.select("p").prepend("\\n")
+        // Dodajemy podwójny znak nowej linii dla wyraźnego oddzielenia SP i LO
+        document.select("p").prepend("\\n\\n")
         document.select("li").prepend("\\n• ")
-        return document.text()
+
+        val fullText = document.text()
             .replace("\\n", "\n")
             .replace("&nbsp;", " ")
             .trim()
+
+        // Usuwamy ewentualne zbyt duże odstępy (redukujemy >2 pustych linii do max 2)
+        return fullText.replace(Regex("\n{3,}"), "\n\n")
     }
 }

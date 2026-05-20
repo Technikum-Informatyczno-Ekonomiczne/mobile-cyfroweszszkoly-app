@@ -1,12 +1,8 @@
-package com.example.cyfroweszkoly.repository
+package com.example.cyfroweszkoly.data.repository
 
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
-import com.google.firebase.firestore.snapshots
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.tasks.await
-import kotlin.getValue
 
 class AlertRepository {
     private val db by lazy { Firebase.firestore }

@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.cyfroweszkoly.data.model.ScheduleEntry
 import com.example.cyfroweszkoly.data.model.Teacher
-import com.example.cyfroweszkoly.repository.TeacherRepository
+import com.example.cyfroweszkoly.data.repository.TeacherRepository
 
 class TeacherViewModel : ViewModel(){
 

@@ -21,6 +21,7 @@ browser = "1.10.0"
 runtime = "1.11.1"
 firebaseMessaging = "24.0.0"
 jsoup = "1.17.2"
+foundationVersion = "1.11.1"
 
 
 [libraries]
@@ -60,6 +61,7 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
+androidx-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundationVersion" }
 
 
 [plugins]

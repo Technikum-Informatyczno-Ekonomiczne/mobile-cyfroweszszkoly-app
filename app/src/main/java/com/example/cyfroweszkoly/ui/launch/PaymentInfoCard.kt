@@ -2,12 +2,16 @@ package com.example.cyfroweszkoly.ui.launch
 
 import android.content.ClipData
 import android.widget.Toast
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material.icons.outlined.Campaign
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,139 +24,164 @@ import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.cyfroweszkoly.viewmodel.PaymentInfoState
 import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
 import kotlinx.coroutines.launch
 
 
-
 @Composable
 fun PaymentInfoCard(viewModel: PaymentViewModel) {
-    // Narzędzia systemowe
     val clipboard = LocalClipboard.current
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-
-    // Obserwowanie stanu z ViewModelu
     val uiState by viewModel.uiState
-
-    // Numer konta zostawiamy statyczny ze względów bezpieczeństwa i wygody kopiowania
     val accountNumber = "37124055981111001075089305"
 
-    Card(
+    Column(
         modifier = Modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.secondaryContainer,
-            contentColor = MaterialTheme.colorScheme.onSecondaryContainer
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+        // --- SEKCJA 1: DYNAMICZNE DANE OBIADOWE (CENNIKI) ---
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
-            //  NAGŁÓWEK SEKCI
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = Icons.Default.Info,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = "Opłaty za obiady",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
-                )
-            }
+            Column(modifier = Modifier.padding(16.dp)) {
+                when (val state = uiState) {
+                    is PaymentInfoState.Loading -> {
+                        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                            CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                        }
+                    }
+                    is PaymentInfoState.Error -> {
+                        Text(state.message, color = MaterialTheme.colorScheme.error)
+                    }
+                    is PaymentInfoState.Success -> {
+                        // 1a. Telefon do intendenta (wyróżniony)
+                        if (state.contactInfo.isNotEmpty()) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .background(
+                                        color = MaterialTheme.colorScheme.primaryContainer,
+                                        shape = RoundedCornerShape(8.dp)
+                                    )
+                                    .padding(12.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Phone,
+                                    contentDescription = "Telefon",
+                                    tint = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = state.contactInfo,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(16.dp))
+                        }
 
-            //  BLOK Z NUMEREM KONTA I KOPIOWANIEM
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(MaterialTheme.colorScheme.surface)
-                    .padding(horizontal = 12.dp, vertical = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+                        // 1b. Ceny obiadów z elegancką interlinią
+                        Text(
+                            text = state.pricingInfo,
+                            style = MaterialTheme.typography.bodyMedium.copy(lineHeight = 22.sp),
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                }
+            }
+        }
+
+        // --- SEKCJA 2: ZASADY PRZELEWU (NA TWARDO) ---
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Column {
-                    Text(
-                        text = "Szkoła Podstawowa nr 311",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                // Tytuł UWAGA
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.Warning,
+                        contentDescription = "Uwaga",
+                        tint = MaterialTheme.colorScheme.onErrorContainer
                     )
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = accountNumber,
-                        style = MaterialTheme.typography.bodyLarge,
+                        text = "UWAGA!",
+                        style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.ExtraBold,
-                        color = MaterialTheme.colorScheme.onSurface
+                        color = MaterialTheme.colorScheme.onErrorContainer
                     )
                 }
 
-                IconButton(
-                    onClick = {
+                Text(
+                    text = "Za obiady można płacić tylko przelewem na konto. Wpłaty gotówką nie będą przyjmowane!",
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onErrorContainer
+                )
+
+                HorizontalDivider(color = MaterialTheme.colorScheme.onErrorContainer.copy(alpha = 0.2f))
+
+                // Pole z numerem konta do skopiowania
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(MaterialTheme.colorScheme.surface)
+                        .padding(horizontal = 12.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Column {
+                        Text(
+                            text = "Szkoła Podstawowa nr 311",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        Text(
+                            text = accountNumber,
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+
+                    IconButton(onClick = {
                         scope.launch {
-                            val clipData = ClipData.newPlainText("Numer konta SP 311", accountNumber)
+                            val clipData = ClipData.newPlainText("Numer konta SP", accountNumber)
                             clipboard.setClipEntry(ClipEntry(clipData))
                             Toast.makeText(context, "Skopiowano numer konta", Toast.LENGTH_SHORT).show()
                         }
-                    }
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.ContentCopy,
-                        contentDescription = "Kopiuj numer konta",
-                        tint = MaterialTheme.colorScheme.primary
-                    )
-                }
-            }
-
-            HorizontalDivider(
-                color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.2f),
-                modifier = Modifier.padding(vertical = 4.dp)
-            )
-
-            // DYNAMICZNA TREŚĆ Z WORDPRESSA
-            when (val state = uiState) {
-                is PaymentInfoState.Loading -> {
-                    // Animacja ładowania
-                    Box(
-                        modifier = Modifier.fillMaxWidth(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator(
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(16.dp)
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.ContentCopy,
+                            contentDescription = "Kopiuj",
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
 
-                is PaymentInfoState.Success -> {
-                    // Wyczyszczony tekst wprost z API
-                    Text(
-                        text = state.contentText,
-                        style = MaterialTheme.typography.bodyLarge,
-                        fontWeight = FontWeight.Medium
-                    )
-                }
-
-                is PaymentInfoState.Error -> {
-                    // Obsługa błędu sieciowego
-                    Text(
-                        text = state.message,
-                        color = MaterialTheme.colorScheme.error,
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+                // Zasady tytułu przelewu
+                Text(
+                    text = "W tytule wpłaty należy podać:\n• „OBIAD”\n• imię i nazwisko dziecka\n• klasę, do której dziecko uczęszcza\n• miesiąc, za który wykupuje się obiad",
+                    style = MaterialTheme.typography.bodySmall.copy(lineHeight = 20.sp),
+                    color = MaterialTheme.colorScheme.onErrorContainer
+                )
             }
         }
     }
 }
-
-
-
-
 
 
 

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.cyfroweszkoly.repository.AlertRepository
+import com.example.cyfroweszkoly.data.repository.AlertRepository
 import kotlinx.coroutines.launch
 
 class AdminManagementViewModel : ViewModel() {
