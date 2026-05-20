@@ -22,6 +22,7 @@ runtime = "1.11.1"
 firebaseMessaging = "24.0.0"
 jsoup = "1.17.2"
 foundationVersion = "1.11.1"
+material3 = "1.4.0"
 
 
 [libraries]
@@ -62,6 +63,7 @@ androidx-compose-foundation-layout = { group = "androidx.compose.foundation", na
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
 androidx-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundationVersion" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 
 
 [plugins]

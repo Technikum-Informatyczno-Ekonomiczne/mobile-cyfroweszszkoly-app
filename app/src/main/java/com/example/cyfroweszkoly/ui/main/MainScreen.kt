@@ -1,11 +1,14 @@
 package com.example.cyfroweszkoly.ui.main
 
 import android.net.http.SslCertificate.saveState
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -43,9 +46,11 @@ import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material.icons.outlined.PersonSearch
 import androidx.compose.material.icons.outlined.School
 import androidx.compose.material.icons.rounded.Menu
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -112,38 +117,38 @@ fun MainScreen(){
                     ),
 
                     title = {
-                        // Pakujemy ikonę i tekst w Row, który jest klikalny
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(50))
-                                .clickable {
-                                    navController.navigate(Screen.Home.route) {
-                                        popUpTo(Screen.Home.route) { inclusive = true }
-                                        launchSingleTop = true
-                                    }
+                        OutlinedButton(
+                            onClick = {
+                                navController.navigate(Screen.Home.route) {
+                                    popUpTo(Screen.Home.route) { inclusive = true }
+                                    launchSingleTop = true
                                 }
-                                .background(Color.LightGray.copy(alpha = 0.3f))
-                                .padding(vertical = 3.dp, horizontal = 4.dp)
+                            },
+                            // Definiujemy wygląd ramki - subtelna, ale widoczna
+                            border = BorderStroke(1.dp, Color.LightGray),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                contentColor = Color.Black, // Wymusza czarny kolor na tekście i ikonie
+                                containerColor = Color.Black.copy(alpha = 0.03f) // Bardzo delikatne tło
+                            ),
+                            // Zmniejszamy domyślne marginesy przycisku, żeby zmieścił się w TopAppBar
+                            contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+                            modifier = Modifier.padding(start = 4.dp) // Lekki odstęp od hamburger menu
                         ) {
-                            // Mała, czarna ikonka reprezentująca szkołę
                             Icon(
                                 imageVector = Icons.Outlined.School,
-                                contentDescription = null, // decorative
-                                tint = Color.Black
+                                contentDescription = "Wróć do ekranu głównego",
+                                modifier = Modifier.size(22.dp) // Lekkie zmniejszenie ikony w przycisku
                             )
 
-                            // Odstęp między ikonką a tekstem
-                            Spacer(modifier = Modifier.width(6.dp))
+                            Spacer(modifier = Modifier.width(8.dp))
 
-                            // Twój wystylizowany tekst
                             Text(
                                 text = "Cyfrowe Szkoły",
                                 style = MaterialTheme.typography.titleLarge.copy(
                                     fontWeight = FontWeight.ExtraBold,
-                                    letterSpacing = 1.sp
-                                ),
-                                color = Color.Black // Upewnij się, że kolor jest czarny
+                                    letterSpacing = 1.sp,
+                                    fontSize = 18.sp // Lekka korekta rozmiaru, by pasowało do przycisku
+                                )
                             )
                         }
                     },
