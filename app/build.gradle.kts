@@ -51,6 +51,7 @@ dependencies {
     implementation(libs.androidx.browser)
     implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.compose.ui.text)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.espresso.core)
     implementation(libs.androidx.foundation)

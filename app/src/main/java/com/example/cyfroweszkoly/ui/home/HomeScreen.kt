@@ -7,13 +7,22 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -27,9 +36,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.R
@@ -54,6 +66,11 @@ fun HomeScreen(navController: NavController){
     // 1. Stan dla alertów
     val activeAlerts = remember { mutableStateListOf<AlertModel>() }
     val db = FirebaseFirestore.getInstance()
+
+    // Narzędzie systemowe do otwierania linków na zewnątrz aplikacji
+    val uriHandler = LocalUriHandler.current
+    // Wpisz tu prawdziwy adres logowania dla Waszej szkoły
+    val schoolRegisterUrl = "https://portal.librus.pl/szkola"
 
     // 2. Nasłuchiwanie zmian w czasie rzeczywistym
     DisposableEffect(Unit) {
@@ -170,61 +187,39 @@ fun HomeScreen(navController: NavController){
                             ) {
                                 Text("Wejdź do szkoły")
                             }
-                            // W przyszłości możesz coś dorzucić
-                            // np.  drugi guzik np. TextButton("Szybki plan lekcji")
+
+
+
                         }
+
+
                     }
                 }
-            }
 
+
+            }
+            // Magiczny Spacer, który wypełnia całą pustą przestrzeń,
+            // spychając wszystko poniżej niego na sam dół ekranu
+            Spacer(modifier = Modifier.weight(1f))
+
+            // 3. Sekcja globalnych narzędzi
+            HorizontalDivider(
+                color = MaterialTheme.colorScheme.outlineVariant,
+                modifier = Modifier.padding(vertical = 16.dp)
+            )
+            OutlinedButton(
+                onClick = { uriHandler.openUri(schoolRegisterUrl) },
+                modifier = Modifier.fillMaxWidth().height(56.dp) // Duży, wygodny w klikaniu
+            ) {
+                Icon(imageVector = Icons.AutoMirrored.Filled.MenuBook, contentDescription = null)
+                Spacer(modifier = Modifier.width(12.dp))
+                Text("Zaloguj do E-dziennika", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+            }
         }
     }
 
 }
 
-
-//@Composable
-//fun HomeScreen(navController: NavController){
-//    Column(
-//        modifier = Modifier.fillMaxSize(),
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally
-//    ) {
-//        Image(
-//            painter = painterResource(R.drawable.sp_button),
-//            contentDescription = "Szkoła podstawowa 311",
-//            contentScale = ContentScale.Fit,
-//            modifier = Modifier
-//                .fillMaxWidth(0.7f)
-//                .aspectRatio(1.8f)   // dopasuj do proporcji zdjęcia
-//                .clip(RoundedCornerShape(40.dp))
-//                .clickable { navController.navigate(Screen.Primary.route) }
-//        )
-//        Image(
-//            painter = painterResource(R.drawable.liceum_button),
-//            contentDescription = "Liceum XI",
-//            contentScale = ContentScale.Fit,
-//            modifier = Modifier
-//                .padding(0.dp ,20.dp ,0.dp ,20.dp)
-//                .fillMaxWidth(0.7f)
-//                .aspectRatio(1.8f)   // dopasuj do proporcji zdjęcia
-//                .clip(RoundedCornerShape(40.dp))
-//                .clickable { navController.navigate(Screen.High.route) }
-//        )
-//        Image(
-//            painter = painterResource(R.drawable.technikum_button),
-//            contentDescription = "Technikum IX",
-//            contentScale = ContentScale.Fit,
-//            modifier = Modifier
-//                .fillMaxWidth(0.7f)
-//                .aspectRatio(1.8f)   // dopasuj do proporcji zdjęcia
-//                .clip(RoundedCornerShape(40.dp))
-//                .clickable { navController.navigate(Screen.Tech.route) }
-//        )
-//
-//
-//    }
-//}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -235,19 +230,3 @@ fun HomeScreenPreview(){
     }
 }
 
-
-/*
-
-@Composable
-fun HomeScreen(navController: NavController) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Button(onClick = { navController.navigate(Screen.Primary.route) }) { Text("Szkoła Podstawowa") }
-        Button(onClick = { navController.navigate(Screen.High.route) }) { Text("Liceum") }
-        Button(onClick = { navController.navigate(Screen.Tech.route) }) { Text("Technikum") }
-    }
-}
- */
