@@ -5,6 +5,9 @@ import { onCall, HttpsError } from "firebase-functions/v2/https";
 import admin from "firebase-admin";
 // Importujemy bibliotekę Gemini
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import {libraryContext} from "./libraryData.js";
+import {stuffContext} from  "./stuffData.js";
+import {calendarContext} from  "./calendarData.js";
 
 
 
@@ -57,14 +60,32 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
 
     const genAI = new GoogleGenerativeAI(apiKey);
 
-    // Używamy modelu Flash-Lite - jest najszybszy i najtańszy
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
+    // Budujemy twarde instrukcje systemowe korzystając z zaimportowanej zmiennej
+    const systemPrompt = `Jesteś oficjalnym wirtualnym asystentem szkoły.
+    Twoim jedynym zadaniem jest udzielanie precyzyjnych odpowiedzi uczniom.
 
-    // Kontekst dla modelu
-    const systemPrompt = `Jesteś oficjalnym, wirtualnym asystentem Zespołu Szkół (SP, LO, TIE).
-    Odpowiadaj zwięźle, kulturalnie i bezpośrednio na pytania.
-    Pytanie ucznia: ${userQuestion}`;
+    ZASADY ABSOLUTNE:
+    1. Opieraj się TYLKO I WYŁĄCZNIE na informacjach podanych poniżej w sekcji
+     [KALENDARZ] [BIBIOTEKA] [KADRA].
+    2. Jeśli uczeń zapyta o cokolwiek, czego nie ma w kontekście (np. o historię świata, przepisy kulinarne, zadania z matematyki, programowanie, lub nieopisane tu zasady szkolne), MUSISZ odpowiedzieć dokładnie w ten sposób: "Przepraszam, ale jako asystent szkolny mogę odpowiadać tylko na pytania związane z dostępnymi regulaminami i organizacją naszej szkoły."
+    3. Pod żadnym pozorem nie zmyślaj informacji (zero halucynacji). Jeśli czegoś nie ma w tekście, odmawiasz odpowiedzi.
 
+    [BIBIOTEKA]
+    ${libraryContext}
+
+    [KADRA]
+    ${stuffContext}
+
+    [KALENDARZ]
+    ${calendarContext}
+    `;
+
+    // Inicjalizacja wybranego przez Ciebie, działającego modelu z instrukcją systemową
+     // Używamy modelu Flash-Lite - jest najszybszy i najtańszy
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.5-flash", // "gemini-2.5-flash-lite",
+      systemInstruction: systemPrompt
+    });
     const result = await model.generateContent(systemPrompt);
     const responseText = result.response.text();
 
