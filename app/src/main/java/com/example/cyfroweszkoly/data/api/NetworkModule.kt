@@ -12,7 +12,7 @@ import retrofit2.converter.kotlinx.serialization.asConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface NewsApiService {
+interface SchoolApiService {
     @GET("wp-json/wp/v2/posts?_embed")
     suspend fun getNewsFeed(): List<WpPost>
 
@@ -33,8 +33,8 @@ object NetworkModule {
         .addConverterFactory(networkJson.asConverterFactory("application/json".toMediaType()))
         .build()
 
-    val api: NewsApiService by lazy {
-        retrofit.create(NewsApiService::class.java)
+    val api: SchoolApiService by lazy {
+        retrofit.create(SchoolApiService::class.java)
     }
 }
 
