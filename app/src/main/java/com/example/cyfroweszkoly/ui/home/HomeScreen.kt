@@ -7,6 +7,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.MenuBook
+import androidx.compose.material.icons.outlined.SmartToy
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -47,6 +49,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.R
 import com.example.cyfroweszkoly.data.model.AlertModel
 import com.example.cyfroweszkoly.navigation.Screen
+import com.example.cyfroweszkoly.navigation.Screen.Chat
 import com.example.cyfroweszkoly.ui.alert.NotificationPermissionBanner
 import com.example.cyfroweszkoly.ui.components.GlobalAlertBanner
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
@@ -201,19 +204,49 @@ fun HomeScreen(navController: NavController){
             // Magiczny Spacer, który wypełnia całą pustą przestrzeń,
             // spychając wszystko poniżej niego na sam dół ekranu
             Spacer(modifier = Modifier.weight(1f))
-
-            // 3. Sekcja globalnych narzędzi
             HorizontalDivider(
                 color = MaterialTheme.colorScheme.outlineVariant,
                 modifier = Modifier.padding(vertical = 16.dp)
             )
-            OutlinedButton(
-                onClick = { uriHandler.openUri(schoolRegisterUrl) },
-                modifier = Modifier.fillMaxWidth().height(56.dp) // Duży, wygodny w klikaniu
+            // 3. Sekcja globalnych narzędzi
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(imageVector = Icons.AutoMirrored.Filled.MenuBook, contentDescription = null)
-                Spacer(modifier = Modifier.width(12.dp))
-                Text("Zaloguj do E-dziennika", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+
+                OutlinedButton(
+                    onClick = { uriHandler.openUri(schoolRegisterUrl) },
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(56.dp) // Duży, wygodny w klikaniu
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.MenuBook,
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Text("Zaloguj do E-dziennika", fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                }
+
+                Button(
+                    onClick = {navController.navigate(Chat.route)},
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(56.dp),
+                    elevation = ButtonDefaults.buttonElevation(defaultElevation = 2.dp)
+                ){
+                    Icon(
+                        imageVector = Icons.Outlined.SmartToy,
+                        contentDescription = "Asystent AI"
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = "Asystent AI",
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
             }
         }
     }

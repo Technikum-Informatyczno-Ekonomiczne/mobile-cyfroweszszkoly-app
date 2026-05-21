@@ -15,6 +15,8 @@ sealed class Screen(val route: String) {
     object LaunchPayments: Screen("lunch_payments")
     object News : Screen("news")
 
+    object Chat: Screen(route="chat_screen")
+
     object History : Screen("history")
     object Achievements : Screen("achievements")
     object AboutUs : Screen("about_us")

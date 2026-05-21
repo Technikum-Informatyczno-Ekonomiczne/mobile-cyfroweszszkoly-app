@@ -16,6 +16,7 @@ import androidx.navigation.navArgument
 import com.example.cyfroweszkoly.ui.about.application.AboutApplicationScreen
 import com.example.cyfroweszkoly.ui.about.us.AboutUsScreen
 import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
+import com.example.cyfroweszkoly.ui.chat.ChatScreen
 import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
@@ -26,6 +27,7 @@ import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
 import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
+import com.example.cyfroweszkoly.viewmodel.ChatViewModel
 import com.example.cyfroweszkoly.viewmodel.LunchViewModel
 import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
 import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
@@ -39,6 +41,7 @@ fun AppNavHost(
     val teacherViewModel: TeacherViewModel = viewModel()
     val lunchViewModel: LunchViewModel = viewModel()
     val paymentViewModel: PaymentViewModel = viewModel()
+    val chatViewModel: ChatViewModel = viewModel()
 
     Column(modifier = Modifier
         .padding(innerPadding)
@@ -62,6 +65,13 @@ fun AppNavHost(
 
             composable(route = Screen.High.route) {
                 HighSchoolScreen(navController)
+            }
+
+            composable(route = Screen.Chat.route) {
+                ChatScreen(
+                    viewModel = chatViewModel,
+                    onNavigateBack = {navController.popBackStack()}
+                    )
             }
 
             composable(route = Screen.Primary.route) {
