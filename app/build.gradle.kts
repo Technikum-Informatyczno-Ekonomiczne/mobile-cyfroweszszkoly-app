@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.google.firebase.functions)
 
     implementation(libs.retrofit.core)
     // SimpleXML jest starszą biblioteką i
@@ -84,6 +85,10 @@ dependencies {
     implementation(libs.firebase.firestore)
 
     implementation(libs.firebase.messaging)
+
+    implementation(libs.firebase.functions)
+    implementation(libs.kotlinx.coroutines.play.services)
+
 
     implementation(libs.jsoup)
     implementation(libs.retrofit.kotlinx.serialization)
