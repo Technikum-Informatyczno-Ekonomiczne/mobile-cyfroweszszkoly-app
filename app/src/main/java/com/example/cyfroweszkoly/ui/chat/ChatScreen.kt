@@ -79,6 +79,7 @@ fun ChatScreen(
 
             //komponent listy wiadomości
             ChatMessagesList(
+                viewModel = viewModel,
                 messages = viewModel.messages,
                 modifier = Modifier.weight(1f)
             )

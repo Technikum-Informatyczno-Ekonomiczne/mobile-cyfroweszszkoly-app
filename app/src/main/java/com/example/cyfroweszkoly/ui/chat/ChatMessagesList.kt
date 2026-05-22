@@ -13,10 +13,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.cyfroweszkoly.data.model.ChatMessageModel
+import com.example.cyfroweszkoly.viewmodel.ChatViewModel
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun ChatMessagesList(
+    viewModel: ChatViewModel,
     messages: StateFlow<List<ChatMessageModel>>,
     modifier: Modifier = Modifier
 ){
@@ -43,7 +45,14 @@ fun ChatMessagesList(
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(messageList) { message ->
-            ChatBubble(message = message)
+            ChatBubble(
+                message = message,
+                onRetry = { textToRepeat ->
+                    // Tutaj wywołujesz tę samą funkcję, co po kliknięciu przycisku "Wyślij"
+                    viewModel.sendMessage(textToRepeat)
+                }
+
+            )
         }
     }
 }
