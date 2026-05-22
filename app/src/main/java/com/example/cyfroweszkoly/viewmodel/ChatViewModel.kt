@@ -80,7 +80,7 @@ class ChatViewModel: ViewModel() {
                 //Dodajemy komunikat o błędzie do strumienia
                 _messages.update {
                     it + ChatMessageModel(
-                        text = "Przepraszam, mam problem z połączeniem. Spróbuj ponownie później",
+                        text = "${e.message}",
                         isUser = false
                     )
                 }
