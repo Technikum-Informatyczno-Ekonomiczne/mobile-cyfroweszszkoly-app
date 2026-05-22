@@ -133,6 +133,14 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
          );
      }
 
+     // Zabezpieczenie przed globalną awarią po stronie Google
+         if (error.status === 503) {
+             throw new HttpsError(
+                 "unavailable", // Najlepszy kod Firebase dla 503
+                 "Globalne serwery sztucznej inteligencji są obecnie przeciążone.\n Za chwilę spróbuj ponownie."
+             );
+         }
+
      //  Obsługa wszystkich innych błędów (500, timeouty itp.)
      throw new HttpsError(
          "internal",
