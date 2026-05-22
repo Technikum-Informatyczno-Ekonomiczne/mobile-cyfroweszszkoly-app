@@ -7,31 +7,43 @@ import com.example.cyfroweszkoly.data.model.ChatMessageModel
 import com.google.firebase.Firebase
 import com.google.firebase.functions.FirebaseFunctions
 import com.google.firebase.functions.functions
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class ChatViewModel: ViewModel() {
 
     //lista obserwowalna przez Compose
-    private val _messages = mutableStateListOf<ChatMessageModel>()
-    val messages: List<ChatMessageModel> = _messages
+    private val _messages = MutableStateFlow<List<ChatMessageModel>>(
+        emptyList()
+    )
+
+    val messages: StateFlow<List<ChatMessageModel>> = _messages.asStateFlow()
 
     private val functions: FirebaseFunctions = Firebase.functions("europe-central2")
 
 
     init{
-        _messages.add(ChatMessageModel(
-            text="Cześć! Jestem wirtualnym asystem Cyfrowych Szkół. W czym mogę Ci dzisaj pomóc?",
-            isUser = false))
+        _messages.value = listOf(
+            ChatMessageModel(
+                text="Cześć! Jestem wirtualnym asystem Cyfrowych Szkół. " +
+                        "W czym mogę Ci dzisiaj pomóc?",
+                isUser = false)
+        )
     }
 
     fun sendMessage(userText: String){
         if(userText.isBlank()) return
 
-        _messages.add(ChatMessageModel(
-            text=userText,
-            isUser =  true)
-        )
+        // Dodajemy wiadomość użytkownika do strumienia
+        // .update pobiera obecną listę (it) i
+        // podmienia ją na (staralista + nowyelement)
+        _messages.update {
+            it + ChatMessageModel(text = userText, isUser = true)
+        }
 
         // wywołujemy symulację myślenia bota
         viewModelScope.launch {
@@ -50,18 +62,28 @@ class ChatViewModel: ViewModel() {
                 val answer = data?.get("answer") as? String
 
                 if(answer != null){
-                    _messages.add(ChatMessageModel(answer,false ))
-
-                }else {
-                    _messages.add(ChatMessageModel("Otrzymałem pustą odpowiedź z serwera", false))
+                   // Dodajemy odpowiedź bota do strumienia
+                    _messages.update {
+                        it + ChatMessageModel(text = answer, isUser = false)
+                    }
+                } else {
+                    _messages.update {
+                        it + ChatMessageModel(
+                            text = "Otrzymałem pustą odpowiedź z serwera",
+                            isUser = false)
+                    }
                 }
 
 
             }catch (e: Exception){
                 e.printStackTrace()
-                _messages.add(ChatMessageModel(
-                    "Przepraszam, mam problem z połączeniem. Spróbuj ponownie później",
-                    false))
+                //Dodajemy komunikat o błędzie do strumienia
+                _messages.update {
+                    it + ChatMessageModel(
+                        text = "Przepraszam, mam problem z połączeniem. Spróbuj ponownie później",
+                        isUser = false
+                    )
+                }
             }
 
         }

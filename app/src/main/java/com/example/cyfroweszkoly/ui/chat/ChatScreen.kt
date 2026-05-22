@@ -41,9 +41,8 @@ import com.example.cyfroweszkoly.viewmodel.ChatViewModel
 @Composable
 fun ChatScreen(
     viewModel: ChatViewModel,
-    onNavigateBack: () -> Unit // 1. Nowy parametr obsługujący powrót
+    onNavigateBack: () -> Unit // Nowy parametr obsługujący powrót
 ) {
-    var inputText by remember { mutableStateOf("") }
 
     // Opakowujemy ekran w Scaffold
     Scaffold(
