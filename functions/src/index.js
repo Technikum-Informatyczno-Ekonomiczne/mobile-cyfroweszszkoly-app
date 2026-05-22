@@ -83,7 +83,7 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
     // Inicjalizacja wybranego przez Ciebie, działającego modelu z instrukcją systemową
      // Używamy modelu Flash-Lite - jest najszybszy i najtańszy
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash", // "gemini-2.5-flash-lite",
+      model: "gemini-2.5-flash-lite", // "gemini-2.5-flash-lite",
       systemInstruction: systemPrompt
     });
     const result = await model.generateContent(systemPrompt);
