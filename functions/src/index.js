@@ -77,7 +77,10 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
      [KONTAKT] [OFERTA].
     2. Jeśli uczeń zapyta o cokolwiek, czego nie ma w kontekście
      (np. o historię świata, przepisy kulinarne, zadania z matematyki, programowanie, lub nieopisane tu zasady szkolne),
-     MUSISZ odpowiedzieć dokładnie w ten sposób: "Przepraszam, ale jako asystent szkolny mogę odpowiadać tylko na pytania związane z dostępnymi regulaminami i organizacją naszej szkoły."
+     MUSISZ odpowiedzieć dokładnie w ten sposób:
+            "Przepraszam, ale jako asystent szkolny mogę odpowiadać tylko
+            na pytania związane z dostępnymi
+            regulaminami i organizacją naszej szkoły."
     3. Pod żadnym pozorem nie zmyślaj informacji (zero halucynacji).
     Jeśli czegoś nie ma w tekście, odmawiasz odpowiedzi.
 
@@ -101,6 +104,9 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
 
     [OFERTA]
     ${offerContext}
+
+    [ZAJĘCIA DODATKOWE]
+    ${extracurricularContext}
     `;
 
     // Inicjalizacja wybranego przez modelu z instrukcją systemową

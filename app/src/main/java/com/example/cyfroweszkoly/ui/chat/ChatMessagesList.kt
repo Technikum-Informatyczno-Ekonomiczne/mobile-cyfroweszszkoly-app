@@ -30,7 +30,8 @@ fun ChatMessagesList(
     // (messageList.size)..."
     LaunchedEffect(messageList.size) {
         if (messageList.isNotEmpty()) {
-            // "...użyj pilota, żeby płynnie zjechać do ostatniego elementu na liście"
+            // "...użyj pilota, żeby płynnie zjechać
+            // do ostatniego elementu na liście"
             // (indeks ostatniego elementu to rozmiar listy minus 1)
             listState.animateScrollToItem(messageList.size - 1)
         }
