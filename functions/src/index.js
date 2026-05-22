@@ -55,7 +55,7 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
   }
 
   try {
-    // UWAGA: Na etapie testów klucz można wpisać tu na sztywno,
+
     const apiKey = process.env.GEMINI_API_KEY;
 
     const genAI = new GoogleGenerativeAI(apiKey);
@@ -80,13 +80,17 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
     ${calendarContext}
     `;
 
-    // Inicjalizacja wybranego przez Ciebie, działającego modelu z instrukcją systemową
+    // Inicjalizacja wybranego przez modelu z instrukcją systemową
      // Używamy modelu Flash-Lite - jest najszybszy i najtańszy
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash-lite", // "gemini-2.5-flash-lite",
       systemInstruction: systemPrompt
     });
-    const result = await model.generateContent(systemPrompt);
+
+    //przekazanie pytania użytkownika do modelu
+    const result = await model.generateContent(userQuestion);
+
+    // odczytanie odpowiedzi z modelu
     const responseText = result.response.text();
 
     // Zwracamy obiekt JSON, który aplikacja w Kotlinie odczyta jako Mapę
