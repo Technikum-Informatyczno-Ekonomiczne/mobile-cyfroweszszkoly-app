@@ -1,4 +1,4 @@
-export const stuffContext = `
+export const staffContext = `
 Dyrektor: Janusz Krzysztof Rączkiewicz
 
 Wicedyrektorzy:

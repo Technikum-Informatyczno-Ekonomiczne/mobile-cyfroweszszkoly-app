@@ -5,10 +5,17 @@ import { onCall, HttpsError } from "firebase-functions/v2/https";
 import admin from "firebase-admin";
 // Importujemy bibliotekę Gemini
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import {libraryContext} from "./libraryData.js";
-import {stuffContext} from  "./stuffData.js";
-import {calendarContext} from  "./calendarData.js";
 
+import {
+  calendarContext,
+  contactContext,
+  counselorContext,
+  libraryContext,
+  supportContext,
+  staffContext,
+  offerContext,
+  extracurricularContext
+} from './data/index.js';
 
 
 admin.initializeApp();
@@ -66,18 +73,34 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
 
     ZASADY ABSOLUTNE:
     1. Opieraj się TYLKO I WYŁĄCZNIE na informacjach podanych poniżej w sekcji
-     [KALENDARZ] [BIBIOTEKA] [KADRA].
-    2. Jeśli uczeń zapyta o cokolwiek, czego nie ma w kontekście (np. o historię świata, przepisy kulinarne, zadania z matematyki, programowanie, lub nieopisane tu zasady szkolne), MUSISZ odpowiedzieć dokładnie w ten sposób: "Przepraszam, ale jako asystent szkolny mogę odpowiadać tylko na pytania związane z dostępnymi regulaminami i organizacją naszej szkoły."
-    3. Pod żadnym pozorem nie zmyślaj informacji (zero halucynacji). Jeśli czegoś nie ma w tekście, odmawiasz odpowiedzi.
+     [KALENDARZ] [BIBLIOTEKA] [KADRA]  [DORADCA ZAWODOWY] [WSPARCIE PSYCHOLOGICZNE]
+     [KONTAKT] [OFERTA].
+    2. Jeśli uczeń zapyta o cokolwiek, czego nie ma w kontekście
+     (np. o historię świata, przepisy kulinarne, zadania z matematyki, programowanie, lub nieopisane tu zasady szkolne),
+     MUSISZ odpowiedzieć dokładnie w ten sposób: "Przepraszam, ale jako asystent szkolny mogę odpowiadać tylko na pytania związane z dostępnymi regulaminami i organizacją naszej szkoły."
+    3. Pod żadnym pozorem nie zmyślaj informacji (zero halucynacji).
+    Jeśli czegoś nie ma w tekście, odmawiasz odpowiedzi.
 
-    [BIBIOTEKA]
+    [BIBLIOTEKA]
     ${libraryContext}
 
     [KADRA]
-    ${stuffContext}
+    ${staffContext}
 
     [KALENDARZ]
     ${calendarContext}
+
+    [DORADCA ZAWODOWY]
+    ${counselorContext}
+
+    [WSPARCIE PSYCHOLOGICZNE]
+    ${supportContext}
+
+    [KONTAKT]
+    ${contactContext}
+
+    [OFERTA]
+    ${offerContext}
     `;
 
     // Inicjalizacja wybranego przez modelu z instrukcją systemową
@@ -97,9 +120,25 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
     return { answer: responseText };
 
   } catch (error) {
-    console.error("Błąd komunikacji z Gemini:", error);
-    throw new HttpsError("internal", "Asystent ma chwilowe problemy z połączeniem.");
-  }
+     console.error("Błąd komunikacji z Gemini:", error);
+
+     //  Obsługa specyficznego błędu limitów (429)
+     if (error.status === 429) {
+         // Rzucamy standardowy błąd Firebase o wyczerpaniu zasobów.
+         // Aplikacja mobilna (np. w Kotlinie) odbierze to jako FirebaseFunctionsException
+         // z kodem RESOURCE_EXHAUSTED.
+         throw new HttpsError(
+             "resource-exhausted",
+             "Asystent jest chwilowo przeciążony (wykorzystano limit zapytań). Spróbuj ponownie za chwilę."
+         );
+     }
+
+     //  Obsługa wszystkich innych błędów (500, timeouty itp.)
+     throw new HttpsError(
+         "internal",
+         "Asystent ma chwilowe problemy z połączeniem."
+     );
+  };
 });
 
 
