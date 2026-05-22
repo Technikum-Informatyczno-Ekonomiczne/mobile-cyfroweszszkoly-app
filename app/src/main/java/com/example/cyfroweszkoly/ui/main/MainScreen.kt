@@ -120,7 +120,13 @@ fun MainScreen(){
                         OutlinedButton(
                             onClick = {
                                 navController.navigate(Screen.Home.route) {
-                                    popUpTo(Screen.Home.route) { inclusive = true }
+                                    // 0 to ID korzenia całego grafu nawigacji.
+                                    // Zdejmuje absolutnie każdy ekran, który jest na stosie.
+                                    popUpTo(0) {
+                                        inclusive = true
+                                    }
+                                    // Zapobiega tworzeniu kilku instancji ekranu Home,
+                                    // jeśli użytkownik "wyklika" przycisk podwójnie.
                                     launchSingleTop = true
                                 }
                             },
