@@ -1,6 +1,7 @@
 package com.example.cyfroweszkoly.navigation
 
 
+import android.net.Uri
 import androidx.compose.foundation.layout.Column
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.layout.PaddingValues
@@ -30,7 +31,8 @@ import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
 import com.example.cyfroweszkoly.viewmodel.ChatViewModel
 import com.example.cyfroweszkoly.viewmodel.LunchViewModel
 import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
-import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
+import com.example.cyfroweszkoly.viewmodel.ScheduleSearchViewModel
+import com.example.cyfroweszkoly.viewmodel.SearchAutocompleteViewModel
 
 
 @Composable
@@ -38,10 +40,11 @@ fun AppNavHost(
     navController: NavHostController,
     innerPadding: PaddingValues = PaddingValues()
 ){
-    val teacherViewModel: TeacherViewModel = viewModel()
+    val searchAutocompleteViewModel: SearchAutocompleteViewModel = viewModel()
     val lunchViewModel: LunchViewModel = viewModel()
     val paymentViewModel: PaymentViewModel = viewModel()
     val chatViewModel: ChatViewModel = viewModel()
+    val scheduleSearchViewModel: ScheduleSearchViewModel = viewModel()
 
     Column(modifier = Modifier
         .padding(innerPadding)
@@ -89,12 +92,15 @@ fun AppNavHost(
             composable(route = Screen.FindTeacher.route) {
 
                 FindTeacherScreen(
-                    viewModel = teacherViewModel,
-                    onTeacherClick = { teacher ->
+                    viewModel = searchAutocompleteViewModel,
+                    onTeacherClick = { teacherName ->
+                        // Ponieważ imiona i nazwiska mają spacje (np. "Anna Nowak"),
+                        // dobrą praktyką w Androidzie jest ich zakodowanie przed wrzuceniem do URL-a
+                        val encodedName = Uri.encode(teacherName)
+                        println("kliknięto: $encodedName")
+                        navController.navigate(Screen.TeacherDetails.createRoute(encodedName))
 
-                        navController.navigate(Screen.TeacherDetails.createRoute(teacher.id))
 
-                        println("kliknięto: ${teacher.name}")
                     },
                     onBackClick = {
                         navController.popBackStack()
@@ -104,16 +110,17 @@ fun AppNavHost(
 
             composable(
                 route = Screen.TeacherDetails.route,
-                arguments = listOf(navArgument("teacherId") {
-                    type = NavType.IntType
+                arguments = listOf(navArgument("teacherName") {
+                    type = NavType.StringType
                 }) // Mówimy, że spodziewamy się liczby całkowitej (Int)
             ) { backStackEntry ->
-                // Wyciągamy ID z linku (jeśli z jakiegoś powodu go nie ma, używamy 0)
-                val teacherId = backStackEntry.arguments?.getInt("teacherId") ?: 0
+                // 2. Wyciągamy "teacherName" jako String przy użyciu getString
+                val teacherName = backStackEntry.arguments?.getString("teacherName") ?: ""
+
 
                 TeacherDetailsScreen(
-                    viewModel = teacherViewModel,
-                    teacherId = teacherId,
+                    viewModel = scheduleSearchViewModel,
+                    teacherName = teacherName,
                     onBackClick = { navController.popBackStack() }
                 )
             }

@@ -22,21 +22,37 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-import com.example.cyfroweszkoly.data.model.Teacher
-import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
-
+//import com.example.cyfroweszkoly.data.model.Teacher
+//import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
+// zakomentowano stary import modelu Teacher
+// Importujemy enum z naszego nowego ViewModelu
+import com.example.cyfroweszkoly.viewmodel.SearchType
+import com.example.cyfroweszkoly.viewmodel.SearchAutocompleteViewModel
 
 @Composable
 fun FindTeacherScreen(
-    viewModel: TeacherViewModel,
-    onTeacherClick: (Teacher) -> Unit,
+    viewModel: SearchAutocompleteViewModel,
+    onTeacherClick: (String) -> Unit,
     onBackClick: () -> Unit
 ) {
 
-    println("🎨 UI: Rysuję ekran wyszukiwarki. Na liście mam ${viewModel.filteredTeachers.size} pozycji.")
+    //  Obserwujemy strumień podpowiedzi (to ten asStateFlow z ViewModelu!)
+    val suggestions by viewModel.suggestions.collectAsState()
+    // Lokalny stan dla wpisywanego tekstu (zastępuje stare viewModel.searchQuery)
+    var searchQuery by remember { mutableStateOf("") }
+
+    LaunchedEffect(Unit) {
+        viewModel.onSearchQueryChanged("", SearchType.TEACHER)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -50,8 +66,12 @@ fun FindTeacherScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         OutlinedTextField(
-            value = viewModel.searchQuery,
-            onValueChange = { viewModel.updateSearchQuery(it) },
+            value = searchQuery,
+            onValueChange = {   newValue ->
+                searchQuery = newValue
+                // Przekazujemy wpisaną literkę do ViewModelu, by przefiltrował lokalną listę
+                viewModel.onSearchQueryChanged(newValue, SearchType.TEACHER)
+            },
             modifier = Modifier.fillMaxWidth(),
             placeholder = { Text("Wpisz nazwisko lub przedmiot...") },
             leadingIcon = {
@@ -64,47 +84,26 @@ fun FindTeacherScreen(
         )
         Spacer(modifier = Modifier.height(16.dp))
 
-        if(viewModel.isLoading){
-            CircularProgressIndicator()
-        }else {
 
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(suggestions) { teacherName ->
+                // Wygląd pojedynczego wiersza z nauczycielem
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { onTeacherClick(teacherName) },
+                    elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+                ) {
+                    Column(modifier = Modifier.padding(16.dp)) {
+                        Text(text = teacherName, style = MaterialTheme.typography.titleMedium)
 
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                items(viewModel.filteredTeachers) { teacher ->
-                    // Wygląd pojedynczego wiersza z nauczycielem
-                    Card(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onTeacherClick(teacher) },
-                        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-                        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-                    ) {
-                        Column(modifier = Modifier.padding(16.dp)) {
-                            Text(text = teacher.name, style = MaterialTheme.typography.titleMedium)
-                            Text(
-                                text = teacher.subject,
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
                     }
                 }
             }
         }
     }
-
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun FindTeacherScreenPreview(){
-//    MaterialTheme {
-//        FindTeacherScreen(
-//            viewModel = TeacherViewModel(),
-//            onTeacherClick = {},
-//            onBackClick = {}
-//        )
-//    }
-//}

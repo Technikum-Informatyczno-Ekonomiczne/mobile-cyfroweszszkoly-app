@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -32,39 +31,56 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
+import com.example.cyfroweszkoly.viewmodel.ScheduleSearchViewModel
+import com.example.cyfroweszkoly.viewmodel.SearchType
+import androidx.compose.foundation.lazy.items
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TeacherDetailsScreen(
-    teacherId: Int,
-    viewModel: TeacherViewModel,
+    teacherName: String,
+    viewModel: ScheduleSearchViewModel,
     onBackClick: ()->Unit
 ){
 
-    val teacherName = viewModel.getTeacherName(teacherId)
+    // ZLECAMY POBRANIE DANYCH (Wykonuje się tylko raz przy starcie ekranu)
+    LaunchedEffect(teacherName) {
+        // Wywołujemy naszą uniwersalną metodę z ViewModelu
+        viewModel.searchSchedule(teacherName, SearchType.TEACHER)
+    }
+
+    //  NASŁUCHUJEMY WYNIKÓW
+    // To jest nasza płaska lista WSZYSTKICH lekcji tego nauczyciela z całego tygodnia
+    val allLessons by viewModel.searchResults.collectAsState()
     val daysOfWeek = listOf("Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek")
 
 
-    // 1. Pobieramy aktualny dzień tygodnia (1 = Poniedziałek, 7 = Niedziela)
+    //  Pobieramy aktualny dzień tygodnia (1 = Poniedziałek, 7 = Niedziela)
     val currentDay = java.time.LocalDate.now().dayOfWeek.value
-    // 2. Mapujemy na indeks Twojej listy (Pon-Pt to 0-4)
+    //  Mapujemy na indeks Twojej listy (Pon-Pt to 0-4)
     // Jeśli jest sobota (6) lub niedziela (7), ustawiamy domyślnie Poniedziałek (0)
     val initialIndex = if (currentDay <= 5) currentDay - 1 else 0
     // 3. Inicjalizujemy stan tym obliczonym indeksem
-    var selectedDayIndex by remember { mutableStateOf(initialIndex) }
+    var selectedDayIndex by remember { mutableIntStateOf(initialIndex) }
 
-    // Pobieramy plan lekcji dla tego nauczyciela na konkretny wybrany dzień
-    val dailySchedule = viewModel.getScheduleForTeacherAndDay(teacherId, daysOfWeek[selectedDayIndex])
+    // FILTRUJEMY LOKALNIE DLA WYBRANEJ ZAKŁADKI
+    // Zamiast pisać osobną funkcję w ViewModelu, po prostu wyłuskujemy
+    // z pobranej listy te lekcje, które pasują do klikniętego dnia.
+    val selectedDayName = daysOfWeek[selectedDayIndex]
+    val dailySchedule = allLessons
+        .filter { it.dayOfWeek == selectedDayName }
+        .sortedBy { it.lessonNumber } // Zapewniamy, że lekcje będą rosnąco od 1 do ...
 
     Scaffold(
         topBar = {

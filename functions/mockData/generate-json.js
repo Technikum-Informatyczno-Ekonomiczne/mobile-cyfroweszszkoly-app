@@ -21,21 +21,35 @@ const lessonSlots = [
   { number: 6, time: "15:25 - 16:10" },
 ];
 
+// Funkcja pomocnicza do tasowania tablic (klasyczny algorytm Fisher-Yates)
+function shuffle(array) {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
 function generateMockData() {
   const schedule = [];
 
   for (const day of days) {
     for (const slot of lessonSlots) {
-      // Dla każdej godziny losujemy 3 różne lekcje w różnych salach
-      for (let i = 0; i < 3; i++) {
-        const teacher = teachers[Math.floor(Math.random() * teachers.length)];
-        const className = classes[Math.floor(Math.random() * classes.length)];
-        const location = rooms[(Math.floor(Math.random() * rooms.length) + i) % rooms.length];
 
+      // KRYTYCZNA ZMIANA: Przed każdą lekcją tasujemy pełne listy zasobów
+      const availableTeachers = shuffle(teachers);
+      const availableClasses = shuffle(classes);
+      const availableRooms = shuffle(rooms);
+
+      // Pobieramy 3 równoległe lekcje na tę samą godzinę
+      // Ponieważ tablice są przetasowane i sięgamy po indeksy 0, 1 i 2,
+      // mamy 100% pewności, że nie wylosujemy duplikatu w tym slocie czasowym.
+      for (let i = 0; i < 3; i++) {
         schedule.push({
-          teacherName: teacher,
-          className: className,
-          location: location,
+          teacherName: availableTeachers[i],
+          className: availableClasses[i],
+          location: availableRooms[i],
           dayOfWeek: day,
           lessonNumber: slot.number,
           time: slot.time

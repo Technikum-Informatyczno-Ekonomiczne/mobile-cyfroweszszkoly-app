@@ -13,7 +13,7 @@ class ScheduleSearchViewModel: ViewModel() {
     private val db = FirebaseFirestore.getInstance()
 
     private val _searchResults = MutableStateFlow<List<ScheduleItem>>(emptyList())
-    val serachResults = _searchResults.asStateFlow()
+    val searchResults = _searchResults.asStateFlow()
 
     fun searchSchedule(query: String, type: SearchType){
         if(query.isBlank()) return

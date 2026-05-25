@@ -1,238 +1,222 @@
 [
   {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "3T TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Witold Kostuj",
+    "className": "1A LO",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1 TIE",
+    "location": "Sala 18",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "2B LO",
+    "location": "Sala 102",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
     "teacherName": "Jolanta Meller",
     "className": "3T TIE",
     "location": "Sala 214",
     "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1A LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "2B LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "1 TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
+  },
+  {
+    "teacherName": "Witold Kostuj",
+    "className": "3T TIE",
+    "location": "Sala 18",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
+  },
+  {
+    "teacherName": "Witold Kostuj",
+    "className": "2B LO",
+    "location": "Sala 102",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1A LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "3T TIE",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "3T TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "4INF",
+    "location": "Sala 18",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "1A LO",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "4INF",
+    "location": "Sala 204",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "3T TIE",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "4INF",
+    "location": "Sala 214",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Witold Kostuj",
+    "className": "3T TIE",
+    "location": "Sala 204",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "1 TIE",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "3T TIE",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1 TIE",
+    "location": "Sala 214",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "1A LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "4INF",
+    "location": "Sala 204",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "2B LO",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
+    "location": "Sala 214",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
   },
   {
     "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "2B LO",
-    "location": "Sala 115",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1A LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "1 TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "3T TIE",
-    "location": "Sala 18",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "1A LO",
-    "location": "Sala 18",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "3T TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
-    "location": "Sala 18",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "2B LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "1 TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "1 TIE",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "1A LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "1 TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "2B LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Witold Kostuj",
-    "className": "2B LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "4INF",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "1 TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "1A LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Witold Kostuj",
-    "className": "1 TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "1 TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Witold Kostuj",
-    "className": "4INF",
-    "location": "Sala 115",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "1A LO",
-    "location": "Sala 18",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "2B LO",
-    "location": "Sala 18",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Witold Kostuj",
-    "className": "4INF",
-    "location": "Sala 102",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "14:35 - 15:20"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
-    "location": "Sala 18",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "14:35 - 15:20"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "2B LO",
-    "location": "Sala 102",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "14:35 - 15:20"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "2B LO",
-    "location": "Sala 102",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "2B LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Poniedziałek",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Anna Nowak",
     "className": "4INF",
     "location": "Sala 102",
     "dayOfWeek": "Poniedziałek",
@@ -240,15 +224,39 @@
     "time": "15:25 - 16:10"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
+    "teacherName": "Adam Roman",
+    "className": "1 TIE",
+    "location": "Sala 115",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "15:25 - 16:10"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "1A LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Poniedziałek",
+    "lessonNumber": 6,
+    "time": "15:25 - 16:10"
+  },
+  {
+    "teacherName": "Witold Kostuj",
+    "className": "2B LO",
     "location": "Sala 18",
     "dayOfWeek": "Wtorek",
     "lessonNumber": 0,
     "time": "07:10 - 07:55"
   },
   {
-    "teacherName": "Ewa Barańska",
+    "teacherName": "Anna Nowak",
+    "className": "1A LO",
+    "location": "Sala 115",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
     "className": "1 TIE",
     "location": "Sala 204",
     "dayOfWeek": "Wtorek",
@@ -256,39 +264,31 @@
     "time": "07:10 - 07:55"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "2B LO",
+    "teacherName": "Jolanta Meller",
+    "className": "4INF",
     "location": "Sala 115",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "1 TIE",
-    "location": "Sala 214",
     "dayOfWeek": "Wtorek",
     "lessonNumber": 1,
     "time": "08:00 - 08:45"
   },
   {
     "teacherName": "Witold Kostuj",
-    "className": "1A LO",
+    "className": "3T TIE",
+    "location": "Sala 204",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "2B LO",
     "location": "Sala 214",
     "dayOfWeek": "Wtorek",
     "lessonNumber": 1,
     "time": "08:00 - 08:45"
   },
   {
-    "teacherName": "Piotr Bukowski",
-    "className": "3T TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
-  },
-  {
-    "teacherName": "Jolanta Meller",
+    "teacherName": "Jarosław Strzelecki",
     "className": "2B LO",
     "location": "Sala 214",
     "dayOfWeek": "Wtorek",
@@ -296,233 +296,217 @@
     "time": "08:55 - 09:40"
   },
   {
-    "teacherName": "Jolanta Meller",
-    "className": "1A LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "1A LO",
+    "teacherName": "Witold Kostuj",
+    "className": "1 TIE",
     "location": "Sala 102",
     "dayOfWeek": "Wtorek",
     "lessonNumber": 2,
     "time": "08:55 - 09:40"
   },
   {
-    "teacherName": "Piotr Bukowski",
-    "className": "4INF",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "2B LO",
-    "location": "Sala 115",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Witold Kostuj",
-    "className": "1A LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "4INF",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "4INF",
-    "location": "Sala 214",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "3T TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
     "teacherName": "Jolanta Meller",
     "className": "1A LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "1A LO",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "4INF",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "3T TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "2B LO",
-    "location": "Sala 115",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "4INF",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "4INF",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Witold Kostuj",
-    "className": "2B LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "3T TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
-    "location": "Sala 214",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "14:35 - 15:20"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1A LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "14:35 - 15:20"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "2B LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "14:35 - 15:20"
-  },
-  {
-    "teacherName": "Witold Kostuj",
-    "className": "2B LO",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "1A LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "1 TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Wtorek",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
     "location": "Sala 18",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "2B LO",
+    "location": "Sala 115",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "3T TIE",
+    "location": "Sala 204",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
   },
   {
     "teacherName": "Jarosław Strzelecki",
     "className": "1A LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1A LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
+    "location": "Sala 18",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "2B LO",
+    "location": "Sala 115",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Witold Kostuj",
+    "className": "1A LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "4INF",
+    "location": "Sala 115",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "2B LO",
+    "location": "Sala 102",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1A LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "2B LO",
+    "location": "Sala 214",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "1 TIE",
+    "location": "Sala 115",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "3T TIE",
+    "location": "Sala 214",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "1 TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "4INF",
+    "location": "Sala 204",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "4INF",
+    "location": "Sala 102",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1 TIE",
+    "location": "Sala 204",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "2B LO",
+    "location": "Sala 115",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1 TIE",
+    "location": "Sala 18",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "15:25 - 16:10"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "2B LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "15:25 - 16:10"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "3T TIE",
+    "location": "Sala 214",
+    "dayOfWeek": "Wtorek",
+    "lessonNumber": 6,
+    "time": "15:25 - 16:10"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
     "location": "Sala 214",
     "dayOfWeek": "Środa",
     "lessonNumber": 0,
     "time": "07:10 - 07:55"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "1 TIE",
+    "teacherName": "Witold Kostuj",
+    "className": "3T TIE",
     "location": "Sala 102",
     "dayOfWeek": "Środa",
     "lessonNumber": 0,
     "time": "07:10 - 07:55"
   },
   {
-    "teacherName": "Ewa Barańska",
-    "className": "4INF",
-    "location": "Sala 214",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "3T TIE",
-    "location": "Sala 18",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
-  },
-  {
     "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
+    "className": "2B LO",
     "location": "Sala 18",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1A LO",
+    "location": "Sala 115",
     "dayOfWeek": "Środa",
     "lessonNumber": 1,
     "time": "08:00 - 08:45"
@@ -530,18 +514,18 @@
   {
     "teacherName": "Jolanta Meller",
     "className": "2B LO",
-    "location": "Sala 18",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "1A LO",
     "location": "Sala 214",
     "dayOfWeek": "Środa",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1 TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
   },
   {
     "teacherName": "Piotr Bukowski",
@@ -552,120 +536,128 @@
     "time": "08:55 - 09:40"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "2B LO",
+    "teacherName": "Adam Roman",
+    "className": "3T TIE",
     "location": "Sala 214",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "1 TIE",
+    "location": "Sala 214",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "2B LO",
+    "location": "Sala 102",
     "dayOfWeek": "Środa",
     "lessonNumber": 3,
     "time": "09:50 - 10:35"
   },
   {
     "teacherName": "Witold Kostuj",
-    "className": "3T TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "4INF",
-    "location": "Sala 18",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
-    "location": "Sala 18",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "4INF",
-    "location": "Sala 115",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Jolanta Meller",
     "className": "1A LO",
     "location": "Sala 204",
     "dayOfWeek": "Środa",
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "3T TIE",
+    "location": "Sala 18",
+    "dayOfWeek": "Środa",
     "lessonNumber": 4,
     "time": "10:45 - 11:30"
   },
   {
-    "teacherName": "Anna Nowak",
+    "teacherName": "Piotr Bukowski",
     "className": "4INF",
+    "location": "Sala 204",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
+    "location": "Sala 214",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
+    "location": "Sala 204",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "3T TIE",
     "location": "Sala 115",
     "dayOfWeek": "Środa",
     "lessonNumber": 5,
     "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Witold Kostuj",
+    "className": "2B LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "4INF",
+    "location": "Sala 204",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
   },
   {
     "teacherName": "Jolanta Meller",
     "className": "2B LO",
-    "location": "Sala 204",
+    "location": "Sala 214",
     "dayOfWeek": "Środa",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "1A LO",
-    "location": "Sala 18",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
   },
   {
     "teacherName": "Ewa Barańska",
     "className": "1A LO",
-    "location": "Sala 18",
+    "location": "Sala 102",
     "dayOfWeek": "Środa",
     "lessonNumber": 6,
     "time": "12:45 - 13:30"
   },
   {
-    "teacherName": "Adam Roman",
+    "teacherName": "Witold Kostuj",
     "className": "4INF",
-    "location": "Sala 204",
+    "location": "Sala 214",
     "dayOfWeek": "Środa",
     "lessonNumber": 6,
-    "time": "12:45 - 13:30"
+    "time": "13:45 - 14:30"
   },
   {
-    "teacherName": "Jolanta Meller",
+    "teacherName": "Ewa Barańska",
     "className": "1A LO",
-    "location": "Sala 115",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "3T TIE",
-    "location": "Sala 214",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
-    "location": "Sala 214",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
     "location": "Sala 102",
     "dayOfWeek": "Środa",
     "lessonNumber": 6,
@@ -673,6 +665,22 @@
   },
   {
     "teacherName": "Anna Nowak",
+    "className": "1 TIE",
+    "location": "Sala 18",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "3T TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Środa",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Anna Nowak",
     "className": "4INF",
     "location": "Sala 18",
     "dayOfWeek": "Środa",
@@ -680,33 +688,33 @@
     "time": "14:35 - 15:20"
   },
   {
-    "teacherName": "Jolanta Meller",
-    "className": "4INF",
+    "teacherName": "Ewa Barańska",
+    "className": "1 TIE",
     "location": "Sala 115",
     "dayOfWeek": "Środa",
     "lessonNumber": 6,
     "time": "14:35 - 15:20"
   },
   {
-    "teacherName": "Adam Roman",
-    "className": "1 TIE",
-    "location": "Sala 18",
+    "teacherName": "Jolanta Meller",
+    "className": "3T TIE",
+    "location": "Sala 204",
     "dayOfWeek": "Środa",
     "lessonNumber": 6,
-    "time": "14:35 - 15:20"
+    "time": "15:25 - 16:10"
   },
   {
-    "teacherName": "Adam Roman",
-    "className": "1A LO",
+    "teacherName": "Anna Nowak",
+    "className": "4INF",
     "location": "Sala 102",
     "dayOfWeek": "Środa",
     "lessonNumber": 6,
     "time": "15:25 - 16:10"
   },
   {
-    "teacherName": "Jolanta Meller",
-    "className": "2B LO",
-    "location": "Sala 214",
+    "teacherName": "Piotr Bukowski",
+    "className": "1A LO",
+    "location": "Sala 115",
     "dayOfWeek": "Środa",
     "lessonNumber": 6,
     "time": "15:25 - 16:10"
@@ -715,30 +723,14 @@
     "teacherName": "Jarosław Strzelecki",
     "className": "2B LO",
     "location": "Sala 18",
-    "dayOfWeek": "Środa",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "2B LO",
-    "location": "Sala 204",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 0,
     "time": "07:10 - 07:55"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "1 TIE",
+    "teacherName": "Piotr Bukowski",
+    "className": "3T TIE",
     "location": "Sala 204",
-    "dayOfWeek": "Czwartek",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
-  },
-  {
-    "teacherName": "Anna Nowak",
-    "className": "4INF",
-    "location": "Sala 102",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 0,
     "time": "07:10 - 07:55"
@@ -748,13 +740,29 @@
     "className": "4INF",
     "location": "Sala 102",
     "dayOfWeek": "Czwartek",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Ewa Barańska",
+    "className": "2B LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Czwartek",
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "1A LO",
+    "location": "Sala 102",
+    "dayOfWeek": "Czwartek",
     "lessonNumber": 1,
     "time": "08:00 - 08:45"
   },
   {
     "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
-    "location": "Sala 102",
+    "className": "4INF",
+    "location": "Sala 214",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 1,
     "time": "08:00 - 08:45"
@@ -762,119 +770,103 @@
   {
     "teacherName": "Ewa Barańska",
     "className": "1A LO",
-    "location": "Sala 204",
+    "location": "Sala 18",
     "dayOfWeek": "Czwartek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
   },
   {
-    "teacherName": "Piotr Bukowski",
-    "className": "1A LO",
-    "location": "Sala 214",
+    "teacherName": "Jolanta Meller",
+    "className": "4INF",
+    "location": "Sala 115",
+    "dayOfWeek": "Czwartek",
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
+  },
+  {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1 TIE",
+    "location": "Sala 102",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 2,
     "time": "08:55 - 09:40"
   },
   {
     "teacherName": "Adam Roman",
-    "className": "3T TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Czwartek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "3T TIE",
+    "className": "1A LO",
     "location": "Sala 214",
     "dayOfWeek": "Czwartek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Ewa Barańska",
-    "className": "1A LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Czwartek",
     "lessonNumber": 3,
     "time": "09:50 - 10:35"
   },
   {
-    "teacherName": "Jolanta Meller",
+    "teacherName": "Jarosław Strzelecki",
     "className": "1 TIE",
-    "location": "Sala 204",
+    "location": "Sala 115",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 3,
     "time": "09:50 - 10:35"
   },
   {
-    "teacherName": "Piotr Bukowski",
-    "className": "4INF",
-    "location": "Sala 204",
+    "teacherName": "Anna Nowak",
+    "className": "2B LO",
+    "location": "Sala 102",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 3,
     "time": "09:50 - 10:35"
   },
   {
     "teacherName": "Witold Kostuj",
-    "className": "1 TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Czwartek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Czwartek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
-  },
-  {
-    "teacherName": "Adam Roman",
     "className": "2B LO",
+    "location": "Sala 102",
+    "dayOfWeek": "Czwartek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1A LO",
+    "location": "Sala 214",
+    "dayOfWeek": "Czwartek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "4INF",
     "location": "Sala 115",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 4,
     "time": "10:45 - 11:30"
   },
   {
-    "teacherName": "Ewa Barańska",
-    "className": "3T TIE",
-    "location": "Sala 204",
+    "teacherName": "Anna Nowak",
+    "className": "1 TIE",
+    "location": "Sala 115",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 5,
     "time": "11:45 - 12:30"
   },
   {
-    "teacherName": "Anna Nowak",
-    "className": "1 TIE",
+    "teacherName": "Jolanta Meller",
+    "className": "4INF",
     "location": "Sala 18",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 5,
     "time": "11:45 - 12:30"
   },
   {
-    "teacherName": "Jolanta Meller",
-    "className": "4INF",
-    "location": "Sala 204",
+    "teacherName": "Witold Kostuj",
+    "className": "3T TIE",
+    "location": "Sala 214",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 5,
     "time": "11:45 - 12:30"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
+    "teacherName": "Ewa Barańska",
+    "className": "4INF",
     "location": "Sala 204",
-    "dayOfWeek": "Czwartek",
-    "lessonNumber": 6,
-    "time": "12:45 - 13:30"
-  },
-  {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "1A LO",
-    "location": "Sala 115",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "12:45 - 13:30"
@@ -882,31 +874,39 @@
   {
     "teacherName": "Jarosław Strzelecki",
     "className": "1 TIE",
-    "location": "Sala 115",
+    "location": "Sala 102",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "12:45 - 13:30"
   },
   {
-    "teacherName": "Adam Roman",
+    "teacherName": "Jolanta Meller",
     "className": "3T TIE",
-    "location": "Sala 204",
+    "location": "Sala 214",
+    "dayOfWeek": "Czwartek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1A LO",
+    "location": "Sala 115",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "13:45 - 14:30"
   },
   {
-    "teacherName": "Anna Nowak",
-    "className": "1A LO",
+    "teacherName": "Piotr Bukowski",
+    "className": "4INF",
     "location": "Sala 102",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "13:45 - 14:30"
   },
   {
-    "teacherName": "Anna Nowak",
-    "className": "4INF",
-    "location": "Sala 204",
+    "teacherName": "Witold Kostuj",
+    "className": "3T TIE",
+    "location": "Sala 214",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "13:45 - 14:30"
@@ -920,20 +920,28 @@
     "time": "14:35 - 15:20"
   },
   {
-    "teacherName": "Ewa Barańska",
-    "className": "1A LO",
-    "location": "Sala 115",
+    "teacherName": "Anna Nowak",
+    "className": "3T TIE",
+    "location": "Sala 204",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "14:35 - 15:20"
   },
   {
     "teacherName": "Jarosław Strzelecki",
-    "className": "1 TIE",
-    "location": "Sala 204",
+    "className": "1A LO",
+    "location": "Sala 214",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1 TIE",
+    "location": "Sala 214",
+    "dayOfWeek": "Czwartek",
+    "lessonNumber": 6,
+    "time": "15:25 - 16:10"
   },
   {
     "teacherName": "Piotr Bukowski",
@@ -944,112 +952,96 @@
     "time": "15:25 - 16:10"
   },
   {
-    "teacherName": "Jolanta Meller",
-    "className": "2B LO",
-    "location": "Sala 204",
-    "dayOfWeek": "Czwartek",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "2B LO",
-    "location": "Sala 214",
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1A LO",
+    "location": "Sala 18",
     "dayOfWeek": "Czwartek",
     "lessonNumber": 6,
     "time": "15:25 - 16:10"
   },
   {
     "teacherName": "Adam Roman",
-    "className": "2B LO",
+    "className": "1A LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "3T TIE",
     "location": "Sala 18",
     "dayOfWeek": "Piątek",
     "lessonNumber": 0,
     "time": "07:10 - 07:55"
   },
   {
-    "teacherName": "Jolanta Meller",
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1 TIE",
+    "location": "Sala 102",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 0,
+    "time": "07:10 - 07:55"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
     "className": "1A LO",
+    "location": "Sala 214",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "2B LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "3T TIE",
     "location": "Sala 204",
     "dayOfWeek": "Piątek",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
+    "lessonNumber": 1,
+    "time": "08:00 - 08:45"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "4INF",
-    "location": "Sala 214",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 0,
-    "time": "07:10 - 07:55"
-  },
-  {
-    "teacherName": "Jarosław Strzelecki",
+    "teacherName": "Anna Nowak",
     "className": "1A LO",
     "location": "Sala 18",
     "dayOfWeek": "Piątek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
   },
   {
-    "teacherName": "Witold Kostuj",
-    "className": "3T TIE",
-    "location": "Sala 18",
+    "teacherName": "Jarosław Strzelecki",
+    "className": "2B LO",
+    "location": "Sala 102",
     "dayOfWeek": "Piątek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
+    "lessonNumber": 2,
+    "time": "08:55 - 09:40"
   },
   {
-    "teacherName": "Adam Roman",
+    "teacherName": "Jolanta Meller",
     "className": "4INF",
-    "location": "Sala 214",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 1,
-    "time": "08:00 - 08:45"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "1 TIE",
     "location": "Sala 115",
     "dayOfWeek": "Piątek",
     "lessonNumber": 2,
     "time": "08:55 - 09:40"
   },
   {
-    "teacherName": "Anna Nowak",
-    "className": "1A LO",
-    "location": "Sala 102",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
-    "location": "Sala 102",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 2,
-    "time": "08:55 - 09:40"
-  },
-  {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "1A LO",
-    "location": "Sala 214",
+    "teacherName": "Jolanta Meller",
+    "className": "1 TIE",
+    "location": "Sala 204",
     "dayOfWeek": "Piątek",
     "lessonNumber": 3,
     "time": "09:50 - 10:35"
   },
   {
     "teacherName": "Witold Kostuj",
-    "className": "1A LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 3,
-    "time": "09:50 - 10:35"
-  },
-  {
-    "teacherName": "Jolanta Meller",
-    "className": "1 TIE",
+    "className": "2B LO",
     "location": "Sala 18",
     "dayOfWeek": "Piątek",
     "lessonNumber": 3,
@@ -1057,79 +1049,103 @@
   },
   {
     "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
-    "location": "Sala 115",
+    "className": "4INF",
+    "location": "Sala 214",
     "dayOfWeek": "Piątek",
-    "lessonNumber": 4,
-    "time": "10:45 - 11:30"
+    "lessonNumber": 3,
+    "time": "09:50 - 10:35"
   },
   {
     "teacherName": "Anna Nowak",
-    "className": "1A LO",
+    "className": "4INF",
     "location": "Sala 102",
     "dayOfWeek": "Piątek",
     "lessonNumber": 4,
     "time": "10:45 - 11:30"
   },
   {
-    "teacherName": "Jolanta Meller",
-    "className": "1A LO",
-    "location": "Sala 18",
+    "teacherName": "Adam Roman",
+    "className": "3T TIE",
+    "location": "Sala 204",
     "dayOfWeek": "Piątek",
     "lessonNumber": 4,
     "time": "10:45 - 11:30"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "3T TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "3T TIE",
-    "location": "Sala 204",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 5,
-    "time": "11:45 - 12:30"
-  },
-  {
-    "teacherName": "Adam Roman",
+    "teacherName": "Piotr Bukowski",
     "className": "1A LO",
-    "location": "Sala 115",
+    "location": "Sala 214",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 4,
+    "time": "10:45 - 11:30"
+  },
+  {
+    "teacherName": "Jolanta Meller",
+    "className": "1 TIE",
+    "location": "Sala 214",
     "dayOfWeek": "Piątek",
     "lessonNumber": 5,
     "time": "11:45 - 12:30"
   },
   {
-    "teacherName": "Jarosław Strzelecki",
-    "className": "1A LO",
+    "teacherName": "Witold Kostuj",
+    "className": "2B LO",
     "location": "Sala 18",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "4INF",
+    "location": "Sala 102",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 5,
+    "time": "11:45 - 12:30"
+  },
+  {
+    "teacherName": "Adam Roman",
+    "className": "1 TIE",
+    "location": "Sala 115",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
     "time": "12:45 - 13:30"
   },
   {
     "teacherName": "Anna Nowak",
-    "className": "1 TIE",
-    "location": "Sala 214",
+    "className": "2B LO",
+    "location": "Sala 18",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 6,
+    "time": "12:45 - 13:30"
+  },
+  {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "3T TIE",
+    "location": "Sala 204",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
     "time": "12:45 - 13:30"
   },
   {
     "teacherName": "Jolanta Meller",
-    "className": "3T TIE",
+    "className": "4INF",
     "location": "Sala 115",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
-    "time": "12:45 - 13:30"
+    "time": "13:45 - 14:30"
   },
   {
-    "teacherName": "Ewa Barańska",
-    "className": "4INF",
+    "teacherName": "Witold Kostuj",
+    "className": "2B LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 6,
+    "time": "13:45 - 14:30"
+  },
+  {
+    "teacherName": "Jarosław Strzelecki",
+    "className": "1 TIE",
     "location": "Sala 18",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
@@ -1137,24 +1153,8 @@
   },
   {
     "teacherName": "Piotr Bukowski",
-    "className": "4INF",
-    "location": "Sala 204",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Witold Kostuj",
     "className": "3T TIE",
-    "location": "Sala 18",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 6,
-    "time": "13:45 - 14:30"
-  },
-  {
-    "teacherName": "Piotr Bukowski",
-    "className": "1 TIE",
-    "location": "Sala 102",
+    "location": "Sala 115",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
     "time": "14:35 - 15:20"
@@ -1162,38 +1162,38 @@
   {
     "teacherName": "Witold Kostuj",
     "className": "2B LO",
-    "location": "Sala 18",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 6,
-    "time": "14:35 - 15:20"
-  },
-  {
-    "teacherName": "Adam Roman",
-    "className": "2B LO",
-    "location": "Sala 204",
+    "location": "Sala 214",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
     "time": "14:35 - 15:20"
   },
   {
     "teacherName": "Jarosław Strzelecki",
-    "className": "2B LO",
-    "location": "Sala 214",
-    "dayOfWeek": "Piątek",
-    "lessonNumber": 6,
-    "time": "15:25 - 16:10"
-  },
-  {
-    "teacherName": "Ewa Barańska",
     "className": "4INF",
     "location": "Sala 18",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 6,
+    "time": "14:35 - 15:20"
+  },
+  {
+    "teacherName": "Piotr Bukowski",
+    "className": "3T TIE",
+    "location": "Sala 115",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
     "time": "15:25 - 16:10"
   },
   {
     "teacherName": "Adam Roman",
-    "className": "3T TIE",
+    "className": "2B LO",
+    "location": "Sala 204",
+    "dayOfWeek": "Piątek",
+    "lessonNumber": 6,
+    "time": "15:25 - 16:10"
+  },
+  {
+    "teacherName": "Anna Nowak",
+    "className": "1 TIE",
     "location": "Sala 102",
     "dayOfWeek": "Piątek",
     "lessonNumber": 6,
