@@ -15,7 +15,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class ChatViewModel: ViewModel() {
-
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading = _isLoading.asStateFlow()
     //lista obserwowalna przez Compose
     private val _messages = MutableStateFlow<List<ChatMessageModel>>(
         emptyList()
@@ -30,12 +31,15 @@ class ChatViewModel: ViewModel() {
         _messages.value = listOf(
             ChatMessageModel(
                 text="Cześć! Jestem wirtualnym asystem Cyfrowych Szkół. " +
-                        "W czym mogę Ci dzisiaj pomóc?",
+                        "Zadawaj proste i konkretne pytanie na tematy związane z Cyfrowymi Szkołami," +
+                        "a na pewno Ci pomogę \uD83D\uDE00",
                 isUser = false)
         )
     }
 
     fun sendMessage(userText: String){
+        _isLoading.value = true // Pokaż animację ładowania
+
         if(userText.isBlank()) return
 
         // Dodajemy wiadomość użytkownika do strumienia
@@ -77,13 +81,25 @@ class ChatViewModel: ViewModel() {
 
             }catch (e: Exception){
                 e.printStackTrace()
-                //Dodajemy komunikat o błędzie do strumienia
+                // Sprawdzamy, skąd pochodzi błąd
+                val errorText = if (e is com.google.firebase.functions.FirebaseFunctionsException) {
+                    // Błędy z naszej chmury Firebase (w tym nasze polskie komunikaty HttpsError)
+                    e.message
+                } else {
+                    // Błędy lokalne urządzenia (np. brak WiFi/LTE, problem z siecią)
+                    "Brak połączenia z siecią. Sprawdź dostęp do internetu i spróbuj ponownie."
+                }
+
+                // Dodajemy wyczyszczony komunikat do strumienia
                 _messages.update {
                     it + ChatMessageModel(
-                        text = "${e.message}",
+                        text = "$errorText",
                         isUser = false
                     )
                 }
+
+            } finally {
+                _isLoading.value = false // Ukryj animację ładowania
             }
 
         }

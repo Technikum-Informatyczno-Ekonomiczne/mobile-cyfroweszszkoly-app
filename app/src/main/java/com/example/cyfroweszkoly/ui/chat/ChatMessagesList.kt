@@ -27,6 +27,8 @@ fun ChatMessagesList(
     val messageList by messages.collectAsState()
     // Tworzymy "pilota" do sterowania naszą listą
     val listState = rememberLazyListState()
+    // Pobierasz stan ładowania z ViewModelu
+    val isLoading by viewModel.isLoading.collectAsState()
 
     //Mówimy: "Za każdym razem, gdy zmieni się ROZMIAR listy
     // (messageList.size)..."
@@ -53,6 +55,13 @@ fun ChatMessagesList(
                 }
 
             )
+        }
+
+        // 2. Jeśli trwa ładowanie, dorzuć na sam dół nasz nowy dymek
+        if (isLoading) {
+            item {
+                ChatLoadingBubble()
+            }
         }
     }
 }
