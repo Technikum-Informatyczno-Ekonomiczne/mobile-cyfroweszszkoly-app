@@ -26,6 +26,7 @@ class ScheduleSearchViewModel: ViewModel() {
 
 
         db.collection("schedules-mock")
+            .whereEqualTo(fieldName, query)
             .get()
             .addOnSuccessListener { documents ->
                 val results = documents.map{ doc ->

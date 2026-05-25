@@ -16,9 +16,9 @@ const lessonSlots = [
   { number: 4, time: "10:45 - 11:30" },
   { number: 5, time: "11:45 - 12:30" },
   { number: 6, time: "12:45 - 13:30" },
-  { number: 6, time: "13:45 - 14:30" },
-  { number: 6, time: "14:35 - 15:20" },
-  { number: 6, time: "15:25 - 16:10" },
+  { number: 7, time: "13:45 - 14:30" },
+  { number: 8, time: "14:35 - 15:20" },
+  { number: 9, time: "15:25 - 16:10" },
 ];
 
 // Funkcja pomocnicza do tasowania tablic (klasyczny algorytm Fisher-Yates)
