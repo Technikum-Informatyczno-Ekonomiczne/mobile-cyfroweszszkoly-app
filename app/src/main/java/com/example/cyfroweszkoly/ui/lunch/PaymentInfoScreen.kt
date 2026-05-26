@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.ui.launch
+package com.example.cyfroweszkoly.ui.lunch
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
@@ -7,8 +7,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.cyfroweszkoly.ui.launch.PaymentInfoCard
-import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

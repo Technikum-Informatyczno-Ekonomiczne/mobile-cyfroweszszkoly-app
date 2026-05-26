@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.viewmodel
+package com.example.cyfroweszkoly.ui.news
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

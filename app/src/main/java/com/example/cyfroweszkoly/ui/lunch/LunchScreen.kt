@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.ui.launch
+package com.example.cyfroweszkoly.ui.lunch
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -13,7 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.cyfroweszkoly.data.model.DailyMenu
 import com.example.cyfroweszkoly.data.model.MealCourse
-import com.example.cyfroweszkoly.viewmodel.LunchViewModel
+import com.example.cyfroweszkoly.ui.lunch.LunchViewModel
 @Composable
 fun LunchScreen(
     viewModel: LunchViewModel,

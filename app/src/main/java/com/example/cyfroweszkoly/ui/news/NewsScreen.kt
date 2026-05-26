@@ -40,8 +40,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.cyfroweszkoly.data.model.WpPost // Upewnij się, że ten import prowadzi do Twojej klasy WpPost!
-import com.example.cyfroweszkoly.viewmodel.NewsUiState
-import com.example.cyfroweszkoly.viewmodel.NewsViewModel
 
 @Composable
 fun NewsScreen(

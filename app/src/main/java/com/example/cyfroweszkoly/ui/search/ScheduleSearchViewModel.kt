@@ -1,9 +1,8 @@
-package com.example.cyfroweszkoly.viewmodel
+package com.example.cyfroweszkoly.ui.search
 
 import androidx.lifecycle.ViewModel
 import com.example.cyfroweszkoly.data.model.ScheduleItem
 import com.example.cyfroweszkoly.data.repository.ScheduleRepository
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 

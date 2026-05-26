@@ -1,11 +1,11 @@
-package com.example.cyfroweszkoly.viewmodel
+package com.example.cyfroweszkoly.ui.history
 
 import android.app.Application
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
-import com.example.cyfroweszkoly.data.repository.HistoryRepository
 import com.example.cyfroweszkoly.data.model.HistoryItem
+import com.example.cyfroweszkoly.data.repository.HistoryRepository
 
 class HistoryViewModel(application: Application): AndroidViewModel(application) {
 

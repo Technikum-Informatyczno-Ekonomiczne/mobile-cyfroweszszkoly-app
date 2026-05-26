@@ -35,8 +35,7 @@ import androidx.compose.ui.unit.dp
 //import com.example.cyfroweszkoly.viewmodel.TeacherViewModel
 // zakomentowano stary import modelu Teacher
 // Importujemy enum z naszego nowego ViewModelu
-import com.example.cyfroweszkoly.viewmodel.SearchType
-import com.example.cyfroweszkoly.viewmodel.SearchAutocompleteViewModel
+import com.example.cyfroweszkoly.ui.search.SearchAutocompleteViewModel
 
 @Composable
 fun GlobalSearchScreen(

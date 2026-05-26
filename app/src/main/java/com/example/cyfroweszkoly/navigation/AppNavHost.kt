@@ -21,19 +21,19 @@ import com.example.cyfroweszkoly.ui.chat.ChatScreen
 import com.example.cyfroweszkoly.ui.search.GlobalSearchScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
-import com.example.cyfroweszkoly.ui.launch.LunchScreen
-import com.example.cyfroweszkoly.ui.launch.PaymentInfoScreen
+import com.example.cyfroweszkoly.ui.lunch.LunchScreen
+import com.example.cyfroweszkoly.ui.lunch.PaymentInfoScreen
 import com.example.cyfroweszkoly.ui.news.NewsScreen
 import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
 import com.example.cyfroweszkoly.ui.search.ScheduleDetailsScreen
-import com.example.cyfroweszkoly.viewmodel.ChatViewModel
-import com.example.cyfroweszkoly.viewmodel.LunchViewModel
-import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
-import com.example.cyfroweszkoly.viewmodel.ScheduleSearchViewModel
-import com.example.cyfroweszkoly.viewmodel.SearchAutocompleteViewModel
-import com.example.cyfroweszkoly.viewmodel.SearchType
+import com.example.cyfroweszkoly.ui.chat.ChatViewModel
+import com.example.cyfroweszkoly.ui.lunch.LunchViewModel
+import com.example.cyfroweszkoly.ui.lunch.PaymentViewModel
+import com.example.cyfroweszkoly.ui.search.ScheduleSearchViewModel
+import com.example.cyfroweszkoly.ui.search.SearchAutocompleteViewModel
+import com.example.cyfroweszkoly.ui.search.SearchType
 
 
 @Composable

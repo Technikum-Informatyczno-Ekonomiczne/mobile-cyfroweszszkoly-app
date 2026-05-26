@@ -13,7 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.cyfroweszkoly.data.model.ChatMessageModel
-import com.example.cyfroweszkoly.viewmodel.ChatViewModel
+import com.example.cyfroweszkoly.ui.chat.ChatViewModel
 import kotlinx.coroutines.flow.StateFlow
 
 @Composable

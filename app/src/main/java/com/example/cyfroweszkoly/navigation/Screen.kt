@@ -1,6 +1,6 @@
 package com.example.cyfroweszkoly.navigation
 
-import com.example.cyfroweszkoly.viewmodel.SearchType
+import com.example.cyfroweszkoly.ui.search.SearchType
 
 sealed class Screen(val route: String) {
     object Home : Screen("home")

@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.viewmodel
+package com.example.cyfroweszkoly.ui.lunch
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

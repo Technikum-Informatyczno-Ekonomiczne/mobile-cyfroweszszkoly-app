@@ -1,11 +1,11 @@
-package com.example.cyfroweszkoly.viewmodel
+package com.example.cyfroweszkoly.ui.chat
 
-import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cyfroweszkoly.data.model.ChatMessageModel
 import com.google.firebase.Firebase
 import com.google.firebase.functions.FirebaseFunctions
+import com.google.firebase.functions.FirebaseFunctionsException
 import com.google.firebase.functions.functions
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlin.collections.plus
 
 class ChatViewModel: ViewModel() {
     private val _isLoading = MutableStateFlow(false)
@@ -30,10 +31,11 @@ class ChatViewModel: ViewModel() {
     init{
         _messages.value = listOf(
             ChatMessageModel(
-                text="Cześć! Jestem wirtualnym asystem Cyfrowych Szkół. " +
+                text = "Cześć! Jestem wirtualnym asystem Cyfrowych Szkół. " +
                         "Zadawaj proste i konkretne pytanie na tematy związane z Cyfrowymi Szkołami," +
                         "a na pewno Ci pomogę \uD83D\uDE00",
-                isUser = false)
+                isUser = false
+            )
         )
     }
 
@@ -74,7 +76,8 @@ class ChatViewModel: ViewModel() {
                     _messages.update {
                         it + ChatMessageModel(
                             text = "Otrzymałem pustą odpowiedź z serwera",
-                            isUser = false)
+                            isUser = false
+                        )
                     }
                 }
 
@@ -82,7 +85,7 @@ class ChatViewModel: ViewModel() {
             }catch (e: Exception){
                 e.printStackTrace()
                 // Sprawdzamy, skąd pochodzi błąd
-                val errorText = if (e is com.google.firebase.functions.FirebaseFunctionsException) {
+                val errorText = if (e is FirebaseFunctionsException) {
                     // Błędy z naszej chmury Firebase (w tym nasze polskie komunikaty HttpsError)
                     e.message
                 } else {

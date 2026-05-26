@@ -3,11 +3,9 @@ package com.example.cyfroweszkoly.data.repository
 import android.util.Log
 import com.example.cyfroweszkoly.data.model.ScheduleItem
 import com.example.cyfroweszkoly.data.model.SchoolMetadata
-import com.example.cyfroweszkoly.viewmodel.SearchType
+import com.example.cyfroweszkoly.ui.search.SearchType
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
-import com.google.firebase.firestore.toObject
-import kotlin.math.exp
 
 class ScheduleRepository {
 
