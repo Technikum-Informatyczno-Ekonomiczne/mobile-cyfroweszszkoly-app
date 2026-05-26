@@ -196,7 +196,7 @@ fun MainScreen(){
                         }
 
                         IconButton(onClick = {
-                            navController.navigate(Screen.FindTeacher.route)
+                            navController.navigate(Screen.GlobalSearch.route)
                         }){
                             Icon(
                                 imageVector = Icons.Outlined.PersonSearch,

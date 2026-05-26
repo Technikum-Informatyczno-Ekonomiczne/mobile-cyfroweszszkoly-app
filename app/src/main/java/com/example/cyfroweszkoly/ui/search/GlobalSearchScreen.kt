@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.ui.find_teacher
+package com.example.cyfroweszkoly.ui.search
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,10 +14,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.PrimaryTabRow
+import androidx.compose.material3.Tab
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,9 +39,9 @@ import com.example.cyfroweszkoly.viewmodel.SearchType
 import com.example.cyfroweszkoly.viewmodel.SearchAutocompleteViewModel
 
 @Composable
-fun FindTeacherScreen(
+fun GlobalSearchScreen(
     viewModel: SearchAutocompleteViewModel,
-    onTeacherClick: (String) -> Unit,
+    onResultClick: (String, SearchType) -> Unit,
     onBackClick: () -> Unit
 ) {
 
@@ -49,8 +50,11 @@ fun FindTeacherScreen(
     // Lokalny stan dla wpisywanego tekstu (zastępuje stare viewModel.searchQuery)
     var searchQuery by remember { mutableStateOf("") }
 
-    LaunchedEffect(Unit) {
-        viewModel.onSearchQueryChanged("", SearchType.TEACHER)
+    // Dodajemy lokalny stan dla wybranego trybu (domyślnie Nauczyciel)
+    var currentSearchType by remember { mutableStateOf(SearchType.TEACHER) }
+
+    LaunchedEffect(currentSearchType) {
+        viewModel.onSearchQueryChanged(query="", type=currentSearchType)
     }
 
     Column(
@@ -59,9 +63,35 @@ fun FindTeacherScreen(
             .padding(16.dp)
     ) {
         Text(
-            text = "Kogo szukasz",
+            text = "Czego szukasz",
             style = MaterialTheme.typography.headlineMedium
         )
+
+        // pasek zakładek (Tab) do wyboru, czego szukamy
+        // Jawnie tłumaczymy stan na pozycję zakładki na ekranie
+        val selectedTabIndex = when (currentSearchType) {
+            SearchType.TEACHER -> 0
+            SearchType.CLASS -> 1
+            SearchType.ROOM -> 2
+        }
+        PrimaryTabRow(selectedTabIndex = selectedTabIndex)
+        {
+            Tab(
+                selected = currentSearchType == SearchType.TEACHER,
+                onClick = {currentSearchType = SearchType.TEACHER},
+                text = {Text("Nauczyciele")}
+            )
+            Tab(
+                selected = currentSearchType == SearchType.CLASS,
+                onClick = {currentSearchType = SearchType.CLASS},
+                text = {Text("Klasy")}
+            )
+            Tab(
+                selected = currentSearchType == SearchType.ROOM,
+                onClick = {currentSearchType = SearchType.ROOM},
+                text = {Text("Sale")}
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -70,10 +100,16 @@ fun FindTeacherScreen(
             onValueChange = {   newValue ->
                 searchQuery = newValue
                 // Przekazujemy wpisaną literkę do ViewModelu, by przefiltrował lokalną listę
-                viewModel.onSearchQueryChanged(newValue, SearchType.TEACHER)
+                viewModel.onSearchQueryChanged(query=newValue, type=currentSearchType)
             },
             modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text("Wpisz nazwisko lub przedmiot...") },
+            placeholder = {
+                val hint = when(currentSearchType){
+                    SearchType.TEACHER -> "Wpisz nazwisko..."
+                    SearchType.CLASS -> "Wpisz nazwę klasy (np. 1 TIE)"
+                    SearchType.ROOM -> "Wpisz numer sali"
+                }
+                Text(hint) },
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Outlined.Search,
@@ -89,17 +125,20 @@ fun FindTeacherScreen(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(suggestions) { teacherName ->
+            items(suggestions) { result ->
                 // Wygląd pojedynczego wiersza z nauczycielem
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { onTeacherClick(teacherName) },
+                        .clickable {
+                            // przekazujemy wyżej nazwę, ale też i typ
+                            // aby NavHost wiedział, o co potem zapytac bazę
+                            onResultClick(result, currentSearchType) },
                     elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
                 ) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(text = teacherName, style = MaterialTheme.typography.titleMedium)
+                        Text(text = result, style = MaterialTheme.typography.titleMedium)
 
                     }
                 }

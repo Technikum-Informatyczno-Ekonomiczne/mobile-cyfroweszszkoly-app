@@ -1,15 +1,17 @@
 package com.example.cyfroweszkoly.navigation
 
+import com.example.cyfroweszkoly.viewmodel.SearchType
+
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Primary : Screen("primary")
     object High : Screen("high")
     object Tech : Screen("tech")
 
-    object FindTeacher : Screen("find_teacher")
+    object GlobalSearch : Screen("global_search")
 
-    object TeacherDetails: Screen("teacher_details/{teacherName}") {
-        fun createRoute(teacherName: String) = "teacher_details/$teacherName"
+    object ScheduleDetails: Screen("schedule_details/{query}/{type}"){
+        fun createRoute(query: String, type: SearchType): String = "schedule_details/$query/${type.name}"
     }
     object Launch: Screen("launch")
     object LaunchPayments: Screen("lunch_payments")

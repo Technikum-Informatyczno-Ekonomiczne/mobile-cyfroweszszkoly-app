@@ -1,6 +1,6 @@
 package com.example.cyfroweszkoly.viewmodel
 
-import android.util.Log
+
 import androidx.lifecycle.ViewModel
 import com.example.cyfroweszkoly.data.model.SchoolMetadata
 import com.google.firebase.firestore.FirebaseFirestore

@@ -18,7 +18,7 @@ import com.example.cyfroweszkoly.ui.about.application.AboutApplicationScreen
 import com.example.cyfroweszkoly.ui.about.us.AboutUsScreen
 import com.example.cyfroweszkoly.ui.achievements.AchievementsScreen
 import com.example.cyfroweszkoly.ui.chat.ChatScreen
-import com.example.cyfroweszkoly.ui.find_teacher.FindTeacherScreen
+import com.example.cyfroweszkoly.ui.search.GlobalSearchScreen
 import com.example.cyfroweszkoly.ui.history.HistoryScreen
 import com.example.cyfroweszkoly.ui.history.HomeScreen
 import com.example.cyfroweszkoly.ui.launch.LunchScreen
@@ -27,12 +27,13 @@ import com.example.cyfroweszkoly.ui.news.NewsScreen
 import com.example.cyfroweszkoly.ui.schools.HighSchoolScreen
 import com.example.cyfroweszkoly.ui.schools.PrimarySchoolScreen
 import com.example.cyfroweszkoly.ui.schools.TechSchoolScreen
-import com.example.cyfroweszkoly.ui.teacher_details_screen.TeacherDetailsScreen
+import com.example.cyfroweszkoly.ui.search.ScheduleDetailsScreen
 import com.example.cyfroweszkoly.viewmodel.ChatViewModel
 import com.example.cyfroweszkoly.viewmodel.LunchViewModel
 import com.example.cyfroweszkoly.viewmodel.PaymentViewModel
 import com.example.cyfroweszkoly.viewmodel.ScheduleSearchViewModel
 import com.example.cyfroweszkoly.viewmodel.SearchAutocompleteViewModel
+import com.example.cyfroweszkoly.viewmodel.SearchType
 
 
 @Composable
@@ -89,16 +90,21 @@ fun AppNavHost(
                 AboutUsScreen(navController)
             }
 
-            composable(route = Screen.FindTeacher.route) {
+            composable(route = Screen.GlobalSearch.route) {
 
-                FindTeacherScreen(
+                GlobalSearchScreen(
                     viewModel = searchAutocompleteViewModel,
-                    onTeacherClick = { teacherName ->
+                    onResultClick = { result, searchType ->
                         // Ponieważ imiona i nazwiska mają spacje (np. "Anna Nowak"),
                         // dobrą praktyką w Androidzie jest ich zakodowanie przed wrzuceniem do URL-a
-                        val encodedName = Uri.encode(teacherName)
-                        println("kliknięto: $encodedName")
-                        navController.navigate(Screen.TeacherDetails.createRoute(encodedName))
+                        val encodedResult = Uri.encode(result)
+                        println("kliknięto: $encodedResult")
+                        navController.navigate(
+                            route=Screen.ScheduleDetails.createRoute(
+                                query=encodedResult,
+                                type = searchType
+                            )
+                        )
 
 
                     },
@@ -109,18 +115,22 @@ fun AppNavHost(
             }
 
             composable(
-                route = Screen.TeacherDetails.route,
-                arguments = listOf(navArgument("teacherName") {
-                    type = NavType.StringType
-                }) // Mówimy, że spodziewamy się liczby całkowitej (Int)
+                route = Screen.ScheduleDetails.route,
+                arguments = listOf(
+                    navArgument("query") {type = NavType.StringType },
+                    navArgument("type"){type= NavType.StringType}
+                    )
             ) { backStackEntry ->
-                // 2. Wyciągamy "teacherName" jako String przy użyciu getString
-                val teacherName = backStackEntry.arguments?.getString("teacherName") ?: ""
+                val rawQuery = backStackEntry.arguments?.getString("query") ?: ""
+                val query = Uri.decode(rawQuery)
 
+                val typeString = backStackEntry.arguments?.getString("type") ?: SearchType.TEACHER.name
+                val searchType = SearchType.valueOf(typeString)
 
-                TeacherDetailsScreen(
+                ScheduleDetailsScreen(
                     viewModel = scheduleSearchViewModel,
-                    teacherName = teacherName,
+                    query = query,
+                    searchType = searchType,
                     onBackClick = { navController.popBackStack() }
                 )
             }

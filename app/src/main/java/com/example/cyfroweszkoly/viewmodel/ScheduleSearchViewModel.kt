@@ -7,7 +7,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 
-enum class SearchType { TEACHER, ROOM, CLASS }
+enum class SearchType {
+    TEACHER, // ordinal 0
+    ROOM,    // ordinal 1
+    CLASS    // ordinal 2
+}
 
 class ScheduleSearchViewModel: ViewModel() {
     private val db = FirebaseFirestore.getInstance()

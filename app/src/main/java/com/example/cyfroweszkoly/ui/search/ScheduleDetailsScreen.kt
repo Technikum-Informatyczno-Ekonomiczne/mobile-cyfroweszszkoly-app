@@ -1,4 +1,4 @@
-package com.example.cyfroweszkoly.ui.teacher_details_screen
+package com.example.cyfroweszkoly.ui.search
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -44,20 +44,24 @@ import androidx.compose.ui.unit.dp
 import com.example.cyfroweszkoly.viewmodel.ScheduleSearchViewModel
 import com.example.cyfroweszkoly.viewmodel.SearchType
 import androidx.compose.foundation.lazy.items
+import java.time.LocalDate
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TeacherDetailsScreen(
-    teacherName: String,
+fun ScheduleDetailsScreen(
+    query: String,
+    searchType: SearchType,
     viewModel: ScheduleSearchViewModel,
     onBackClick: ()->Unit
 ){
 
     // ZLECAMY POBRANIE DANYCH (Wykonuje się tylko raz przy starcie ekranu)
-    LaunchedEffect(teacherName) {
+    LaunchedEffect(query, searchType) {
         // Wywołujemy naszą uniwersalną metodę z ViewModelu
-        viewModel.searchSchedule(teacherName, SearchType.TEACHER)
+        viewModel.searchSchedule(
+            query=query,
+            type=searchType)
     }
 
     //  NASŁUCHUJEMY WYNIKÓW
@@ -67,7 +71,7 @@ fun TeacherDetailsScreen(
 
 
     //  Pobieramy aktualny dzień tygodnia (1 = Poniedziałek, 7 = Niedziela)
-    val currentDay = java.time.LocalDate.now().dayOfWeek.value
+    val currentDay = LocalDate.now().dayOfWeek.value
     //  Mapujemy na indeks Twojej listy (Pon-Pt to 0-4)
     // Jeśli jest sobota (6) lub niedziela (7), ustawiamy domyślnie Poniedziałek (0)
     val initialIndex = if (currentDay <= 5) currentDay - 1 else 0
@@ -82,10 +86,16 @@ fun TeacherDetailsScreen(
         .filter { it.dayOfWeek == selectedDayName }
         .sortedBy { it.lessonNumber } // Zapewniamy, że lekcje będą rosnąco od 1 do ...
 
+    val subtitle = when(searchType) {
+        SearchType.TEACHER -> "Gdzie go teraz znajdziesz?"
+        SearchType.ROOM -> "Kto teraz prowadzi tu zajęcia?"
+        SearchType.CLASS -> "Gdzie teraz mają lekcję?"
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = "Plan zajęć") },
+                title = { Text(text = "Powrót do wyszukiwarki") },
                 navigationIcon = {
                     IconButton(onClick = onBackClick) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack,
@@ -104,18 +114,21 @@ fun TeacherDetailsScreen(
                 .padding(paddingValues)
                 .padding(16.dp)
         ) {
+            //Tytuł
             Text(
-                text = teacherName,
+                text = query,
                 style = MaterialTheme.typography.headlineMedium.copy(
                     fontWeight = FontWeight.Bold
                 )
             )
+            // Podtytuł
             Text(
-                text = "Gdzie go teraz znajdziesz?",
+                text = subtitle,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
+            // pasek zakładek
             SecondaryScrollableTabRow(
                 selectedTabIndex = selectedDayIndex,
                 edgePadding = 16.dp,
