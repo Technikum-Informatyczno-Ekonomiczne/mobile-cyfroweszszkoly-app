@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.automirrored.outlined.ManageSearch
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MailOutline
 import androidx.compose.material.icons.filled.Menu
@@ -42,6 +43,7 @@ import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.outlined.EmojiEvents
 import androidx.compose.material.icons.outlined.History
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.ManageSearch
 import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material.icons.outlined.PersonSearch
 import androidx.compose.material.icons.outlined.School
@@ -199,8 +201,8 @@ fun MainScreen(){
                             navController.navigate(Screen.GlobalSearch.route)
                         }){
                             Icon(
-                                imageVector = Icons.Outlined.PersonSearch,
-                                contentDescription = "Znajdź nauczyciela"
+                                imageVector = Icons.AutoMirrored.Outlined.ManageSearch,
+                                contentDescription = "Wyszukiwanie zaawansowane"
                             )
                         }
 
