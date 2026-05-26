@@ -3,12 +3,14 @@ package com.example.cyfroweszkoly.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.cyfroweszkoly.data.model.SchoolMetadata
+import com.example.cyfroweszkoly.data.repository.ScheduleRepository
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class SearchAutocompleteViewModel: ViewModel() {
-    private val db = FirebaseFirestore.getInstance()
+class SearchAutocompleteViewModel(
+    private val repository: ScheduleRepository = ScheduleRepository()
+): ViewModel() {
 
     private var cachedMetadata = SchoolMetadata()
 
@@ -26,32 +28,18 @@ class SearchAutocompleteViewModel: ViewModel() {
     }
 
     private fun loadMetadata(){
-        println("LOG_FIRESTORE: Rozpoczynam pobieranie dokumentu metadata/schoolData...")
-        println("ładuję dane")
-        db.collection("metadata").document("schoolData")
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null && document.exists()) {
-                    println("LOG_FIRESTORE: Dokument istnieje! Surowe dane: ${document.data}")
+        println("LOG_FIRESTORE: Rozpoczynam pobieranie słownika przez repozytorium...")
 
-                    val data = document.toObject(SchoolMetadata::class.java)
-
-                    if (data != null) {
-                        println("LOG_FIRESTORE: Deserializacja udana. Nauczycieli: ${data.teacherNames.size}")
-                        cachedMetadata = data
-                        refreshSuggestions()
-                    } else {
-                        println("LOG_FIRESTORE: błąd mapowania! Pola w klasie SchoolMetadata mogą nie pasować do bazy.")
-                    }
-                }else {
-                    println("LOG_FIRESTORE: Dokument metadata/schoolData NIE ISTNIEJE w bazie!")
-                }
-
+        // Wywołujemy uniwersalną metodę z repozytorium
+        repository.getSchoolMetadata { data ->
+            if (data != null) {
+                println("LOG_FIRESTORE: Słownik pobrany pomyślnie. Nauczycieli: ${data.teacherNames.size}")
+                cachedMetadata = data
+                refreshSuggestions()
+            } else {
+                println("LOG_FIRESTORE: Błąd pobierania słownika z repozytorium lub dokument jest pusty.")
             }
-            .addOnFailureListener { e ->
-                println("BŁĄD pobierania słownika: ${e.message}")
-            }
-
+        }
     }
 
     fun onSearchQueryChanged(query: String, type: SearchType) {
