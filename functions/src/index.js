@@ -82,7 +82,7 @@ export const askSchoolAssistant = onCall({ region: "europe-central2" }, async (r
             na pytania związane z dostępnymi
             regulaminami i organizacją naszej szkoły."
     3. Pod żadnym pozorem nie zmyślaj informacji (zero halucynacji).
-    Jeśli czegoś nie ma w tekście, odmawiasz odpowiedzi.
+    4. Jeśli czegoś nie ma w tekście, odmawiasz odpowiedzi.
 
     [BIBLIOTEKA]
     ${libraryContext}

@@ -23,23 +23,28 @@ fun ChatMessagesList(
     modifier: Modifier = Modifier
 ){
 
-    // Zamieniamy strumień na obserwowalny stan
+  //   Zamieniamy strumień na obserwowalny stan
     val messageList by messages.collectAsState()
     // Tworzymy "pilota" do sterowania naszą listą
     val listState = rememberLazyListState()
-    // Pobierasz stan ładowania z ViewModelu
-    val isLoading by viewModel.isLoading.collectAsState()
 
-    //Mówimy: "Za każdym razem, gdy zmieni się ROZMIAR listy
-    // (messageList.size)..."
+    // Reagujemy TYLKO na nową wiadomość (np. kliknięcie "Wyślij")
+    // Używamy płynnej animacji
     LaunchedEffect(messageList.size) {
         if (messageList.isNotEmpty()) {
-            // "...użyj pilota, żeby płynnie zjechać
-            // do ostatniego elementu na liście"
-            // (indeks ostatniego elementu to rozmiar listy minus 1)
             listState.animateScrollToItem(messageList.size - 1)
         }
     }
+
+    // Reagujemy TYLKO na długość ostatniej wiadomości (strumieniowanie)
+    // Używamy BŁYSKAWICZNEGO skoku (bez animacji!), aby nadążyć za literkami
+    LaunchedEffect(messageList.lastOrNull()?.text?.length) {
+        if (messageList.isNotEmpty()) {
+            // brak słowa "animate"
+            listState.scrollToItem(messageList.size - 1)
+        }
+    }
+
     LazyColumn(
         state = listState,
         modifier = modifier.padding(horizontal = 16.dp),
@@ -57,12 +62,6 @@ fun ChatMessagesList(
             )
         }
 
-        // 2. Jeśli trwa ładowanie, dorzuć na sam dół nasz nowy dymek
-        if (isLoading) {
-            item {
-                ChatLoadingBubble()
-            }
-        }
     }
 }
 

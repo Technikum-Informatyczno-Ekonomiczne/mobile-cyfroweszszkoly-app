@@ -22,69 +22,68 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.example.cyfroweszkoly.data.model.ChatMessageModel
-
 @Composable
 fun ChatBubble(
     message: ChatMessageModel,
     onRetry: (String) -> Unit = {}
-){
-
+) {
     // kolor i lokalizacja dymku
-    val aligment = if (message.isUser) Alignment.CenterEnd else Alignment.CenterStart
-    val bubbleColor = if (message.isUser) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondaryContainer
-    val textColor = if (message.isUser) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSecondaryContainer
+    val aligment = if (message.isFromUser) Alignment.CenterEnd else Alignment.CenterStart
+    val bubbleColor = if (message.isFromUser) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondaryContainer
+    val textColor = if (message.isFromUser) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSecondaryContainer
 
-    // Zaokrąglenia -
-    // dymek użytkownika ma ostry róg po prawej stronie na dole,
-    // bot po lewej
-    val bubbleShape = if(message.isUser){
+    // Zaokrąglenia
+    val bubbleShape = if (message.isFromUser) {
         RoundedCornerShape(16.dp, 16.dp, 0.dp, 16.dp)
-    }else {
+    } else {
         RoundedCornerShape(16.dp, 16.dp, 16.dp, 0.dp)
     }
-
 
     Box(
         modifier = Modifier.fillMaxWidth(),
         contentAlignment = aligment
-    ){
-
-        // Używamy Row, aby przycisk i dymek były w jednej linii
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = if (message.isUser) Arrangement.End else Arrangement.Start,
-            modifier = Modifier.fillMaxWidth(0.9f) // Zwiększamy nieco limit, by zmieścić ikonę (90% szerokości)
+            horizontalArrangement = if (message.isFromUser) Arrangement.End else Arrangement.Start,
+            modifier = Modifier.fillMaxWidth(0.9f)
         ) {
 
-            // Przycisk "Powtórz" pojawia się z lewej strony dymka użytkownika
-            if (message.isUser) {
+            // Przycisk "Powtórz" po lewej stronie dymka ucznia
+            if (message.isFromUser) {
                 IconButton(
                     onClick = { onRetry(message.text) },
-                    modifier = Modifier.size(36.dp) // Zmniejszony rozmiar, by nie dominował wizualnie
+                    modifier = Modifier.size(36.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Refresh,
                         contentDescription = "Powtórz zapytanie",
-                        tint = MaterialTheme.colorScheme.outline // Subtelny szary kolor z motywu
+                        tint = MaterialTheme.colorScheme.outline
                     )
                 }
                 Spacer(modifier = Modifier.width(4.dp))
             }
 
-
-            Text(
-                text = message.text,
+            // WSPÓLNY KONTENER NA DYMEK - Zawsze rysuje kolor tła i zaokrąglenia
+            Box(
                 modifier = Modifier
-                    .weight(1f, fill = false) // // fill=false pozwala dymkowi dopasować się do krótkich tekstów, ale zawijać długie
+                    .weight(1f, fill = false)
                     .clip(bubbleShape)
                     .background(bubbleColor)
-                    .padding(12.dp),
-                color = textColor
-
-            )
+                    .padding(12.dp)
+            ) {
+                // Decydujemy tylko o ZAWARTOŚCI dymka
+                if (!message.isFromUser && message.text.isEmpty()) {
+                    // Przekazujemy textColor, żeby mruganie miało odpowiedni odcień
+                    BlinkingTypingIndicator(color = textColor)
+                } else {
+                    Text(
+                        text = message.text,
+                        color = textColor,
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                }
+            }
         }
     }
-
-
-
 }
