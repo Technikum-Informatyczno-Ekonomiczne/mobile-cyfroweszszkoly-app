@@ -21,8 +21,8 @@ android {
         applicationId = "com.example.cyfroweszkoly"
         minSdk = 30
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.3"
+        versionCode = 5
+        versionName = "0.5.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -100,6 +100,8 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.generativeai)
+
+    implementation(libs.markdown.m3)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

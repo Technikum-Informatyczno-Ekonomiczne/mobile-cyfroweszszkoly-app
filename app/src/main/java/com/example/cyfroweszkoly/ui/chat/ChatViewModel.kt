@@ -81,6 +81,14 @@ class ChatViewModel: ViewModel() {
                        delay(15)
                    }
                }
+
+                // Jeśli historia przekracza 6 elementów, usuwamy najstarszy (indeks 0),
+                // aż zostanie tylko 6 ostatnich wiadomości.
+               while (chat.history.size > 6) {
+                   chat.history.removeAt(0)
+               }
+
+
            }catch (e: Exception){
                _messages.update { currentList ->
 

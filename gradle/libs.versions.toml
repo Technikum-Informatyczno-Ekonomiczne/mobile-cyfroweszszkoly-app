@@ -29,6 +29,9 @@ firebaseFunctions = "22.1.1"
 generativeai = "0.9.0" # Aktualna stabilna wersja SDK od Google
 secrets = "2.0.1"
 roomKtx = "2.8.4"
+markdownRenderer = "0.41.0"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -82,6 +85,7 @@ google-firebase-functions = { group = "com.google.firebase", name = "firebase-fu
 generativeai = { module = "com.google.ai.client.generativeai:generativeai", version.ref = "generativeai" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 
+markdown-m3 = { group = "com.mikepenz", name = "multiplatform-markdown-renderer-m3", version.ref = "markdownRenderer" }
 
 
 [plugins]

@@ -14,14 +14,19 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.example.cyfroweszkoly.data.model.ChatMessageModel
+import com.mikepenz.markdown.m3.Markdown
+
+
 @Composable
 fun ChatBubble(
     message: ChatMessageModel,
@@ -72,15 +77,22 @@ fun ChatBubble(
                     .background(bubbleColor)
                     .padding(12.dp)
             ) {
-                // Decydujemy tylko o ZAWARTOŚCI dymka
                 if (!message.isFromUser && message.text.isEmpty()) {
-                    // Przekazujemy textColor, żeby mruganie miało odpowiedni odcień
+                    // Stan ładowania (AI jeszcze nic nie napisało)
                     BlinkingTypingIndicator(color = textColor)
-                } else {
+                } else if (message.isFromUser) {
+                    // Wiadomość użytkownika -> używamy zwykłego Text.
+                    // Będzie idealnie jasny i nie ruszony przez bibliotekę Markdown.
                     Text(
                         text = message.text,
                         color = textColor,
                         style = MaterialTheme.typography.bodyMedium
+                    )
+                } else {
+                    // Odpowiedź AI -> używamy Markdown,
+                    // bo model generuje pogrubienia i listy.
+                    Markdown(
+                        content = message.text
                     )
                 }
             }
