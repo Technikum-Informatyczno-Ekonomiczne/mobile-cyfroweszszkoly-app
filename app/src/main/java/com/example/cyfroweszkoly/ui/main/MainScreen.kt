@@ -1,23 +1,13 @@
 package com.example.cyfroweszkoly.ui.main
 
-import android.net.http.SslCertificate.saveState
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.automirrored.outlined.ManageSearch
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.MailOutline
-import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -34,36 +24,18 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cyfroweszkoly.navigation.AppNavHost
 import com.example.cyfroweszkoly.navigation.Screen
 import kotlinx.coroutines.launch
-
-import androidx.compose.material.icons.filled.History
-import androidx.compose.material.icons.filled.EmojiEvents
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Restaurant
-import androidx.compose.material.icons.outlined.EmojiEvents
-import androidx.compose.material.icons.outlined.History
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.ManageSearch
 import androidx.compose.material.icons.outlined.Newspaper
-import androidx.compose.material.icons.outlined.PersonSearch
 import androidx.compose.material.icons.outlined.School
 import androidx.compose.material.icons.rounded.Menu
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.TopAppBarDefaults
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavGraph.Companion.findStartDestination
-import androidx.navigation.compose.currentBackStackEntryAsState
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -111,10 +83,10 @@ fun MainScreen(){
             topBar = {
                 TopAppBar(
                     colors = TopAppBarDefaults.topAppBarColors(
-                        containerColor = Color.White,
-                        titleContentColor = Color.Black,
-                        actionIconContentColor = Color.Black,
-                        navigationIconContentColor = Color.Black
+                        containerColor = MaterialTheme.colorScheme.background,
+                        titleContentColor = MaterialTheme.colorScheme.onBackground,
+                        actionIconContentColor = MaterialTheme.colorScheme.onBackground,
+                        navigationIconContentColor = MaterialTheme.colorScheme.onBackground
 
                     ),
 
@@ -133,10 +105,10 @@ fun MainScreen(){
                                 }
                             },
                             // Definiujemy wygląd ramki - subtelna, ale widoczna
-                            border = BorderStroke(1.dp, Color.LightGray),
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
                             colors = ButtonDefaults.outlinedButtonColors(
-                                contentColor = Color.Black, // Wymusza czarny kolor na tekście i ikonie
-                                containerColor = Color.Black.copy(alpha = 0.03f) // Bardzo delikatne tło
+                                contentColor = MaterialTheme.colorScheme.onBackground, // Wymusza czarny kolor na tekście i ikonie
+                                containerColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.04f) // Bardzo delikatne tło
                             ),
                             // Zmniejszamy domyślne marginesy przycisku, żeby zmieścił się w TopAppBar
                             contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
@@ -193,7 +165,7 @@ fun MainScreen(){
                             Icon(
                                 imageVector = Icons.Default.Restaurant,
                                 contentDescription = "Menu obiadowe",
-                                tint = MaterialTheme.colorScheme.primary
+                                tint = MaterialTheme.colorScheme.secondary
                             )
                         }
 

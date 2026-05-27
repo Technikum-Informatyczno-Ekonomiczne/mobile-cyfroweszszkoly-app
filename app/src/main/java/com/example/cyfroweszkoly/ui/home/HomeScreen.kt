@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -55,7 +54,7 @@ import com.example.cyfroweszkoly.ui.components.GlobalAlertBanner
 import com.example.cyfroweszkoly.ui.theme.CyfroweSzkolyTheme
 import com.google.firebase.firestore.FirebaseFirestore
 
-// Model pomocniczy do trzymania Twoich danych
+// Model pomocniczy do trzymania danych
 data class SchoolItem(
     val imageRes: Int,
     val description: String,
